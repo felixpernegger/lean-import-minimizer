@@ -1,0 +1,4 @@
+__pycache__/
+.pre-*-backup/
+# working files of runs (rewritten by every run; records go to runs-sphere-packing/)
+work/

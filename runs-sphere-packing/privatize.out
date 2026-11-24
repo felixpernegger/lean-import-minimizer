@@ -1,0 +1,146 @@
+14:11:15 [7/72] ForMathlib.ENat: 3 -> 3 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 5 compiles, 8s (total 9s)
+14:11:22 [8/72] ForMathlib.VolumeOfBalls: 2 -> 2 public + 0 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 7s (total 16s)
+14:11:30 [9/72] ForMathlib.RadialSchwartz.SchwartzMap: 1 -> 1 public + 0 private | guess ok: True | found 0 demoted 0 removed 0 | 2 compiles, 7s (total 23s)
+14:11:55 [10/72] ForMathlib.SpecificLimits: 2 -> 2 public + 2 private | guess ok: True | found 0 demoted 0 removed 0 | 5 compiles, 26s (total 49s)
+14:12:00 [11/72] ForMathlib.tprod: 3 -> 2 public + 2 private | guess ok: True | found 0 demoted 0 removed 0 | 5 compiles, 4s (total 53s)
+14:12:46 [12/72] MagicFunction.IntegralParametrisations: 2 -> 1 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 46s (total 99s)
+14:12:53 [13/72] Tactic.NormNumI: 1 -> 1 public + 0 private | guess ok: True | found 0 demoted 0 removed 0 | 2 compiles, 7s (total 106s)
+14:12:59 [14/72] ForMathlib.SlashActions: 1 -> 1 public + 0 private | guess ok: True | found 0 demoted 0 removed 0 | 2 compiles, 6s (total 113s)
+14:13:19       + public import Mathlib.NumberTheory.ModularForms.SlashInvariantForms   (16:30: unknown namespace `ModularForm`)
+14:13:22       + public import Mathlib.Geometry.Manifold.StructureGroupoid   (18:46: unknown namespace `Manifold`)
+14:13:33       Mathlib.Geometry.Manifold.StructureGroupoid: public -> private
+14:13:40       Mathlib.NumberTheory.ModularForms.CongruenceSubgroups: public -> private
+14:13:58       + public import Mathlib.Analysis.Complex.UpperHalfPlane.Basic   (26:39: Unknown constant `UpperHalfPlane` Note: A public declaration `UpperHalfPlane` exists but is i)
+14:14:01       Mathlib.NumberTheory.ModularForms.SlashInvariantForms: public -> private
+14:14:05 [15/72] ModularForms.JacobiTheta.Defs: 4 -> 2 public + 3 private | guess ok: False | found 3 demoted 3 removed 0 | 39 compiles, 65s (total 178s)
+14:14:06       + public import Mathlib.Init   (1:0: invalid -D parameter, unknown configuration option 'linter.flexible' If the option is defined i)
+14:14:09       Lean.ScopedEnvExtension: public -> private
+14:14:11       + public import Batteries.Tactic.Alias   (25:28: Unknown identifier `SimpleScopedEnvExtension` Note: A public declaration `SimpleScopedEnvExte)
+14:14:12       Mathlib.Init: public -> private
+14:14:13 [16/72] Tactic.TendstoContAttr: 2 -> 1 public + 2 private | guess ok: False | found 2 demoted 2 removed 0 | 15 compiles, 8s (total 186s)
+14:14:19 [17/72] ForMathlib.Cusps: 1 -> 1 public + 0 private | guess ok: True | found 0 demoted 0 removed 0 | 2 compiles, 6s (total 192s)
+14:14:27 [18/72] ModularForms.E2: 1 -> 1 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 8s (total 200s)
+14:14:31 [19/72] ModularForms.exp_lems: 2 -> 2 public + 0 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 4s (total 205s)
+14:14:43 [20/72] ModularForms.SlashActionAuxil: 3 -> 2 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 4 compiles, 12s (total 217s)
+14:14:48 [21/72] ForMathlib.AtImInfty: 1 -> 1 public + 0 private | guess ok: True | found 0 demoted 0 removed 0 | 2 compiles, 5s (total 222s)
+14:15:16 [22/72] ForMathlib.QSeriesBounds: 1 -> 1 public + 0 private | guess ok: True | found 0 demoted 0 removed 0 | 2 compiles, 28s (total 250s)
+14:15:49 [23/72] ForMathlib.QExpansionBounds: 2 -> 1 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 33s (total 283s)
+14:16:02       + public import Mathlib.Data.ZMod.Defs   (23:31: unsolved goals ⊢ 1 = 1 + 0 * I)
+14:16:09       + public import Mathlib.Tactic.NormNum.OfScientific   (24:31: unsolved goals ⊢ 1 = 1 + 0 * I)
+14:16:11       + public import Mathlib.Tactic.NormNum.Eq   (25:31: unsolved goals ⊢ 1 = 1 + 0 * I)
+14:16:20       Mathlib.Tactic.NormNum.Eq: public -> private
+14:16:28       Mathlib.Tactic.NormNum.OfScientific: public -> private
+14:16:35       Mathlib.Data.ZMod.Defs: public -> private
+14:16:42       SpherePacking.Tactic.NormNumI: public -> private
+14:16:43 [24/72] Tactic.Test.NormNumI: 4 -> 0 public + 4 private | guess ok: False | found 3 demoted 4 removed 0 | 39 compiles, 54s (total 337s)
+14:17:03 [25/72] Basic.SpherePacking: 2 -> 2 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 4 compiles, 19s (total 356s)
+14:17:11 [26/72] ForMathlib.Encard: 4 -> 3 public + 4 private | guess ok: True | found 0 demoted 0 removed 0 | 8 compiles, 8s (total 364s)
+14:17:42       + public import Mathlib.Analysis.Distribution.SchwartzSpace.Basic   (24:22: Unknown identifier `NormedAddCommGroup` Note: A public declaration `NormedAddCommGroup` exist)
+14:17:47       SpherePacking.ForMathlib.RadialSchwartz.SchwartzMap: public -> private
+14:17:50 [27/72] ForMathlib.RadialSchwartz.Multidimensional: 2 -> 1 public + 2 private | guess ok: True | found 1 demoted 1 removed 0 | 26 compiles, 40s (total 404s)
+14:17:58 [28/72] ModularForms.QExpansion: 3 -> 2 public + 2 private | guess ok: True | found 0 demoted 0 removed 0 | 5 compiles, 7s (total 411s)
+14:18:06 [29/72] ModularForms.IsCuspForm: 2 -> 1 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 8s (total 419s)
+14:18:12 [30/72] Tactic.TendstoCont: 3 -> 1 public + 2 private + 1 meta | guess ok: True | found 0 demoted 0 removed 0 | 4 compiles, 6s (total 426s)
+14:18:28       Mathlib.Topology.ContinuousMap.Bounded.Basic: public -> private
+14:18:28 [31/72] ModularForms.tsumderivWithin: 4 -> 2 public + 4 private | guess ok: True | found 0 demoted 1 removed 0 | 9 compiles, 16s (total 441s)
+14:18:42 [32/72] ModularForms.ResToImagAxis: 4 -> 1 public + 4 private | guess ok: True | found 0 demoted 0 removed 0 | 6 compiles, 15s (total 456s)
+14:19:08       + public import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic   (35:52: tendsto_cont: `fun_prop` failed: `fun_prop` was unable to prove `ContinuousAt (fun p ↦ 2 * p))
+14:19:42       + public import Mathlib.Basic.Complex.Basic   (30:48: tendsto_cont: target filter is not `nhds _`)
+14:20:09       + public import Mathlib.Topology.MetricSpace.Pseudo.Defs   (392:66: Unknown identifier `atTop` Note: A public declaration `atTop` exists but is imported private)
+14:20:13       Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic: public -> private
+14:20:22       SpherePacking.Tactic.TendstoCont: public -> private
+14:20:24 [33/72] Tactic.Test.TendstoCont: 2 -> 2 public + 2 private | guess ok: False | found 3 demoted 2 removed 0 | 65 compiles, 102s (total 558s)
+14:21:28 [34/72] Basic.PeriodicPacking: 6 -> 2 public + 6 private | guess ok: True | found 0 demoted 0 removed 0 | 9 compiles, 64s (total 621s)
+14:21:38 [35/72] ModularForms.Delta: 2 -> 2 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 4 compiles, 10s (total 632s)
+14:21:45 [36/72] ModularForms.DimensionFormulas: 2 -> 1 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 7s (total 639s)
+14:22:04 [37/72] ModularForms.JacobiTheta.Basic: 4 -> 3 public + 3 private | guess ok: True | found 0 demoted 0 removed 0 | 7 compiles, 19s (total 658s)
+14:22:47       + public import Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Defs   (161:4: Unknown constant `EisensteinSeries.E2` Note: A public declaration `EisensteinSeries.E2` exist)
+14:22:54       SpherePacking.ModularForms.E2: public -> private
+14:22:58 [38/72] ModularForms.Eisenstein: 3 -> 5 public + 4 private | guess ok: True | found 1 demoted 1 removed 0 | 24 compiles, 54s (total 711s)
+14:23:51       + public import SpherePacking.Basic.SpherePacking   (182:9: Unknown identifier `P.centers`)
+14:24:01       SpherePacking.Basic.PeriodicPacking: public -> private
+14:24:09 [39/72] CohnElkies.LPBound: 3 -> 2 public + 3 private | guess ok: True | found 1 demoted 1 removed 0 | 16 compiles, 71s (total 783s)
+14:24:17 [40/72] ForMathlib.InvPowSummability: 2 -> 2 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 4 compiles, 8s (total 791s)
+14:24:41 [41/72] Basic.E8: 1 -> 1 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 23s (total 814s)
+14:24:56       SpherePacking.ModularForms.E2: public -> private
+14:24:59 [42/72] ModularForms.EisensteinAsymptotics: 2 -> 2 public + 3 private | guess ok: True | found 0 demoted 1 removed 0 | 8 compiles, 19s (total 833s)
+14:25:07 [43/72] ForMathlib.MDifferentiableFunProp: 1 -> 1 public + 0 private | guess ok: True | found 0 demoted 0 removed 0 | 2 compiles, 7s (total 840s)
+14:25:13 [44/72] MainTheorem: 1 -> 1 public + 0 private | guess ok: True | found 0 demoted 0 removed 0 | 2 compiles, 7s (total 847s)
+14:25:37       + public import SpherePacking.ForMathlib.MDifferentiableFunProp   (32:2: unrecognized function property `MDiff (OfNat.ofNat n)`)
+14:25:55       SpherePacking.ModularForms.E2: public -> private
+14:26:07       SpherePacking.ModularForms.tsumderivWithin: public -> private
+14:26:23       + public import SpherePacking.ModularForms.ResToImagAxis   (268:12: Invalid field `resToImagAxis`: The environment does not contain `Function.resToImagAxis`, so)
+14:26:29       SpherePacking.ForMathlib.MDifferentiableFunProp: public -> private
+14:26:34 [45/72] ModularForms.Derivative: 2 -> 2 public + 3 private | guess ok: False | found 2 demoted 3 removed 0 | 24 compiles, 81s (total 928s)
+14:27:02       + public import SpherePacking.ForMathlib.MDifferentiableFunProp   (105:2: unrecognized function property `MDiff H₂`)
+14:27:15       SpherePacking.ForMathlib.MDifferentiableFunProp: public -> private
+14:27:20 [46/72] ModularForms.JacobiTheta.MDifferentiable: 3 -> 2 public + 1 private | guess ok: False | found 1 demoted 1 removed 0 | 21 compiles, 46s (total 973s)
+14:27:38       + public import SpherePacking.ForMathlib.MDifferentiableFunProp   (82:2: `MDiff (H₂ + H₄ - H₃)` is not a `fun_prop` goal! Consider marking `MDifferentiable` with `@[fu)
+14:27:56       Mathlib.NumberTheory.ModularForms.LevelOne.DimensionFormula: public -> private
+14:28:09       SpherePacking.ForMathlib.MDifferentiableFunProp: public -> private
+14:28:43       + public import Mathlib.NumberTheory.ModularForms.Discriminant   (213:4: Unknown constant `ModularForm.discriminant` Note: A public declaration `discriminant` exists )
+14:28:47       SpherePacking.ModularForms.Delta: public -> private
+14:29:00       SpherePacking.ModularForms.DimensionFormulas: public -> private
+14:29:13       + public import SpherePacking.ModularForms.JacobiTheta.Defs   (38:38: Unknown identifier `H₂` Note: A public declaration `H₂` exists but is imported privately; con)
+14:29:21       + public import SpherePacking.ModularForms.SlashActionAuxil   (80:22: Unknown identifier `slashaction_generators_GL2R` Note: A public declaration `slashaction_gene)
+14:29:25       SpherePacking.ModularForms.JacobiTheta.MDifferentiable: public -> private
+14:29:35       SpherePacking.Tactic.TendstoCont: public -> private
+14:29:40 [47/72] ModularForms.JacobiTheta.JacobiIdentity: 4 -> 3 public + 6 private | guess ok: False | found 4 demoted 6 removed 0 | 66 compiles, 140s (total 1113s)
+14:30:07       + public import SpherePacking.ModularForms.Derivative   (74:53: `MDiff (serreDerivative 2 H₂ - (1 / 6) • (H₂ * (H₂ + 2 • H₄)))` is not a `fun_prop` goal! Con)
+16:25:07       + public import SpherePacking.ModularForms.Derivative   (74:53: `MDiff (serreDerivative 2 H₂ - (1 / 6) • (H₂ * (H₂ + 2 • H₄)))` is not a `fun_prop` goal! Con)
+16:25:21       + public import SpherePacking.ForMathlib.MDifferentiableFunProp   (75:53: `MDiff (serreDerivative 2 H₂ - (1 / 6) • (H₂ * (H₂ + 2 • H₄)))` is not a `fun_prop` goal! Con)
+16:25:41       SpherePacking.ModularForms.E2: public -> private
+16:25:58       SpherePacking.ForMathlib.MDifferentiableFunProp: public -> private
+16:26:14       SpherePacking.ModularForms.Derivative: public -> private
+16:26:30       + public import SpherePacking.ModularForms.Eisenstein   (475:25: Unknown identifier `_root_.E₄.toFun` Note: A public declaration `_root_.E₄` exists but is im)
+16:26:33       SpherePacking.ModularForms.EisensteinAsymptotics: public -> private
+16:26:47       SpherePacking.ModularForms.DimensionFormulas: public -> private
+16:26:57       SpherePacking.ModularForms.JacobiTheta.MDifferentiable: public -> private
+16:27:05       SpherePacking.Tactic.TendstoCont: public -> private
+16:27:18       + public import SpherePacking.ModularForms.JacobiTheta.Defs   (56:2: Unknown identifier `serreDerivative` Note: A public declaration `serreDerivative` exists but i)
+16:27:31       + public import Mathlib.NumberTheory.ModularForms.Derivative   (57:2: Unknown identifier `serreDerivative` Note: A public declaration `serreDerivative` exists but i)
+16:27:35       SpherePacking.ModularForms.JacobiTheta.JacobiIdentity: public -> private
+16:27:37 [48/72] ModularForms.JacobiTheta.Derivative: 3 -> 3 public + 8 private | guess ok: False | found 5 demoted 8 removed 0 | 97 compiles, 177s (total 177s)
+16:28:16       SpherePacking.ModularForms.E2: public -> private
+16:28:35       + public import Mathlib.NumberTheory.ModularForms.Discriminant   (61:26: Unknown constant `Derivative.normalizedDerivOfComplex` Note: A public declaration `normalized)
+16:28:41       SpherePacking.ModularForms.Delta: public -> private
+16:28:46 [49/72] ModularForms.FG: 5 -> 3 public + 13 private | guess ok: True | found 1 demoted 2 removed 0 | 34 compiles, 68s (total 245s)
+16:28:57       SpherePacking.ModularForms.Delta: public -> private
+16:29:03       SpherePacking.ModularForms.Derivative: not needed itself, dropped
+16:29:03 [50/72] MagicFunction.b.Psi: 2 -> 2 public + 4 private | guess ok: True | found 0 demoted 1 removed 1 | 12 compiles, 18s (total 263s)
+16:29:10       SpherePacking.ModularForms.E2: public -> private
+16:29:14       SpherePacking.ModularForms.Delta: public -> private
+16:29:16 [51/72] MagicFunction.a.Phi: 1 -> 1 public + 2 private | guess ok: True | found 0 demoted 2 removed 0 | 9 compiles, 13s (total 276s)
+16:29:22 [52/72] ModularForms.PhiTransform: 1 -> 1 public + 2 private | guess ok: True | found 0 demoted 0 removed 0 | 4 compiles, 6s (total 282s)
+16:29:30       SpherePacking.Tactic.NormNumI: not needed itself, dropped
+16:29:30 [53/72] MagicFunction.b.Basic: 1 -> 1 public + 0 private | guess ok: True | found 0 demoted 0 removed 1 | 4 compiles, 8s (total 290s)
+16:29:52       SpherePacking.ModularForms.Delta: public -> private
+16:29:56 [54/72] MagicFunction.PolyFourierCoeffBound: 4 -> 1 public + 5 private | guess ok: True | found 0 demoted 1 removed 0 | 9 compiles, 26s (total 316s)
+16:30:02 [55/72] MagicFunction.a.Basic: 2 -> 2 public + 0 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 6s (total 322s)
+16:30:08 [56/72] MagicFunction.a.IntegralEstimates.I2: 2 -> 1 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 6s (total 328s)
+16:30:15 [57/72] MagicFunction.a.IntegralEstimates.I3: 2 -> 1 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 6s (total 334s)
+16:30:20 [58/72] MagicFunction.a.IntegralEstimates.I4: 2 -> 1 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 6s (total 340s)
+16:30:26 [59/72] MagicFunction.a.IntegralEstimates.I5: 2 -> 1 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 6s (total 346s)
+16:30:32 [60/72] MagicFunction.a.IntegralEstimates.I6: 2 -> 1 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 6s (total 352s)
+16:30:39 [61/72] MagicFunction.a.Schwartz: 2 -> 2 public + 0 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 7s (total 359s)
+16:30:45 [62/72] MagicFunction.b.Schwartz: 2 -> 2 public + 0 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 6s (total 364s)
+16:30:51 [63/72] MagicFunction.a.IntegralEstimates.I1: 2 -> 1 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 6s (total 370s)
+16:30:57 [64/72] MagicFunction.a.Eigenfunction: 1 -> 1 public + 0 private | guess ok: True | found 0 demoted 0 removed 0 | 2 compiles, 6s (total 377s)
+16:31:02 [65/72] MagicFunction.a.SpecialValues: 1 -> 1 public + 0 private | guess ok: True | found 0 demoted 0 removed 0 | 2 compiles, 5s (total 382s)
+16:31:08 [66/72] MagicFunction.b.Eigenfunction: 1 -> 1 public + 0 private | guess ok: True | found 0 demoted 0 removed 0 | 2 compiles, 6s (total 388s)
+16:31:12 [67/72] MagicFunction.b.SpecialValues: 1 -> 1 public + 0 private | guess ok: True | found 0 demoted 0 removed 0 | 2 compiles, 4s (total 392s)
+16:31:28       + public import SpherePacking.MagicFunction.a.IntegralEstimates.I1   (31:2: unknown namespace `MagicFunction.PolyFourierCoeffBound`)
+16:31:40       + public import SpherePacking.MagicFunction.PolyFourierCoeffBound   (31:2: unknown namespace `MagicFunction.PolyFourierCoeffBound`)
+16:31:49       SpherePacking.ModularForms.Delta: public -> private
+16:31:55       SpherePacking.MagicFunction.PolyFourierCoeffBound: public -> private
+16:32:15       + public import SpherePacking.MagicFunction.a.Basic   (49:51: Unknown constant `UpperHalfPlane.upperHalfPlaneSet` Note: A public declaration `upperHalfPlan)
+16:32:17       SpherePacking.MagicFunction.a.IntegralEstimates.I1: public -> private
+16:32:20 [68/72] MagicFunction.a.Integrability.ComplexIntegrands: 1 -> 1 public + 3 private | guess ok: False | found 3 demoted 3 removed 0 | 56 compiles, 68s (total 460s)
+16:32:25 [69/72] MagicFunction.a.Integrability.CuspPath: 1 -> 1 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 5s (total 465s)
+16:32:33 [70/72] MagicFunction.g.Basic: 4 -> 2 public + 4 private | guess ok: True | found 0 demoted 0 removed 0 | 7 compiles, 8s (total 473s)
+16:32:38 [71/72] MagicFunction.a.Integrability.RealIntegrands: 1 -> 1 public + 1 private | guess ok: True | found 0 demoted 0 removed 0 | 3 compiles, 5s (total 478s)
+16:32:47       + public import SpherePacking.MagicFunction.PolyFourierCoeffBound   (19:2: unknown namespace `MagicFunction.PolyFourierCoeffBound`)
+16:32:53       SpherePacking.MagicFunction.PolyFourierCoeffBound: public -> private
+16:33:09       + public import SpherePacking.MagicFunction.a.Basic   (26:29: Unknown constant `Real` Note: A public declaration `Real` exists but is imported privately; c)
+16:33:11       SpherePacking.MagicFunction.a.Integrability.RealIntegrands: public -> private
+16:33:13 [72/72] MagicFunction.a.Integrability.Integrability: 1 -> 1 public + 2 private | guess ok: False | found 2 demoted 2 removed 0 | 40 compiles, 35s (total 513s)

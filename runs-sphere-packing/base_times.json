@@ -1,0 +1,434 @@
+{
+ "SpherePacking.Basic.E8": {
+  "secs": 12.1,
+  "rss_mb": 1666,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.Basic.PeriodicPacking": {
+  "secs": 15.0,
+  "rss_mb": 1615,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.Basic.SpherePacking": {
+  "secs": 7.9,
+  "rss_mb": 1565,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.CohnElkies.LPBound": {
+  "secs": 12.3,
+  "rss_mb": 1623,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.CohnElkies.Prereqs": {
+  "secs": 5.9,
+  "rss_mb": 1580,
+  "warnings": 3,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.AtImInfty": {
+  "secs": 2.6,
+  "rss_mb": 1357,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.Cusps": {
+  "secs": 2.8,
+  "rss_mb": 1388,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.ENNReal": {
+  "secs": 2.3,
+  "rss_mb": 1240,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.ENat": {
+  "secs": 2.0,
+  "rss_mb": 976,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.Encard": {
+  "secs": 2.1,
+  "rss_mb": 1055,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.Fourier": {
+  "secs": 2.3,
+  "rss_mb": 1241,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.InvPowSummability": {
+  "secs": 3.5,
+  "rss_mb": 1556,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.MDifferentiableFunProp": {
+  "secs": 3.1,
+  "rss_mb": 1652,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.QExpansionBounds": {
+  "secs": 3.3,
+  "rss_mb": 1603,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.QSeriesBounds": {
+  "secs": 2.5,
+  "rss_mb": 1241,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.RadialSchwartz.Basic": {
+  "secs": 8.4,
+  "rss_mb": 1599,
+  "warnings": 2,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.RadialSchwartz.Multidimensional": {
+  "secs": 4.5,
+  "rss_mb": 1543,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.RadialSchwartz.SchwartzMap": {
+  "secs": 3.1,
+  "rss_mb": 1501,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.SlashActions": {
+  "secs": 2.3,
+  "rss_mb": 1329,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.SpecificLimits": {
+  "secs": 2.6,
+  "rss_mb": 1214,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.VolumeOfBalls": {
+  "secs": 2.7,
+  "rss_mb": 1510,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.ZLattice": {
+  "secs": 3.2,
+  "rss_mb": 1459,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ForMathlib.tprod": {
+  "secs": 1.7,
+  "rss_mb": 1083,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.IntegralParametrisations": {
+  "secs": 19.9,
+  "rss_mb": 1887,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.PolyFourierCoeffBound": {
+  "secs": 6.5,
+  "rss_mb": 1772,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.a.Basic": {
+  "secs": 5.4,
+  "rss_mb": 1698,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.a.Eigenfunction": {
+  "secs": 5.9,
+  "rss_mb": 1677,
+  "warnings": 2,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.a.Integrability.ComplexIntegrands": {
+  "secs": 3.7,
+  "rss_mb": 1676,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.a.Integrability.CuspPath": {
+  "secs": 2.9,
+  "rss_mb": 1644,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.a.Integrability.Integrability": {
+  "secs": 2.9,
+  "rss_mb": 1658,
+  "warnings": 6,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.a.Integrability.RealDecay": {
+  "secs": 2.6,
+  "rss_mb": 1521,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.a.Integrability.RealIntegrands": {
+  "secs": 3.0,
+  "rss_mb": 1667,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.a.IntegralEstimates.I1": {
+  "secs": 3.4,
+  "rss_mb": 1697,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.a.IntegralEstimates.I2": {
+  "secs": 3.4,
+  "rss_mb": 1687,
+  "warnings": 2,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.a.IntegralEstimates.I3": {
+  "secs": 4.0,
+  "rss_mb": 1694,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.a.IntegralEstimates.I4": {
+  "secs": 3.8,
+  "rss_mb": 1687,
+  "warnings": 2,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.a.IntegralEstimates.I5": {
+  "secs": 3.7,
+  "rss_mb": 1690,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.a.IntegralEstimates.I6": {
+  "secs": 3.4,
+  "rss_mb": 1694,
+  "warnings": 2,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.a.Phi": {
+  "secs": 2.7,
+  "rss_mb": 1644,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.a.Schwartz": {
+  "secs": 3.7,
+  "rss_mb": 1675,
+  "warnings": 11,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.a.SpecialValues": {
+  "secs": 2.6,
+  "rss_mb": 1643,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.b.Basic": {
+  "secs": 3.5,
+  "rss_mb": 1670,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.b.Eigenfunction": {
+  "secs": 6.4,
+  "rss_mb": 1681,
+  "warnings": 2,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.b.Psi": {
+  "secs": 3.9,
+  "rss_mb": 1683,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.b.Schwartz": {
+  "secs": 4.0,
+  "rss_mb": 1665,
+  "warnings": 12,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.b.SpecialValues": {
+  "secs": 3.0,
+  "rss_mb": 1643,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.MagicFunction.g.Basic": {
+  "secs": 3.2,
+  "rss_mb": 1671,
+  "warnings": 6,
+  "ok": true
+ },
+ "SpherePacking.MainTheorem": {
+  "secs": 2.2,
+  "rss_mb": 1507,
+  "warnings": 2,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.Delta": {
+  "secs": 3.4,
+  "rss_mb": 1686,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.Derivative": {
+  "secs": 4.7,
+  "rss_mb": 1720,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.DimensionFormulas": {
+  "secs": 3.3,
+  "rss_mb": 1643,
+  "warnings": 2,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.E2": {
+  "secs": 4.1,
+  "rss_mb": 1669,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.Eisenstein": {
+  "secs": 6.2,
+  "rss_mb": 1684,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.EisensteinAsymptotics": {
+  "secs": 3.6,
+  "rss_mb": 1661,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.FG": {
+  "secs": 7.6,
+  "rss_mb": 1777,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.IsCuspForm": {
+  "secs": 4.0,
+  "rss_mb": 1617,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.JacobiTheta.Basic": {
+  "secs": 6.8,
+  "rss_mb": 1752,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.JacobiTheta.Defs": {
+  "secs": 4.0,
+  "rss_mb": 1666,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.JacobiTheta.Derivative": {
+  "secs": 5.3,
+  "rss_mb": 1726,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.JacobiTheta.JacobiIdentity": {
+  "secs": 4.7,
+  "rss_mb": 1680,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.JacobiTheta.MDifferentiable": {
+  "secs": 4.3,
+  "rss_mb": 1668,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.PhiTransform": {
+  "secs": 4.4,
+  "rss_mb": 1687,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.QExpansion": {
+  "secs": 4.1,
+  "rss_mb": 1658,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.ResToImagAxis": {
+  "secs": 4.0,
+  "rss_mb": 1661,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.SlashActionAuxil": {
+  "secs": 5.5,
+  "rss_mb": 1448,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.exp_lems": {
+  "secs": 2.6,
+  "rss_mb": 1224,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.ModularForms.tsumderivWithin": {
+  "secs": 4.2,
+  "rss_mb": 1338,
+  "warnings": 2,
+  "ok": true
+ },
+ "SpherePacking.Tactic.NormNumI": {
+  "secs": 3.5,
+  "rss_mb": 909,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.Tactic.TendstoCont": {
+  "secs": 3.3,
+  "rss_mb": 1014,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.Tactic.TendstoContAttr": {
+  "secs": 1.0,
+  "rss_mb": 523,
+  "warnings": 0,
+  "ok": true
+ },
+ "SpherePacking.Tactic.Test.NormNumI": {
+  "secs": 2.8,
+  "rss_mb": 1237,
+  "warnings": 1,
+  "ok": true
+ },
+ "SpherePacking.Tactic.Test.TendstoCont": {
+  "secs": 4.0,
+  "rss_mb": 1542,
+  "warnings": 0,
+  "ok": true
+ }
+}

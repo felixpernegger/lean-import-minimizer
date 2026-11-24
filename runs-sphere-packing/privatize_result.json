@@ -1,0 +1,3449 @@
+{
+ "SpherePacking.ForMathlib.Fourier": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic"
+  ],
+  "compiles": 2,
+  "compile_secs": 10.1,
+  "wall": 17.2,
+  "why": {
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic": [
+    "HasFourierSeries",
+    "Real.pi"
+   ]
+  }
+ },
+ "SpherePacking.ForMathlib.RadialSchwartz.Basic": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Analysis.Distribution.SchwartzSpace.Fourier"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Analysis.Distribution.SchwartzSpace.Fourier"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Analysis.Distribution.SchwartzSpace.Fourier"
+  ],
+  "compiles": 2,
+  "compile_secs": 16.2,
+  "wall": 16.8,
+  "why": {
+   "Mathlib.Analysis.Distribution.SchwartzSpace.Fourier": [
+    "RadialSchwartzMap.coe_fourier",
+    "SchwartzMap.instFourierTransform"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.a.Integrability.RealDecay": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.MeasureTheory.Integral.IntegrableOn",
+    "Mathlib.MeasureTheory.Measure.Haar.OfBasis"
+   ],
+   "priv": [
+    "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.MeasureTheory.Integral.IntegrableOn",
+   "Mathlib.MeasureTheory.Measure.Haar.OfBasis"
+  ],
+  "priv": [
+   "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral"
+  ],
+  "compiles": 4,
+  "compile_secs": 14.7,
+  "wall": 7.8,
+  "why": {
+   "Mathlib.MeasureTheory.Integral.IntegrableOn": [
+    "integrableOn_exp_mul_Ici",
+    "MeasureTheory.IntegrableOn"
+   ],
+   "Mathlib.MeasureTheory.Measure.Haar.OfBasis": [
+    "integrableOn_exp_mul_Ici",
+    "Real.measureSpace"
+   ],
+   "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral": [
+    "integrableOn_mul_exp_neg_Ici",
+    "integrableOn_rpow_mul_exp_neg_mul_rpow"
+   ]
+  }
+ },
+ "SpherePacking.CohnElkies.Prereqs": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Algebra.Module.ZLattice.Covolume",
+    "Mathlib.Analysis.Distribution.SchwartzSpace.Basic",
+    "Mathlib.Analysis.Fourier.FourierTransform",
+    "Mathlib.Analysis.RCLike.Inner",
+    "Mathlib.LinearAlgebra.BilinearForm.DualLattice"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Algebra.Module.ZLattice.Covolume",
+   "Mathlib.Analysis.Distribution.SchwartzSpace.Basic",
+   "Mathlib.Analysis.Fourier.FourierTransform",
+   "Mathlib.Analysis.RCLike.Inner",
+   "Mathlib.LinearAlgebra.BilinearForm.DualLattice"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Algebra.Module.ZLattice.Covolume",
+   "public import Mathlib.Analysis.Distribution.SchwartzSpace.Basic",
+   "public import Mathlib.Analysis.Fourier.FourierTransform",
+   "public import Mathlib.Analysis.RCLike.Inner",
+   "public import Mathlib.LinearAlgebra.BilinearForm.DualLattice"
+  ],
+  "compiles": 6,
+  "compile_secs": 37.4,
+  "wall": 17.9,
+  "why": {
+   "Mathlib.Algebra.Module.ZLattice.Covolume": [
+    "PSF_L",
+    "ZLattice.covolume"
+   ],
+   "Mathlib.Analysis.Distribution.SchwartzSpace.Basic": [
+    "SchwartzMap.toFun_eq_zero_iff_zero",
+    "SchwartzMap"
+   ],
+   "Mathlib.Analysis.Fourier.FourierTransform": [
+    "PSF_L",
+    "Real.instFourierTransform"
+   ],
+   "Mathlib.Analysis.RCLike.Inner": [
+    "PSF_L",
+    "RCLike.wInner"
+   ],
+   "Mathlib.LinearAlgebra.BilinearForm.DualLattice": [
+    "PSF_L",
+    "LinearMap.BilinForm.dualSubmodule"
+   ]
+  }
+ },
+ "SpherePacking.ForMathlib.ENNReal": {
+  "found": [
+   [
+    "pub",
+    "Mathlib.Topology.Defs.Basic",
+    "13:13: unknown namespace `Filter`"
+   ],
+   [
+    "pub",
+    "Mathlib.Order.Filter.Defs",
+    "14:13: unknown namespace `Filter`"
+   ],
+   [
+    "pub",
+    "Mathlib.Basic.ENNReal.Basic",
+    "19:49: Unknown identifier `ENNReal` Note: A public declaration `ENNReal` exists but is imported privately; consider adding `public import Mathlib.Basic.ENNReal.Basic`."
+   ]
+  ],
+  "demoted": [
+   "Mathlib.Order.Filter.Defs",
+   "Mathlib.Basic.ENNReal.Inv",
+   "Mathlib.Topology.Defs.Basic"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Basic.ENNReal.Basic"
+   ],
+   "priv": [
+    "Mathlib.Basic.ENNReal.Inv"
+   ]
+  },
+  "guess_ok": false,
+  "guess_err": "14:13: unknown namespace `Filter`",
+  "pub": [
+   "Mathlib.Basic.ENNReal.Basic"
+  ],
+  "priv": [
+   "Mathlib.Order.Filter.Defs",
+   "Mathlib.Basic.ENNReal.Inv",
+   "Mathlib.Topology.Defs.Basic"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Basic.ENNReal.Inv",
+   "public import Mathlib.Order.Filter.Defs",
+   "public import Mathlib.Topology.Defs.Basic"
+  ],
+  "compiles": 38,
+  "compile_secs": 76.3,
+  "wall": 35.9,
+  "why": {
+   "Mathlib.Basic.ENNReal.Basic": [
+    "ENNReal.div_div_div_cancel_left",
+    "ENNReal"
+   ],
+   "Mathlib.Order.Filter.Defs": null,
+   "Mathlib.Basic.ENNReal.Inv": [
+    "ENNReal.div_div_div_cancel_left",
+    "ENNReal.top_div"
+   ],
+   "Mathlib.Topology.Defs.Basic": null
+  }
+ },
+ "SpherePacking.ForMathlib.ZLattice": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Algebra.Module.ZLattice.Basic"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Algebra.Module.ZLattice.Basic"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Algebra.Module.ZLattice.Basic"
+  ],
+  "compiles": 2,
+  "compile_secs": 7.1,
+  "wall": 7.3,
+  "why": {
+   "Mathlib.Algebra.Module.ZLattice.Basic": [
+    "ZSpan.floor_eq_zero",
+    "ZSpan.floor"
+   ]
+  }
+ },
+ "SpherePacking.ForMathlib.ENat": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Data.Set.Card",
+    "Mathlib.Topology.Algebra.InfiniteSum.Defs",
+    "Mathlib.Topology.Instances.ENat"
+   ],
+   "priv": [
+    "Mathlib.Topology.Algebra.InfiniteSum.Basic"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Data.Set.Card",
+   "Mathlib.Topology.Algebra.InfiniteSum.Defs",
+   "Mathlib.Topology.Instances.ENat"
+  ],
+  "priv": [
+   "Mathlib.Topology.Algebra.InfiniteSum.Basic"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Data.Set.Card",
+   "public import Mathlib.Topology.Algebra.InfiniteSum.Basic",
+   "public import Mathlib.Topology.Instances.ENat"
+  ],
+  "compiles": 5,
+  "compile_secs": 10.9,
+  "wall": 8.3,
+  "why": {
+   "Mathlib.Data.Set.Card": [
+    "ENat.tsum_set_one",
+    "Set.encard"
+   ],
+   "Mathlib.Topology.Algebra.InfiniteSum.Defs": [
+    "ENat.tsum_one",
+    "tsum"
+   ],
+   "Mathlib.Topology.Instances.ENat": [
+    "ENat.tsum_one",
+    "ENat.instTopologicalSpace"
+   ],
+   "Mathlib.Topology.Algebra.InfiniteSum.Basic": [
+    "ENat.tsum_const",
+    "tsum_zero"
+   ]
+  }
+ },
+ "SpherePacking.ForMathlib.VolumeOfBalls": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.MeasureTheory.Measure.Haar.OfBasis",
+    "Mathlib.Analysis.Normed.Lp.MeasurableSpace"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.MeasureTheory.Measure.Haar.OfBasis",
+   "Mathlib.Analysis.Normed.Lp.MeasurableSpace"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Analysis.Normed.Lp.MeasurableSpace",
+   "public import Mathlib.MeasureTheory.Measure.Haar.OfBasis"
+  ],
+  "compiles": 3,
+  "compile_secs": 9.8,
+  "wall": 7.3,
+  "why": {
+   "Mathlib.MeasureTheory.Measure.Haar.OfBasis": [
+    "EuclideanSpace.volume_ball_pos",
+    "measureSpaceOfInnerProductSpace"
+   ],
+   "Mathlib.Analysis.Normed.Lp.MeasurableSpace": [
+    "EuclideanSpace.volume_ball_pos",
+    "PiLp.borelSpace"
+   ]
+  }
+ },
+ "SpherePacking.ForMathlib.RadialSchwartz.SchwartzMap": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Analysis.Distribution.SchwartzSpace.Basic"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Analysis.Distribution.SchwartzSpace.Basic"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Analysis.Distribution.SchwartzSpace.Basic"
+  ],
+  "compiles": 2,
+  "compile_secs": 6.9,
+  "wall": 7.2,
+  "why": {
+   "Mathlib.Analysis.Distribution.SchwartzSpace.Basic": [
+    "SchwartzMap.mk_apply",
+    "SchwartzMap"
+   ]
+  }
+ },
+ "SpherePacking.ForMathlib.SpecificLimits": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Analysis.Asymptotics.Defs",
+    "Mathlib.Analysis.Complex.Norm"
+   ],
+   "priv": [
+    "Mathlib.Analysis.Complex.Basic",
+    "Mathlib.Analysis.SpecificLimits.Normed"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Analysis.Asymptotics.Defs",
+   "Mathlib.Analysis.Complex.Norm"
+  ],
+  "priv": [
+   "Mathlib.Analysis.Complex.Basic",
+   "Mathlib.Analysis.SpecificLimits.Normed"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Analysis.Complex.Basic",
+   "public import Mathlib.Analysis.SpecificLimits.Normed"
+  ],
+  "compiles": 5,
+  "compile_secs": 33.8,
+  "wall": 25.7,
+  "why": {
+   "Mathlib.Analysis.Asymptotics.Defs": [
+    "summable_real_norm_mul_geometric_of_norm_lt_one",
+    "Asymptotics.IsBigO"
+   ],
+   "Mathlib.Analysis.Complex.Norm": [
+    "summable_real_norm_mul_geometric_of_norm_lt_one",
+    "Complex.instNorm"
+   ],
+   "Mathlib.Analysis.Complex.Basic": [
+    "summable_real_norm_mul_geometric_of_norm_lt_one",
+    "Complex.instRCLike"
+   ],
+   "Mathlib.Analysis.SpecificLimits.Normed": [
+    "summable_real_norm_mul_geometric_of_norm_lt_one",
+    "summable_norm_pow_mul_geometric_of_norm_lt_one"
+   ]
+  }
+ },
+ "SpherePacking.ForMathlib.tprod": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Topology.MetricSpace.Pseudo.Defs",
+    "Mathlib.Topology.Algebra.InfiniteSum.Defs"
+   ],
+   "priv": [
+    "Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset",
+    "Mathlib.Topology.MetricSpace.Pseudo.Lemmas"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Topology.MetricSpace.Pseudo.Defs",
+   "Mathlib.Topology.Algebra.InfiniteSum.Defs"
+  ],
+  "priv": [
+   "Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset",
+   "Mathlib.Topology.MetricSpace.Pseudo.Lemmas"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset",
+   "public import Mathlib.Topology.Algebra.InfiniteSum.Defs",
+   "public import Mathlib.Topology.MetricSpace.Pseudo.Lemmas"
+  ],
+  "compiles": 5,
+  "compile_secs": 9.8,
+  "wall": 4.2,
+  "why": {
+   "Mathlib.Topology.MetricSpace.Pseudo.Defs": [
+    "hasProd_le_nonneg",
+    "Real.pseudoMetricSpace"
+   ],
+   "Mathlib.Topology.Algebra.InfiniteSum.Defs": [
+    "hasProd_le_nonneg",
+    "HasProd"
+   ],
+   "Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset": [
+    "hasProd_le_nonneg",
+    "Finset.prod_le_prod\u2080"
+   ],
+   "Mathlib.Topology.MetricSpace.Pseudo.Lemmas": [
+    "hasProd_le_nonneg",
+    "instOrderTopologyReal"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.IntegralParametrisations": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Analysis.Complex.UpperHalfPlane.MoebiusAction"
+   ],
+   "priv": [
+    "Mathlib.Analysis.InnerProductSpace.PiL2"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Analysis.Complex.UpperHalfPlane.MoebiusAction"
+  ],
+  "priv": [
+   "Mathlib.Analysis.InnerProductSpace.PiL2"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Analysis.Complex.UpperHalfPlane.MoebiusAction",
+   "public import Mathlib.Analysis.InnerProductSpace.PiL2"
+  ],
+  "compiles": 3,
+  "compile_secs": 68.8,
+  "wall": 46.2,
+  "why": {
+   "Mathlib.Analysis.Complex.UpperHalfPlane.MoebiusAction": [
+    "MagicFunction.Parametrisations.neg_inv_eq_S",
+    "UpperHalfPlane.SLAction"
+   ],
+   "Mathlib.Analysis.InnerProductSpace.PiL2": null
+  }
+ },
+ "SpherePacking.Tactic.NormNumI": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Basic.Complex.Basic"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Basic.Complex.Basic"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Basic.Complex.Basic"
+  ],
+  "compiles": 2,
+  "compile_secs": 6.7,
+  "wall": 6.8,
+  "why": {
+   "Mathlib.Basic.Complex.Basic": [
+    "Mathlib.Meta.NormNumI.eq_eq",
+    "Complex"
+   ]
+  }
+ },
+ "SpherePacking.ForMathlib.SlashActions": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.NumberTheory.ModularForms.SlashActions"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.NumberTheory.ModularForms.SlashActions"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.NumberTheory.ModularForms.SlashActions"
+  ],
+  "compiles": 2,
+  "compile_secs": 6.2,
+  "wall": 6.5,
+  "why": {
+   "Mathlib.NumberTheory.ModularForms.SlashActions": [
+    "ModularForm.slash_neg'",
+    "SlashAction.map"
+   ]
+  }
+ },
+ "SpherePacking.ModularForms.JacobiTheta.Defs": {
+  "found": [
+   [
+    "pub",
+    "Mathlib.NumberTheory.ModularForms.SlashInvariantForms",
+    "16:30: unknown namespace `ModularForm`"
+   ],
+   [
+    "pub",
+    "Mathlib.Geometry.Manifold.StructureGroupoid",
+    "18:46: unknown namespace `Manifold`"
+   ],
+   [
+    "pub",
+    "Mathlib.Analysis.Complex.UpperHalfPlane.Basic",
+    "26:39: Unknown constant `UpperHalfPlane` Note: A public declaration `UpperHalfPlane` exists but is imported privately; consider adding `public import Mathlib.Analysis.Complex.UpperHalfPlane.Basic`."
+   ]
+  ],
+  "demoted": [
+   "Mathlib.Geometry.Manifold.StructureGroupoid",
+   "Mathlib.NumberTheory.ModularForms.CongruenceSubgroups",
+   "Mathlib.NumberTheory.ModularForms.SlashInvariantForms"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Analysis.Complex.UpperHalfPlane.Basic",
+    "Mathlib.NumberTheory.ModularForms.JacobiTheta.TwoVariable"
+   ],
+   "priv": [
+    "Mathlib.NumberTheory.ModularForms.CongruenceSubgroups"
+   ]
+  },
+  "guess_ok": false,
+  "guess_err": "16:30: unknown namespace `ModularForm`",
+  "pub": [
+   "Mathlib.Analysis.Complex.UpperHalfPlane.Basic",
+   "Mathlib.NumberTheory.ModularForms.JacobiTheta.TwoVariable"
+  ],
+  "priv": [
+   "Mathlib.Geometry.Manifold.StructureGroupoid",
+   "Mathlib.NumberTheory.ModularForms.CongruenceSubgroups",
+   "Mathlib.NumberTheory.ModularForms.SlashInvariantForms"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Geometry.Manifold.StructureGroupoid",
+   "public import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups",
+   "public import Mathlib.NumberTheory.ModularForms.JacobiTheta.TwoVariable",
+   "public import Mathlib.NumberTheory.ModularForms.SlashInvariantForms"
+  ],
+  "compiles": 39,
+  "compile_secs": 138.5,
+  "wall": 65.4,
+  "why": {
+   "Mathlib.Analysis.Complex.UpperHalfPlane.Basic": [
+    "H\u2082",
+    "UpperHalfPlane"
+   ],
+   "Mathlib.NumberTheory.ModularForms.JacobiTheta.TwoVariable": [
+    "\u0398\u2084_as_jacobiTheta\u2082",
+    "jacobiTheta\u2082"
+   ],
+   "Mathlib.Geometry.Manifold.StructureGroupoid": null,
+   "Mathlib.NumberTheory.ModularForms.CongruenceSubgroups": null,
+   "Mathlib.NumberTheory.ModularForms.SlashInvariantForms": null
+  }
+ },
+ "SpherePacking.Tactic.TendstoContAttr": {
+  "found": [
+   [
+    "pub",
+    "Mathlib.Init",
+    "1:0: invalid -D parameter, unknown configuration option 'linter.flexible' If the option is defined in a library, use '-Dweak.linter.flexible' to set it conditionally"
+   ],
+   [
+    "pub",
+    "Batteries.Tactic.Alias",
+    "25:28: Unknown identifier `SimpleScopedEnvExtension` Note: A public declaration `SimpleScopedEnvExtension` exists but is imported privately; consider adding `public import Lean.ScopedEnvExtension`."
+   ]
+  ],
+  "demoted": [
+   "Lean.ScopedEnvExtension",
+   "Mathlib.Init"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Lean.ScopedEnvExtension"
+   ],
+   "priv": []
+  },
+  "guess_ok": false,
+  "guess_err": "1:0: invalid -D parameter, unknown configuration option 'linter.flexible' If the option is defined in a library, use '-Dweak.linter.flexible' to set it conditionally",
+  "pub": [
+   "Batteries.Tactic.Alias"
+  ],
+  "priv": [
+   "Lean.ScopedEnvExtension",
+   "Mathlib.Init"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Init",
+   "import Lean.ScopedEnvExtension"
+  ],
+  "compiles": 15,
+  "compile_secs": 11.3,
+  "wall": 8.5,
+  "why": {
+   "Batteries.Tactic.Alias": null,
+   "Lean.ScopedEnvExtension": [
+    "tendstoContExt",
+    "Lean.SimpleScopedEnvExtension"
+   ],
+   "Mathlib.Init": null
+  }
+ },
+ "SpherePacking.ForMathlib.Cusps": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.NumberTheory.ModularForms.BoundedAtCusp"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.NumberTheory.ModularForms.BoundedAtCusp"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.NumberTheory.ModularForms.BoundedAtCusp"
+  ],
+  "compiles": 2,
+  "compile_secs": 5.3,
+  "wall": 5.5,
+  "why": {
+   "Mathlib.NumberTheory.ModularForms.BoundedAtCusp": [
+    "zero_at_cusps_of_zero_at_infty",
+    "OnePoint.IsZeroAt"
+   ]
+  }
+ },
+ "SpherePacking.ModularForms.E2": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Defs"
+   ],
+   "priv": [
+    "Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Transform"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Defs"
+  ],
+  "priv": [
+   "Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Transform"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Transform"
+  ],
+  "compiles": 3,
+  "compile_secs": 10.7,
+  "wall": 8.1,
+  "why": {
+   "Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Defs": [
+    "E\u2082_eq",
+    "EisensteinSeries.E2"
+   ],
+   "Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Transform": [
+    "E\u2082_periodic",
+    "EisensteinSeries.E2_T_smul"
+   ]
+  }
+ },
+ "SpherePacking.ModularForms.exp_lems": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic",
+    "Mathlib.Analysis.Complex.UpperHalfPlane.Basic"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic",
+   "Mathlib.Analysis.Complex.UpperHalfPlane.Basic"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Analysis.Complex.UpperHalfPlane.Basic",
+   "public import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic"
+  ],
+  "compiles": 3,
+  "compile_secs": 6.6,
+  "wall": 4.5,
+  "why": {
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic": [
+    "exp_upperHalfPlane_lt_one",
+    "Real.pi"
+   ],
+   "Mathlib.Analysis.Complex.UpperHalfPlane.Basic": [
+    "exp_upperHalfPlane_lt_one",
+    "UpperHalfPlane"
+   ]
+  }
+ },
+ "SpherePacking.ModularForms.SlashActionAuxil": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.NumberTheory.ModularForms.CongruenceSubgroups",
+    "Mathlib.NumberTheory.ModularForms.SlashActions"
+   ],
+   "priv": [
+    "Mathlib.LinearAlgebra.Matrix.FixedDetMatrices"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.NumberTheory.ModularForms.CongruenceSubgroups",
+   "Mathlib.NumberTheory.ModularForms.SlashActions"
+  ],
+  "priv": [
+   "Mathlib.LinearAlgebra.Matrix.FixedDetMatrices"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.LinearAlgebra.Matrix.FixedDetMatrices",
+   "public import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups",
+   "public import Mathlib.NumberTheory.ModularForms.SlashActions"
+  ],
+  "compiles": 4,
+  "compile_secs": 20.5,
+  "wall": 12.0,
+  "why": {
+   "Mathlib.NumberTheory.ModularForms.CongruenceSubgroups": [
+    "\u03b2",
+    "CongruenceSubgroup.Gamma"
+   ],
+   "Mathlib.NumberTheory.ModularForms.SlashActions": [
+    "modular_slash_S_apply",
+    "SlashAction.map"
+   ],
+   "Mathlib.LinearAlgebra.Matrix.FixedDetMatrices": [
+    "SL2Z_generate",
+    "SpecialLinearGroup.SL2Z_generators"
+   ]
+  }
+ },
+ "SpherePacking.ForMathlib.AtImInfty": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Analysis.Complex.UpperHalfPlane.FunctionsBoundedAtInfty"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Analysis.Complex.UpperHalfPlane.FunctionsBoundedAtInfty"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Analysis.Complex.UpperHalfPlane.FunctionsBoundedAtInfty"
+  ],
+  "compiles": 2,
+  "compile_secs": 4.9,
+  "wall": 5.1,
+  "why": {
+   "Mathlib.Analysis.Complex.UpperHalfPlane.FunctionsBoundedAtInfty": [
+    "Filter.eventually_atImInfty",
+    "UpperHalfPlane.atImInfty"
+   ]
+  }
+ },
+ "SpherePacking.ForMathlib.QSeriesBounds": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic"
+  ],
+  "compiles": 2,
+  "compile_secs": 27.7,
+  "wall": 27.9,
+  "why": {
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic": [
+    "Complex.norm_qseries_shift_le",
+    "Real.pi"
+   ]
+  }
+ },
+ "SpherePacking.ForMathlib.QExpansionBounds": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.NumberTheory.ModularForms.QExpansion"
+   ],
+   "priv": [
+    "SpherePacking.ForMathlib.QSeriesBounds"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.NumberTheory.ModularForms.QExpansion"
+  ],
+  "priv": [
+   "SpherePacking.ForMathlib.QSeriesBounds"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.NumberTheory.ModularForms.QExpansion",
+   "public import SpherePacking.ForMathlib.QSeriesBounds"
+  ],
+  "compiles": 3,
+  "compile_secs": 36.0,
+  "wall": 33.2,
+  "why": {
+   "Mathlib.NumberTheory.ModularForms.QExpansion": [
+    "UpperHalfPlane.summable_norm_qExpansion_mul_exp",
+    "UpperHalfPlane.qExpansion"
+   ],
+   "SpherePacking.ForMathlib.QSeriesBounds": [
+    "UpperHalfPlane.norm_le_qExpansion_of_coeff_vanish",
+    "Complex.norm_qseries_le_of_coeff_vanish"
+   ]
+  }
+ },
+ "SpherePacking.Tactic.Test.NormNumI": {
+  "found": [
+   [
+    "pub",
+    "Mathlib.Data.ZMod.Defs",
+    "23:31: unsolved goals \u22a2 1 = 1 + 0 * I"
+   ],
+   [
+    "pub",
+    "Mathlib.Tactic.NormNum.OfScientific",
+    "24:31: unsolved goals \u22a2 1 = 1 + 0 * I"
+   ],
+   [
+    "pub",
+    "Mathlib.Tactic.NormNum.Eq",
+    "25:31: unsolved goals \u22a2 1 = 1 + 0 * I"
+   ]
+  ],
+  "demoted": [
+   "Mathlib.Tactic.NormNum.Eq",
+   "Mathlib.Tactic.NormNum.OfScientific",
+   "Mathlib.Data.ZMod.Defs",
+   "SpherePacking.Tactic.NormNumI"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [],
+   "priv": [
+    "SpherePacking.Tactic.NormNumI"
+   ]
+  },
+  "guess_ok": false,
+  "guess_err": "23:31: unsolved goals \u22a2 1 = 1 + 0 * I",
+  "pub": [],
+  "priv": [
+   "Mathlib.Tactic.NormNum.Eq",
+   "Mathlib.Tactic.NormNum.OfScientific",
+   "Mathlib.Data.ZMod.Defs",
+   "SpherePacking.Tactic.NormNumI"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Data.ZMod.Defs",
+   "public import Mathlib.Tactic.NormNum.Eq",
+   "public import Mathlib.Tactic.NormNum.OfScientific",
+   "public import SpherePacking.Tactic.NormNumI"
+  ],
+  "compiles": 39,
+  "compile_secs": 108.8,
+  "wall": 54.0,
+  "why": {
+   "Mathlib.Tactic.NormNum.Eq": null,
+   "Mathlib.Tactic.NormNum.OfScientific": null,
+   "Mathlib.Data.ZMod.Defs": null,
+   "SpherePacking.Tactic.NormNumI": null
+  }
+ },
+ "SpherePacking.Basic.SpherePacking": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Algebra.Module.ZLattice.Basic",
+    "Mathlib.Analysis.Normed.Lp.MeasurableSpace"
+   ],
+   "priv": [
+    "SpherePacking.ForMathlib.VolumeOfBalls"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Algebra.Module.ZLattice.Basic",
+   "Mathlib.Analysis.Normed.Lp.MeasurableSpace"
+  ],
+  "priv": [
+   "SpherePacking.ForMathlib.VolumeOfBalls"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Algebra.Module.ZLattice.Basic",
+   "public import SpherePacking.ForMathlib.VolumeOfBalls"
+  ],
+  "compiles": 4,
+  "compile_secs": 31.4,
+  "wall": 19.1,
+  "why": {
+   "Mathlib.Algebra.Module.ZLattice.Basic": [
+    "PeriodicSpherePacking.mk",
+    "IsZLattice"
+   ],
+   "Mathlib.Analysis.Normed.Lp.MeasurableSpace": [
+    "SpherePacking.finiteDensity_ge",
+    "PiLp.borelSpace"
+   ],
+   "SpherePacking.ForMathlib.VolumeOfBalls": [
+    "aux6",
+    "EuclideanSpace.volume_ball_pos"
+   ]
+  }
+ },
+ "SpherePacking.ForMathlib.Encard": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Data.Set.Card",
+    "Mathlib.Topology.Algebra.InfiniteSum.Defs",
+    "Mathlib.Topology.Instances.ENat"
+   ],
+   "priv": [
+    "Mathlib.Data.ENat.Lattice",
+    "Mathlib.Topology.Order.T5",
+    "Mathlib.Topology.Algebra.InfiniteSum.Order",
+    "SpherePacking.ForMathlib.ENat"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Data.Set.Card",
+   "Mathlib.Topology.Algebra.InfiniteSum.Defs",
+   "Mathlib.Topology.Instances.ENat"
+  ],
+  "priv": [
+   "Mathlib.Data.ENat.Lattice",
+   "Mathlib.Topology.Order.T5",
+   "Mathlib.Topology.Algebra.InfiniteSum.Order",
+   "SpherePacking.ForMathlib.ENat"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Data.ENat.Lattice",
+   "public import Mathlib.Topology.Algebra.InfiniteSum.Order",
+   "public import Mathlib.Topology.Order.T5",
+   "public import SpherePacking.ForMathlib.ENat"
+  ],
+  "compiles": 8,
+  "compile_secs": 20.0,
+  "wall": 8.0,
+  "why": {
+   "Mathlib.Data.Set.Card": [
+    "Set.encard_iUnion_of_pairwiseDisjoint",
+    "Set.encard"
+   ],
+   "Mathlib.Topology.Algebra.InfiniteSum.Defs": [
+    "ENat.tsum_sub",
+    "tsum"
+   ],
+   "Mathlib.Topology.Instances.ENat": [
+    "ENat.tsum_sub",
+    "ENat.instTopologicalSpace"
+   ],
+   "Mathlib.Data.ENat.Lattice": [
+    "ENat.mul_tsum",
+    "ENat.mul_iSup"
+   ],
+   "Mathlib.Topology.Order.T5": [
+    "ENat.tsum_sub",
+    "OrderTopology.t5Space"
+   ],
+   "Mathlib.Topology.Algebra.InfiniteSum.Order": [
+    "ENat.tsum_sub",
+    "tsum_add"
+   ],
+   "SpherePacking.ForMathlib.ENat": [
+    "Set.encard_iUnion_of_pairwiseDisjoint",
+    "ENat.tsum_set_one"
+   ]
+  }
+ },
+ "SpherePacking.ForMathlib.RadialSchwartz.Multidimensional": {
+  "found": [
+   [
+    "pub",
+    "Mathlib.Analysis.Distribution.SchwartzSpace.Basic",
+    "24:22: Unknown identifier `NormedAddCommGroup` Note: A public declaration `NormedAddCommGroup` exists but is imported privately; consider adding `public import Mathlib.Analysis.Normed.Group.Defs`."
+   ]
+  ],
+  "demoted": [
+   "SpherePacking.ForMathlib.RadialSchwartz.SchwartzMap"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.ForMathlib.RadialSchwartz.SchwartzMap"
+   ],
+   "priv": [
+    "Mathlib.Analysis.SpecialFunctions.SmoothTransition"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Analysis.Distribution.SchwartzSpace.Basic"
+  ],
+  "priv": [
+   "Mathlib.Analysis.SpecialFunctions.SmoothTransition",
+   "SpherePacking.ForMathlib.RadialSchwartz.SchwartzMap"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Analysis.SpecialFunctions.SmoothTransition",
+   "public import SpherePacking.ForMathlib.RadialSchwartz.SchwartzMap"
+  ],
+  "compiles": 26,
+  "compile_secs": 91.5,
+  "wall": 39.9,
+  "why": {
+   "Mathlib.Analysis.Distribution.SchwartzSpace.Basic": [
+    "eq_schwartzMap",
+    "SchwartzMap"
+   ],
+   "Mathlib.Analysis.SpecialFunctions.SmoothTransition": [
+    "eq_schwartzMap",
+    "Real.smoothTransition"
+   ],
+   "SpherePacking.ForMathlib.RadialSchwartz.SchwartzMap": [
+    "SchwartzMap.mkOfCocompact.eq_1",
+    "SchwartzMap.mkOfCocompact"
+   ]
+  }
+ },
+ "SpherePacking.ModularForms.QExpansion": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic",
+    "Mathlib.Analysis.Complex.UpperHalfPlane.FunctionsBoundedAtInfty"
+   ],
+   "priv": [
+    "Mathlib.Analysis.Normed.Group.Tannery",
+    "SpherePacking.ForMathlib.AtImInfty"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic",
+   "Mathlib.Analysis.Complex.UpperHalfPlane.FunctionsBoundedAtInfty"
+  ],
+  "priv": [
+   "Mathlib.Analysis.Normed.Group.Tannery",
+   "SpherePacking.ForMathlib.AtImInfty"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Analysis.Normed.Group.Tannery",
+   "public import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic",
+   "public import SpherePacking.ForMathlib.AtImInfty"
+  ],
+  "compiles": 5,
+  "compile_secs": 15.4,
+  "wall": 7.3,
+  "why": {
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic": [
+    "QExp.tendsto_nat",
+    "Real.pi"
+   ],
+   "Mathlib.Analysis.Complex.UpperHalfPlane.FunctionsBoundedAtInfty": [
+    "QExp.tendsto_nat",
+    "UpperHalfPlane.atImInfty"
+   ],
+   "Mathlib.Analysis.Normed.Group.Tannery": [
+    "QExp.tendsto_nat",
+    "tendsto_tsum_of_dominated_convergence"
+   ],
+   "SpherePacking.ForMathlib.AtImInfty": [
+    "QExp.tendsto_nat",
+    "Filter.tendsto_im_atImInfty"
+   ]
+  }
+ },
+ "SpherePacking.ModularForms.IsCuspForm": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.NumberTheory.ModularForms.QExpansion"
+   ],
+   "priv": [
+    "SpherePacking.ForMathlib.Cusps"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.NumberTheory.ModularForms.QExpansion"
+  ],
+  "priv": [
+   "SpherePacking.ForMathlib.Cusps"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.NumberTheory.ModularForms.QExpansion",
+   "public import SpherePacking.ForMathlib.Cusps"
+  ],
+  "compiles": 3,
+  "compile_secs": 10.9,
+  "wall": 8.1,
+  "why": {
+   "Mathlib.NumberTheory.ModularForms.QExpansion": [
+    "cuspFormOfCoeffZero",
+    "UpperHalfPlane.qExpansion"
+   ],
+   "SpherePacking.ForMathlib.Cusps": [
+    "cuspFormOfCoeffZero._proof_1",
+    "zero_at_cusps_of_zero_at_infty"
+   ]
+  }
+ },
+ "SpherePacking.Tactic.TendstoCont": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Topology.Defs.Filter"
+   ],
+   "priv": [
+    "Mathlib.Tactic.Ring.RingNF",
+    "Mathlib.Topology.Constructions.SumProd"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Topology.Defs.Filter"
+  ],
+  "priv": [
+   "Mathlib.Tactic.Ring.RingNF",
+   "Mathlib.Topology.Constructions.SumProd"
+  ],
+  "fixed": [
+   "public meta import SpherePacking.Tactic.TendstoContAttr"
+  ],
+  "old": [
+   "public meta import SpherePacking.Tactic.TendstoContAttr",
+   "public import Mathlib.Tactic.Ring.RingNF",
+   "public import Mathlib.Topology.Constructions.SumProd"
+  ],
+  "compiles": 4,
+  "compile_secs": 12.1,
+  "wall": 6.3,
+  "why": {
+   "Mathlib.Topology.Defs.Filter": [
+    "tendsto_continuousAt_comp",
+    "nhds"
+   ],
+   "Mathlib.Tactic.Ring.RingNF": null,
+   "Mathlib.Topology.Constructions.SumProd": null
+  }
+ },
+ "SpherePacking.ModularForms.tsumderivWithin": {
+  "found": [],
+  "demoted": [
+   "Mathlib.Topology.ContinuousMap.Bounded.Basic"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic",
+    "Mathlib.Topology.ContinuousMap.Bounded.Basic",
+    "Mathlib.Analysis.Calculus.Deriv.Basic"
+   ],
+   "priv": [
+    "Mathlib.Analysis.Normed.Group.FunctionSeries",
+    "Mathlib.Topology.ContinuousMap.Bounded.Normed",
+    "Mathlib.Analysis.Calculus.UniformLimitsDeriv",
+    "SpherePacking.ModularForms.exp_lems"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic",
+   "Mathlib.Analysis.Calculus.Deriv.Basic"
+  ],
+  "priv": [
+   "Mathlib.Analysis.Normed.Group.FunctionSeries",
+   "Mathlib.Topology.ContinuousMap.Bounded.Normed",
+   "Mathlib.Analysis.Calculus.UniformLimitsDeriv",
+   "SpherePacking.ModularForms.exp_lems"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Analysis.Calculus.UniformLimitsDeriv",
+   "public import Mathlib.Analysis.Normed.Group.FunctionSeries",
+   "public import Mathlib.Topology.ContinuousMap.Bounded.Normed",
+   "public import SpherePacking.ModularForms.exp_lems"
+  ],
+  "compiles": 9,
+  "compile_secs": 34.0,
+  "wall": 15.5,
+  "why": {
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic": [
+    "cts_exp_two_pi_n",
+    "Real.pi"
+   ],
+   "Mathlib.Analysis.Calculus.Deriv.Basic": [
+    "hasDerivAt_tsum_fun",
+    "HasDerivAt"
+   ],
+   "Mathlib.Analysis.Normed.Group.FunctionSeries": [
+    "hasDerivAt_tsum_fun",
+    "tendstoUniformlyOn_tsum"
+   ],
+   "Mathlib.Topology.ContinuousMap.Bounded.Normed": [
+    "iter_deriv_comp_bound3",
+    "BoundedContinuousFunction.instNorm"
+   ],
+   "Mathlib.Analysis.Calculus.UniformLimitsDeriv": [
+    "hasDerivAt_tsum_fun",
+    "hasDerivAt_of_tendstoLocallyUniformlyOn"
+   ],
+   "SpherePacking.ModularForms.exp_lems": [
+    "iter_deriv_comp_bound3",
+    "exp_upperHalfPlane_lt_one"
+   ]
+  }
+ },
+ "SpherePacking.ModularForms.ResToImagAxis": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.NumberTheory.ModularForms.Basic"
+   ],
+   "priv": [
+    "Mathlib.NumberTheory.ModularForms.QExpansion",
+    "SpherePacking.ForMathlib.AtImInfty",
+    "SpherePacking.ForMathlib.QSeriesBounds",
+    "SpherePacking.ModularForms.SlashActionAuxil"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.NumberTheory.ModularForms.Basic"
+  ],
+  "priv": [
+   "Mathlib.NumberTheory.ModularForms.QExpansion",
+   "SpherePacking.ForMathlib.AtImInfty",
+   "SpherePacking.ForMathlib.QSeriesBounds",
+   "SpherePacking.ModularForms.SlashActionAuxil"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.NumberTheory.ModularForms.QExpansion",
+   "public import SpherePacking.ForMathlib.AtImInfty",
+   "public import SpherePacking.ForMathlib.QSeriesBounds",
+   "public import SpherePacking.ModularForms.SlashActionAuxil"
+  ],
+  "compiles": 6,
+  "compile_secs": 31.3,
+  "wall": 14.6,
+  "why": {
+   "Mathlib.NumberTheory.ModularForms.Basic": [
+    "cuspForm_rpow_mul_resToImagAxis_tendsto_zero",
+    "CuspFormClass"
+   ],
+   "Mathlib.NumberTheory.ModularForms.QExpansion": [
+    "cuspForm_rpow_mul_resToImagAxis_tendsto_zero",
+    "CuspFormClass.exp_decay_atImInfty"
+   ],
+   "SpherePacking.ForMathlib.AtImInfty": [
+    "isBigO_atImInfty_of_fourier_shift",
+    "Filter.eventually_atImInfty"
+   ],
+   "SpherePacking.ForMathlib.QSeriesBounds": [
+    "isBigO_atImInfty_of_fourier_shift",
+    "Complex.norm_qseries_shift_le"
+   ],
+   "SpherePacking.ModularForms.SlashActionAuxil": [
+    "ResToImagAxis.SlashActionS",
+    "modular_slash_S_apply"
+   ]
+  }
+ },
+ "SpherePacking.Tactic.Test.TendstoCont": {
+  "found": [
+   [
+    "pub",
+    "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic",
+    "35:52: tendsto_cont: `fun_prop` failed: `fun_prop` was unable to prove `ContinuousAt (fun p \u21a6 2 * p) 0` Issues: No theorems found for `HMul.hMul` in order to prove `ContinuousAt (fun p \u21a6 2 * p) 0` goal: ContinuousAt (fun p \u21a6 2 * p) 0"
+   ],
+   [
+    "pub",
+    "Mathlib.Basic.Complex.Basic",
+    "30:48: tendsto_cont: target filter is not `nhds _`"
+   ],
+   [
+    "pub",
+    "Mathlib.Topology.MetricSpace.Pseudo.Defs",
+    "392:66: Unknown identifier `atTop` Note: A public declaration `atTop` exists but is imported privately; consider adding `public import Mathlib.Order.Filter.AtTopBot.Defs`."
+   ]
+  ],
+  "demoted": [
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic",
+   "SpherePacking.Tactic.TendstoCont"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Topology.MetricSpace.Pseudo.Defs",
+    "Mathlib.Basic.Complex.Basic"
+   ],
+   "priv": [
+    "SpherePacking.Tactic.TendstoCont"
+   ]
+  },
+  "guess_ok": false,
+  "guess_err": "35:52: tendsto_cont: `fun_prop` failed: `fun_prop` was unable to prove `ContinuousAt (fun p \u21a6 2 * p) 0` Issues: No theorems found for `HMul.hMul` in order to prove `ContinuousAt (fun p \u21a6 2 * p) 0` goal: ContinuousAt (fun p \u21a6 2 * p) 0",
+  "pub": [
+   "Mathlib.Topology.MetricSpace.Pseudo.Defs",
+   "Mathlib.Basic.Complex.Basic"
+  ],
+  "priv": [
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic",
+   "SpherePacking.Tactic.TendstoCont"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic",
+   "public import SpherePacking.Tactic.TendstoCont"
+  ],
+  "compiles": 65,
+  "compile_secs": 265.4,
+  "wall": 101.9,
+  "why": {
+   "Mathlib.Topology.MetricSpace.Pseudo.Defs": [
+    "paramTendsto",
+    "Real.pseudoMetricSpace"
+   ],
+   "Mathlib.Basic.Complex.Basic": null,
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic": null,
+   "SpherePacking.Tactic.TendstoCont": null
+  }
+ },
+ "SpherePacking.Basic.PeriodicPacking": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Algebra.Module.ZLattice.Covolume",
+    "SpherePacking.Basic.SpherePacking"
+   ],
+   "priv": [
+    "Mathlib.MeasureTheory.Measure.Lebesgue.VolumeOfBalls",
+    "SpherePacking.ForMathlib.VolumeOfBalls",
+    "SpherePacking.ForMathlib.ENNReal",
+    "SpherePacking.ForMathlib.ENat",
+    "SpherePacking.ForMathlib.Encard",
+    "SpherePacking.ForMathlib.ZLattice"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Algebra.Module.ZLattice.Covolume",
+   "SpherePacking.Basic.SpherePacking"
+  ],
+  "priv": [
+   "Mathlib.MeasureTheory.Measure.Lebesgue.VolumeOfBalls",
+   "SpherePacking.ForMathlib.VolumeOfBalls",
+   "SpherePacking.ForMathlib.ENNReal",
+   "SpherePacking.ForMathlib.ENat",
+   "SpherePacking.ForMathlib.Encard",
+   "SpherePacking.ForMathlib.ZLattice"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Algebra.Module.ZLattice.Covolume",
+   "public import Mathlib.MeasureTheory.Measure.Lebesgue.VolumeOfBalls",
+   "public import SpherePacking.Basic.SpherePacking",
+   "public import SpherePacking.ForMathlib.ENNReal",
+   "public import SpherePacking.ForMathlib.Encard",
+   "public import SpherePacking.ForMathlib.ZLattice"
+  ],
+  "compiles": 9,
+  "compile_secs": 182.7,
+  "wall": 63.6,
+  "why": {
+   "Mathlib.Algebra.Module.ZLattice.Covolume": [
+    "PeriodicSpherePacking.density_eq'",
+    "ZLattice.covolume"
+   ],
+   "SpherePacking.Basic.SpherePacking": [
+    "aux1",
+    "PeriodicSpherePacking"
+   ],
+   "Mathlib.MeasureTheory.Measure.Lebesgue.VolumeOfBalls": [
+    "volume_ball_ratio_tendsto_nhds_one",
+    "EuclideanSpace.volume_ball"
+   ],
+   "SpherePacking.ForMathlib.VolumeOfBalls": [
+    "aux4",
+    "EuclideanSpace.volume_ball_pos"
+   ],
+   "SpherePacking.ForMathlib.ENNReal": [
+    "volume_ball_ratio_tendsto_nhds_one'",
+    "ENNReal.div_div_div_cancel_left"
+   ],
+   "SpherePacking.ForMathlib.ENat": [
+    "PeriodicSpherePacking.aux_le",
+    "ENat.tsum_set_const"
+   ],
+   "SpherePacking.ForMathlib.Encard": [
+    "PeriodicSpherePacking.aux_le",
+    "Set.encard_iUnion_of_pairwiseDisjoint"
+   ],
+   "SpherePacking.ForMathlib.ZLattice": [
+    "PeriodicSpherePacking.addActionOrbitRelEquiv''._proof_11",
+    "ZSpan.floor_eq_zero"
+   ]
+  }
+ },
+ "SpherePacking.ModularForms.Delta": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.NumberTheory.ModularForms.Discriminant",
+    "SpherePacking.ModularForms.ResToImagAxis"
+   ],
+   "priv": [
+    "SpherePacking.ModularForms.SlashActionAuxil"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.NumberTheory.ModularForms.Discriminant",
+   "SpherePacking.ModularForms.ResToImagAxis"
+  ],
+  "priv": [
+   "SpherePacking.ModularForms.SlashActionAuxil"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.NumberTheory.ModularForms.Discriminant",
+   "public import SpherePacking.ModularForms.ResToImagAxis"
+  ],
+  "compiles": 4,
+  "compile_secs": 18.2,
+  "wall": 10.4,
+  "why": {
+   "Mathlib.NumberTheory.ModularForms.Discriminant": [
+    "\u0394_periodic",
+    "ModularForm.discriminant"
+   ],
+   "SpherePacking.ModularForms.ResToImagAxis": [
+    "\u0394_imag_axis_pos",
+    "ResToImagAxis.Pos"
+   ],
+   "SpherePacking.ModularForms.SlashActionAuxil": [
+    "\u0394_S_transform",
+    "modular_slash_S_apply"
+   ]
+  }
+ },
+ "SpherePacking.ModularForms.DimensionFormulas": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.ModularForms.IsCuspForm"
+   ],
+   "priv": [
+    "Mathlib.NumberTheory.ModularForms.LevelOne.DimensionFormula"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.ModularForms.IsCuspForm"
+  ],
+  "priv": [
+   "Mathlib.NumberTheory.ModularForms.LevelOne.DimensionFormula"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.NumberTheory.ModularForms.LevelOne.DimensionFormula",
+   "public import SpherePacking.ModularForms.IsCuspForm"
+  ],
+  "compiles": 3,
+  "compile_secs": 9.3,
+  "wall": 6.9,
+  "why": {
+   "SpherePacking.ModularForms.IsCuspForm": [
+    "IsCuspForm_weight_lt_eq_zero",
+    "IsCuspForm"
+   ],
+   "Mathlib.NumberTheory.ModularForms.LevelOne.DimensionFormula": [
+    "cuspform_weight_lt_12_zero",
+    "CuspForm.rank_eq_zero_of_weight_lt_twelve"
+   ]
+  }
+ },
+ "SpherePacking.ModularForms.JacobiTheta.Basic": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.ModularForms.SlashActionAuxil",
+    "SpherePacking.ModularForms.ResToImagAxis",
+    "SpherePacking.ModularForms.JacobiTheta.Defs"
+   ],
+   "priv": [
+    "Mathlib.Analysis.Normed.Group.Tannery",
+    "SpherePacking.ForMathlib.AtImInfty",
+    "SpherePacking.ForMathlib.SlashActions"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.ModularForms.SlashActionAuxil",
+   "SpherePacking.ModularForms.ResToImagAxis",
+   "SpherePacking.ModularForms.JacobiTheta.Defs"
+  ],
+  "priv": [
+   "Mathlib.Analysis.Normed.Group.Tannery",
+   "SpherePacking.ForMathlib.AtImInfty",
+   "SpherePacking.ForMathlib.SlashActions"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Analysis.Normed.Group.Tannery",
+   "public import SpherePacking.ForMathlib.SlashActions",
+   "public import SpherePacking.ModularForms.JacobiTheta.Defs",
+   "public import SpherePacking.ModularForms.ResToImagAxis"
+  ],
+  "compiles": 7,
+  "compile_secs": 45.9,
+  "wall": 19.3,
+  "why": {
+   "SpherePacking.ModularForms.SlashActionAuxil": [
+    "H\u2084_\u03b2_action",
+    "\u03b2"
+   ],
+   "SpherePacking.ModularForms.ResToImagAxis": [
+    "H\u2082_imag_axis_pos",
+    "ResToImagAxis.Pos"
+   ],
+   "SpherePacking.ModularForms.JacobiTheta.Defs": [
+    "H\u2083_SIF",
+    "H\u2083"
+   ],
+   "Mathlib.Analysis.Normed.Group.Tannery": [
+    "jacobiTheta\u2082_zero_apply_tendsto_atImInfty",
+    "tendsto_tsum_of_dominated_convergence"
+   ],
+   "SpherePacking.ForMathlib.AtImInfty": [
+    "\u0398\u2082_tendsto_atImInfty",
+    "Filter.tendsto_im_atImInfty"
+   ],
+   "SpherePacking.ForMathlib.SlashActions": [
+    "H\u2084_S_action",
+    "ModularForm.slash_neg'"
+   ]
+  }
+ },
+ "SpherePacking.ModularForms.Eisenstein": {
+  "found": [
+   [
+    "pub",
+    "Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Defs",
+    "161:4: Unknown constant `EisensteinSeries.E2` Note: A public declaration `EisensteinSeries.E2` exists but is imported privately; consider adding `public import Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Defs`."
+   ]
+  ],
+  "demoted": [
+   "SpherePacking.ModularForms.E2"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.NumberTheory.ArithmeticFunction.Misc",
+    "Mathlib.NumberTheory.ModularForms.QExpansion",
+    "Mathlib.NumberTheory.ModularForms.EisensteinSeries.Basic",
+    "SpherePacking.ModularForms.E2",
+    "SpherePacking.ModularForms.ResToImagAxis"
+   ],
+   "priv": [
+    "Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Summable",
+    "SpherePacking.ModularForms.exp_lems",
+    "SpherePacking.ModularForms.tsumderivWithin"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.NumberTheory.ArithmeticFunction.Misc",
+   "Mathlib.NumberTheory.ModularForms.QExpansion",
+   "Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Defs",
+   "Mathlib.NumberTheory.ModularForms.EisensteinSeries.Basic",
+   "SpherePacking.ModularForms.ResToImagAxis"
+  ],
+  "priv": [
+   "Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Summable",
+   "SpherePacking.ModularForms.E2",
+   "SpherePacking.ModularForms.exp_lems",
+   "SpherePacking.ModularForms.tsumderivWithin"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.ModularForms.E2",
+   "public import SpherePacking.ModularForms.ResToImagAxis",
+   "public import SpherePacking.ModularForms.tsumderivWithin"
+  ],
+  "compiles": 24,
+  "compile_secs": 131.6,
+  "wall": 53.6,
+  "why": {
+   "Mathlib.NumberTheory.ArithmeticFunction.Misc": [
+    "E4_q_exp",
+    "ArithmeticFunction.sigma"
+   ],
+   "Mathlib.NumberTheory.ModularForms.QExpansion": [
+    "E4_q_exp",
+    "UpperHalfPlane.qExpansion"
+   ],
+   "Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Defs": [
+    "E\u2082_sigma_qexp",
+    "EisensteinSeries.E2"
+   ],
+   "Mathlib.NumberTheory.ModularForms.EisensteinSeries.Basic": [
+    "E\u2084_coe",
+    "ModularForm.E\u2084"
+   ],
+   "SpherePacking.ModularForms.ResToImagAxis": [
+    "E\u2084_imag_axis_real",
+    "ResToImagAxis.Real"
+   ],
+   "Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Summable": [
+    "E\u2082_sigma_qexp",
+    "EisensteinSeries.E2_eq_tsum_cexp"
+   ],
+   "SpherePacking.ModularForms.E2": [
+    "E\u2082_imag_axis_real",
+    "E\u2082_eq"
+   ],
+   "SpherePacking.ModularForms.exp_lems": [
+    "E\u2082_imag_axis_real",
+    "exp_upperHalfPlane_lt_one"
+   ],
+   "SpherePacking.ModularForms.tsumderivWithin": [
+    "sigma_qexp_deriv_bound_generic",
+    "iter_deriv_comp_bound3"
+   ]
+  }
+ },
+ "SpherePacking.CohnElkies.LPBound": {
+  "found": [
+   [
+    "pub",
+    "SpherePacking.Basic.SpherePacking",
+    "182:9: Unknown identifier `P.centers`"
+   ]
+  ],
+  "demoted": [
+   "SpherePacking.Basic.PeriodicPacking"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Analysis.Distribution.SchwartzSpace.Fourier",
+    "SpherePacking.Basic.PeriodicPacking"
+   ],
+   "priv": [
+    "SpherePacking.ForMathlib.VolumeOfBalls",
+    "SpherePacking.CohnElkies.Prereqs"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Analysis.Distribution.SchwartzSpace.Fourier",
+   "SpherePacking.Basic.SpherePacking"
+  ],
+  "priv": [
+   "SpherePacking.ForMathlib.VolumeOfBalls",
+   "SpherePacking.Basic.PeriodicPacking",
+   "SpherePacking.CohnElkies.Prereqs"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Analysis.Distribution.SchwartzSpace.Fourier",
+   "public import SpherePacking.Basic.PeriodicPacking",
+   "public import SpherePacking.CohnElkies.Prereqs"
+  ],
+  "compiles": 16,
+  "compile_secs": 159.1,
+  "wall": 71.2,
+  "why": {
+   "Mathlib.Analysis.Distribution.SchwartzSpace.Fourier": [
+    "f_zero_pos",
+    "SchwartzMap.instFourierTransform"
+   ],
+   "SpherePacking.Basic.SpherePacking": [
+    "calc_steps'",
+    "PeriodicSpherePacking"
+   ],
+   "SpherePacking.ForMathlib.VolumeOfBalls": [
+    "LinearProgrammingBound'",
+    "EuclideanSpace.volume_ball_pos"
+   ],
+   "SpherePacking.Basic.PeriodicPacking": [
+    "PeriodicSpherePacking.numReps'.congr_simp",
+    "PeriodicSpherePacking.numReps'"
+   ],
+   "SpherePacking.CohnElkies.Prereqs": [
+    "LinearProgrammingBound'",
+    "instNonemptyFin"
+   ]
+  }
+ },
+ "SpherePacking.ForMathlib.InvPowSummability": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Algebra.Module.ZLattice.Basic",
+    "Mathlib.Analysis.Distribution.SchwartzSpace.Basic"
+   ],
+   "priv": [
+    "SpherePacking.Basic.PeriodicPacking"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.Algebra.Module.ZLattice.Basic",
+   "Mathlib.Analysis.Distribution.SchwartzSpace.Basic"
+  ],
+  "priv": [
+   "SpherePacking.Basic.PeriodicPacking"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Analysis.Distribution.SchwartzSpace.Basic",
+   "public import SpherePacking.Basic.PeriodicPacking"
+  ],
+  "compiles": 4,
+  "compile_secs": 14.8,
+  "wall": 8.1,
+  "why": {
+   "Mathlib.Algebra.Module.ZLattice.Basic": [
+    "ZLattice.setFinite_inter",
+    "IsZLattice"
+   ],
+   "Mathlib.Analysis.Distribution.SchwartzSpace.Basic": [
+    "SchwartzMap.IsDecaying",
+    "SchwartzMap"
+   ],
+   "SpherePacking.Basic.PeriodicPacking": [
+    "ZLattice.setFinite_inter",
+    "ZLattice.basis_index_equiv"
+   ]
+  }
+ },
+ "SpherePacking.Basic.E8": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.Basic.PeriodicPacking"
+   ],
+   "priv": [
+    "Mathlib.MeasureTheory.Measure.Lebesgue.VolumeOfBalls"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.Basic.PeriodicPacking"
+  ],
+  "priv": [
+   "Mathlib.MeasureTheory.Measure.Lebesgue.VolumeOfBalls"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.Basic.PeriodicPacking"
+  ],
+  "compiles": 3,
+  "compile_secs": 34.2,
+  "wall": 23.2,
+  "why": {
+   "SpherePacking.Basic.PeriodicPacking": [
+    "E8Packing_numReps",
+    "PeriodicSpherePacking.numReps"
+   ],
+   "Mathlib.MeasureTheory.Measure.Lebesgue.VolumeOfBalls": [
+    "E8Packing_density",
+    "InnerProductSpace.volume_ball"
+   ]
+  }
+ },
+ "SpherePacking.ModularForms.EisensteinAsymptotics": {
+  "found": [],
+  "demoted": [
+   "SpherePacking.ModularForms.E2"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.NumberTheory.ModularForms.Derivative",
+    "SpherePacking.ModularForms.E2",
+    "SpherePacking.ModularForms.Eisenstein"
+   ],
+   "priv": [
+    "Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Transform",
+    "SpherePacking.ForMathlib.AtImInfty"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.NumberTheory.ModularForms.Derivative",
+   "SpherePacking.ModularForms.Eisenstein"
+  ],
+  "priv": [
+   "Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Transform",
+   "SpherePacking.ForMathlib.AtImInfty",
+   "SpherePacking.ModularForms.E2"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.NumberTheory.ModularForms.Derivative",
+   "public import SpherePacking.ModularForms.Eisenstein"
+  ],
+  "compiles": 8,
+  "compile_secs": 30.1,
+  "wall": 18.8,
+  "why": {
+   "Mathlib.NumberTheory.ModularForms.Derivative": [
+    "serreDerivative_tendsto_of_tendsto",
+    "Derivative.serreDerivative"
+   ],
+   "SpherePacking.ModularForms.Eisenstein": [
+    "E\u2084_isBoundedAtImInfty",
+    "E\u2084"
+   ],
+   "Mathlib.NumberTheory.ModularForms.EisensteinSeries.E2.Transform": [
+    "E\u2082_sub_one_isBigO_exp",
+    "EisensteinSeries.E2_periodic"
+   ],
+   "SpherePacking.ForMathlib.AtImInfty": [
+    "tendsto_zero_of_exp_decay",
+    "Filter.tendsto_im_atImInfty"
+   ],
+   "SpherePacking.ModularForms.E2": null
+  }
+ },
+ "SpherePacking.ForMathlib.MDifferentiableFunProp": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.ModularForms.Eisenstein"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.ModularForms.Eisenstein"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.ModularForms.Eisenstein"
+  ],
+  "compiles": 2,
+  "compile_secs": 6.8,
+  "wall": 7.3,
+  "why": {
+   "SpherePacking.ModularForms.Eisenstein": [
+    "E\u2084_MDifferentiable",
+    "E\u2084"
+   ]
+  }
+ },
+ "SpherePacking.MainTheorem": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.Basic.E8"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.Basic.E8"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.Basic.E8"
+  ],
+  "compiles": 2,
+  "compile_secs": 6.3,
+  "wall": 6.6,
+  "why": {
+   "SpherePacking.Basic.E8": [
+    "SpherePacking.MainTheorem",
+    "E8Packing"
+   ]
+  }
+ },
+ "SpherePacking.ModularForms.Derivative": {
+  "found": [
+   [
+    "pub",
+    "SpherePacking.ForMathlib.MDifferentiableFunProp",
+    "32:2: unrecognized function property `MDiff (OfNat.ofNat n)`"
+   ],
+   [
+    "pub",
+    "SpherePacking.ModularForms.ResToImagAxis",
+    "268:12: Invalid field `resToImagAxis`: The environment does not contain `Function.resToImagAxis`, so it is not possible to project the field `resToImagAxis` from an expression F of type `\u210d \u2192 \u2102`"
+   ]
+  ],
+  "demoted": [
+   "SpherePacking.ModularForms.E2",
+   "SpherePacking.ModularForms.tsumderivWithin",
+   "SpherePacking.ForMathlib.MDifferentiableFunProp"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.NumberTheory.ModularForms.Derivative",
+    "SpherePacking.ModularForms.ResToImagAxis"
+   ],
+   "priv": [
+    "SpherePacking.ModularForms.E2",
+    "SpherePacking.ModularForms.tsumderivWithin",
+    "SpherePacking.ModularForms.Eisenstein"
+   ]
+  },
+  "guess_ok": false,
+  "guess_err": "33:2: unrecognized function property `MDiff (OfNat.ofNat n)`",
+  "pub": [
+   "Mathlib.NumberTheory.ModularForms.Derivative",
+   "SpherePacking.ModularForms.ResToImagAxis"
+  ],
+  "priv": [
+   "SpherePacking.ModularForms.E2",
+   "SpherePacking.ModularForms.tsumderivWithin",
+   "SpherePacking.ForMathlib.MDifferentiableFunProp"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.NumberTheory.ModularForms.Derivative",
+   "public import SpherePacking.ForMathlib.MDifferentiableFunProp"
+  ],
+  "compiles": 24,
+  "compile_secs": 141.1,
+  "wall": 80.7,
+  "why": {
+   "Mathlib.NumberTheory.ModularForms.Derivative": [
+    "antiSerreDerPos",
+    "Derivative.serreDerivative"
+   ],
+   "SpherePacking.ModularForms.ResToImagAxis": [
+    "D_real_of_real",
+    "ResToImagAxis.Real"
+   ],
+   "SpherePacking.ModularForms.E2": null,
+   "SpherePacking.ModularForms.tsumderivWithin": [
+    "D_qexp_tsum",
+    "hasDerivAt_tsum_fun"
+   ],
+   "SpherePacking.ForMathlib.MDifferentiableFunProp": null
+  }
+ },
+ "SpherePacking.ModularForms.JacobiTheta.MDifferentiable": {
+  "found": [
+   [
+    "pub",
+    "SpherePacking.ForMathlib.MDifferentiableFunProp",
+    "105:2: unrecognized function property `MDiff H\u2082`"
+   ]
+  ],
+  "demoted": [
+   "SpherePacking.ForMathlib.MDifferentiableFunProp"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.Analysis.CStarAlgebra.Classes",
+    "SpherePacking.ModularForms.JacobiTheta.Basic"
+   ],
+   "priv": [
+    "SpherePacking.ForMathlib.Cusps"
+   ]
+  },
+  "guess_ok": false,
+  "guess_err": "105:2: unrecognized function property `MDiff H\u2082`",
+  "pub": [
+   "SpherePacking.ForMathlib.Cusps",
+   "SpherePacking.ModularForms.JacobiTheta.Basic"
+  ],
+  "priv": [
+   "SpherePacking.ForMathlib.MDifferentiableFunProp"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.ForMathlib.Cusps",
+   "public import SpherePacking.ForMathlib.MDifferentiableFunProp",
+   "public import SpherePacking.ModularForms.JacobiTheta.Basic"
+  ],
+  "compiles": 21,
+  "compile_secs": 92.5,
+  "wall": 45.9,
+  "why": {
+   "SpherePacking.ForMathlib.Cusps": [
+    "H\u2083_MF._proof_1",
+    "bounded_at_cusps_of_bounded_at_infty"
+   ],
+   "SpherePacking.ModularForms.JacobiTheta.Basic": [
+    "H\u2084_MF",
+    "H\u2084_SIF"
+   ],
+   "SpherePacking.ForMathlib.MDifferentiableFunProp": null
+  }
+ },
+ "SpherePacking.ModularForms.JacobiTheta.JacobiIdentity": {
+  "found": [
+   [
+    "pub",
+    "SpherePacking.ForMathlib.MDifferentiableFunProp",
+    "82:2: `MDiff (H\u2082 + H\u2084 - H\u2083)` is not a `fun_prop` goal! Consider marking `MDifferentiable` with `@[fun_prop]`."
+   ],
+   [
+    "pub",
+    "Mathlib.NumberTheory.ModularForms.Discriminant",
+    "213:4: Unknown constant `ModularForm.discriminant` Note: A public declaration `discriminant` exists but is imported privately; consider adding `public import Mathlib.NumberTheory.ModularForms.Discriminant`."
+   ],
+   [
+    "pub",
+    "SpherePacking.ModularForms.JacobiTheta.Defs",
+    "38:38: Unknown identifier `H\u2082` Note: A public declaration `H\u2082` exists but is imported privately; consider adding `public import SpherePacking.ModularForms.JacobiTheta.Defs`."
+   ],
+   [
+    "pub",
+    "SpherePacking.ModularForms.SlashActionAuxil",
+    "80:22: Unknown identifier `slashaction_generators_GL2R` Note: A public declaration `slashaction_generators_GL2R` exists but is imported privately; consider adding `public import SpherePacking.ModularForms.SlashActionAuxil`."
+   ]
+  ],
+  "demoted": [
+   "Mathlib.NumberTheory.ModularForms.LevelOne.DimensionFormula",
+   "SpherePacking.ForMathlib.MDifferentiableFunProp",
+   "SpherePacking.ModularForms.Delta",
+   "SpherePacking.ModularForms.DimensionFormulas",
+   "SpherePacking.ModularForms.JacobiTheta.MDifferentiable",
+   "SpherePacking.Tactic.TendstoCont"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.ModularForms.Delta",
+    "SpherePacking.ModularForms.JacobiTheta.Defs"
+   ],
+   "priv": [
+    "Mathlib.NumberTheory.ModularForms.LevelOne.DimensionFormula",
+    "SpherePacking.ModularForms.DimensionFormulas",
+    "SpherePacking.ModularForms.JacobiTheta.MDifferentiable",
+    "SpherePacking.Tactic.TendstoCont"
+   ]
+  },
+  "guess_ok": false,
+  "guess_err": "78:22: Unknown identifier `slashaction_generators_GL2R` Note: A public declaration `slashaction_generators_GL2R` exists but is imported privately; consider adding `public import SpherePacking.ModularForms.SlashActionAuxil`.",
+  "pub": [
+   "Mathlib.NumberTheory.ModularForms.Discriminant",
+   "SpherePacking.ModularForms.SlashActionAuxil",
+   "SpherePacking.ModularForms.JacobiTheta.Defs"
+  ],
+  "priv": [
+   "Mathlib.NumberTheory.ModularForms.LevelOne.DimensionFormula",
+   "SpherePacking.ForMathlib.MDifferentiableFunProp",
+   "SpherePacking.ModularForms.Delta",
+   "SpherePacking.ModularForms.DimensionFormulas",
+   "SpherePacking.ModularForms.JacobiTheta.MDifferentiable",
+   "SpherePacking.Tactic.TendstoCont"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.ModularForms.Delta",
+   "public import SpherePacking.ModularForms.DimensionFormulas",
+   "public import SpherePacking.ModularForms.JacobiTheta.MDifferentiable",
+   "public import SpherePacking.Tactic.TendstoCont"
+  ],
+  "compiles": 66,
+  "compile_secs": 307.8,
+  "wall": 139.7,
+  "why": {
+   "Mathlib.NumberTheory.ModularForms.Discriminant": [
+    "\u0394_eq_H\u2082_H\u2083_H\u2084",
+    "ModularForm.discriminant"
+   ],
+   "SpherePacking.ModularForms.SlashActionAuxil": [
+    "jacobi_f_SIF._proof_1",
+    "slashaction_generators_GL2R"
+   ],
+   "SpherePacking.ModularForms.JacobiTheta.Defs": [
+    "jacobi_g",
+    "H\u2082"
+   ],
+   "Mathlib.NumberTheory.ModularForms.LevelOne.DimensionFormula": [
+    "_private.SpherePacking.ModularForms.JacobiTheta.JacobiIdentity.0.theta_prod_sq_proportional",
+    "CuspForm.exists_smul_discriminant_of_weight_eq_twelve"
+   ],
+   "SpherePacking.ForMathlib.MDifferentiableFunProp": null,
+   "SpherePacking.ModularForms.Delta": [
+    "\u0394_eq_H\u2082_H\u2083_H\u2084",
+    "\u0394_eq_cexp_prod"
+   ],
+   "SpherePacking.ModularForms.DimensionFormulas": [
+    "jacobi_f_eq_zero",
+    "cuspform_weight_lt_12_zero"
+   ],
+   "SpherePacking.ModularForms.JacobiTheta.MDifferentiable": [
+    "jacobi_g_MDifferentiable",
+    "H\u2082_MDifferentiable"
+   ],
+   "SpherePacking.Tactic.TendstoCont": [
+    "jacobi_f_tendsto_atImInfty",
+    "tendsto_continuousAt_comp"
+   ]
+  }
+ },
+ "SpherePacking.ModularForms.JacobiTheta.Derivative": {
+  "found": [
+   [
+    "pub",
+    "SpherePacking.ModularForms.Derivative",
+    "74:53: `MDiff (serreDerivative 2 H\u2082 - (1 / 6) \u2022 (H\u2082 * (H\u2082 + 2 \u2022 H\u2084)))` is not a `fun_prop` goal! Consider marking `MDifferentiable` with `@[fun_prop]`."
+   ],
+   [
+    "pub",
+    "SpherePacking.ForMathlib.MDifferentiableFunProp",
+    "75:53: `MDiff (serreDerivative 2 H\u2082 - (1 / 6) \u2022 (H\u2082 * (H\u2082 + 2 \u2022 H\u2084)))` is not a `fun_prop` goal! Consider marking `MDifferentiable` with `@[fun_prop]`."
+   ],
+   [
+    "pub",
+    "SpherePacking.ModularForms.Eisenstein",
+    "475:25: Unknown identifier `_root_.E\u2084.toFun` Note: A public declaration `_root_.E\u2084` exists but is imported privately; consider adding `public import SpherePacking.ModularForms.Eisenstein`."
+   ],
+   [
+    "pub",
+    "SpherePacking.ModularForms.JacobiTheta.Defs",
+    "56:2: Unknown identifier `serreDerivative` Note: A public declaration `serreDerivative` exists but is imported privately; consider adding `public import Mathlib.NumberTheory.ModularForms.Derivative`."
+   ],
+   [
+    "pub",
+    "Mathlib.NumberTheory.ModularForms.Derivative",
+    "57:2: Unknown identifier `serreDerivative` Note: A public declaration `serreDerivative` exists but is imported privately; consider adding `public import Mathlib.NumberTheory.ModularForms.Derivative`."
+   ]
+  ],
+  "demoted": [
+   "SpherePacking.ModularForms.E2",
+   "SpherePacking.ForMathlib.MDifferentiableFunProp",
+   "SpherePacking.ModularForms.Derivative",
+   "SpherePacking.ModularForms.EisensteinAsymptotics",
+   "SpherePacking.ModularForms.DimensionFormulas",
+   "SpherePacking.ModularForms.JacobiTheta.MDifferentiable",
+   "SpherePacking.Tactic.TendstoCont",
+   "SpherePacking.ModularForms.JacobiTheta.JacobiIdentity"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "Mathlib.NumberTheory.ModularForms.Derivative",
+    "SpherePacking.ModularForms.E2",
+    "SpherePacking.ModularForms.Eisenstein",
+    "SpherePacking.ModularForms.JacobiTheta.Defs"
+   ],
+   "priv": [
+    "SpherePacking.ModularForms.EisensteinAsymptotics",
+    "SpherePacking.ModularForms.DimensionFormulas",
+    "SpherePacking.ModularForms.JacobiTheta.MDifferentiable",
+    "SpherePacking.Tactic.TendstoCont",
+    "SpherePacking.ModularForms.JacobiTheta.JacobiIdentity"
+   ]
+  },
+  "guess_ok": false,
+  "guess_err": "77:53: `MDiff (serreDerivative 2 H\u2082 - (1 / 6) \u2022 (H\u2082 * (H\u2082 + 2 \u2022 H\u2084)))` is not a `fun_prop` goal! Consider marking `MDifferentiable` with `@[fun_prop]`.",
+  "pub": [
+   "Mathlib.NumberTheory.ModularForms.Derivative",
+   "SpherePacking.ModularForms.Eisenstein",
+   "SpherePacking.ModularForms.JacobiTheta.Defs"
+  ],
+  "priv": [
+   "SpherePacking.ModularForms.E2",
+   "SpherePacking.ForMathlib.MDifferentiableFunProp",
+   "SpherePacking.ModularForms.Derivative",
+   "SpherePacking.ModularForms.EisensteinAsymptotics",
+   "SpherePacking.ModularForms.DimensionFormulas",
+   "SpherePacking.ModularForms.JacobiTheta.MDifferentiable",
+   "SpherePacking.Tactic.TendstoCont",
+   "SpherePacking.ModularForms.JacobiTheta.JacobiIdentity"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.ModularForms.Derivative",
+   "public import SpherePacking.ModularForms.EisensteinAsymptotics",
+   "public import SpherePacking.ModularForms.JacobiTheta.JacobiIdentity"
+  ],
+  "compiles": 97,
+  "compile_secs": 446.2,
+  "wall": 177.0,
+  "why": {
+   "Mathlib.NumberTheory.ModularForms.Derivative": [
+    "f\u2082",
+    "Derivative.serreDerivative"
+   ],
+   "SpherePacking.ModularForms.Eisenstein": [
+    "E\u2084_eq_H_sum_sq",
+    "E\u2084"
+   ],
+   "SpherePacking.ModularForms.JacobiTheta.Defs": [
+    "f\u2082",
+    "H\u2082"
+   ],
+   "SpherePacking.ModularForms.E2": null,
+   "SpherePacking.ForMathlib.MDifferentiableFunProp": null,
+   "SpherePacking.ModularForms.Derivative": null,
+   "SpherePacking.ModularForms.EisensteinAsymptotics": [
+    "E\u2084_eq_H_sum_sq",
+    "E\u2084_tendsto_one_atImInfty"
+   ],
+   "SpherePacking.ModularForms.DimensionFormulas": [
+    "theta_h_eq_zero",
+    "cuspform_weight_lt_12_zero"
+   ],
+   "SpherePacking.ModularForms.JacobiTheta.MDifferentiable": [
+    "f\u2082_T_action",
+    "H\u2082_SIF_MDifferentiable"
+   ],
+   "SpherePacking.Tactic.TendstoCont": [
+    "H_sum_sq_tendsto",
+    "tendsto_continuousAt_comp"
+   ],
+   "SpherePacking.ModularForms.JacobiTheta.JacobiIdentity": [
+    "f\u2082_T_action",
+    "jacobi_identity"
+   ]
+  }
+ },
+ "SpherePacking.ModularForms.FG": {
+  "found": [
+   [
+    "pub",
+    "Mathlib.NumberTheory.ModularForms.Discriminant",
+    "61:26: Unknown constant `Derivative.normalizedDerivOfComplex` Note: A public declaration `normalizedDerivOfComplex` exists but is imported privately; consider adding `public import Mathlib.NumberTheory.ModularForms.Derivative`."
+   ]
+  ],
+  "demoted": [
+   "SpherePacking.ModularForms.E2",
+   "SpherePacking.ModularForms.Delta"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.ModularForms.E2",
+    "SpherePacking.ModularForms.Eisenstein",
+    "SpherePacking.ModularForms.Delta",
+    "SpherePacking.ModularForms.JacobiTheta.Defs"
+   ],
+   "priv": [
+    "Mathlib.NumberTheory.ModularForms.LevelOne.GradedRing",
+    "Mathlib.NumberTheory.ModularForms.RamanujanFormula",
+    "SpherePacking.ForMathlib.MDifferentiableFunProp",
+    "SpherePacking.ModularForms.Derivative",
+    "SpherePacking.ModularForms.EisensteinAsymptotics",
+    "SpherePacking.ModularForms.JacobiTheta.MDifferentiable",
+    "SpherePacking.Tactic.TendstoCont",
+    "SpherePacking.ModularForms.JacobiTheta.JacobiIdentity",
+    "SpherePacking.ModularForms.JacobiTheta.Derivative",
+    "SpherePacking.ModularForms.QExpansion",
+    "SpherePacking.Tactic.NormNumI"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "Mathlib.NumberTheory.ModularForms.Discriminant",
+   "SpherePacking.ModularForms.Eisenstein",
+   "SpherePacking.ModularForms.JacobiTheta.Defs"
+  ],
+  "priv": [
+   "Mathlib.NumberTheory.ModularForms.LevelOne.GradedRing",
+   "Mathlib.NumberTheory.ModularForms.RamanujanFormula",
+   "SpherePacking.ModularForms.E2",
+   "SpherePacking.ForMathlib.MDifferentiableFunProp",
+   "SpherePacking.ModularForms.Derivative",
+   "SpherePacking.ModularForms.EisensteinAsymptotics",
+   "SpherePacking.ModularForms.Delta",
+   "SpherePacking.ModularForms.JacobiTheta.MDifferentiable",
+   "SpherePacking.Tactic.TendstoCont",
+   "SpherePacking.ModularForms.JacobiTheta.JacobiIdentity",
+   "SpherePacking.ModularForms.JacobiTheta.Derivative",
+   "SpherePacking.ModularForms.QExpansion",
+   "SpherePacking.Tactic.NormNumI"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.NumberTheory.ModularForms.LevelOne.GradedRing",
+   "public import Mathlib.NumberTheory.ModularForms.RamanujanFormula",
+   "public import SpherePacking.ModularForms.JacobiTheta.Derivative",
+   "public import SpherePacking.ModularForms.QExpansion",
+   "public import SpherePacking.Tactic.NormNumI"
+  ],
+  "compiles": 34,
+  "compile_secs": 165.7,
+  "wall": 68.2,
+  "why": {
+   "Mathlib.NumberTheory.ModularForms.Discriminant": [
+    "MLDE_F",
+    "ModularForm.discriminant"
+   ],
+   "SpherePacking.ModularForms.Eisenstein": [
+    "F",
+    "E\u2084"
+   ],
+   "SpherePacking.ModularForms.JacobiTheta.Defs": [
+    "G",
+    "H\u2082"
+   ],
+   "Mathlib.NumberTheory.ModularForms.LevelOne.GradedRing": [
+    "\u0394_eq_E\u2084_cube_sub_E\u2086_sq",
+    "ModularForm.discriminant_eq_E\u2084_cube_sub_E\u2086_sq"
+   ],
+   "Mathlib.NumberTheory.ModularForms.RamanujanFormula": [
+    "MLDE_F",
+    "Derivative.normalizedDerivOfComplex_E\u2082"
+   ],
+   "SpherePacking.ModularForms.E2": [
+    "F_functional_equation",
+    "E\u2082_S_transform"
+   ],
+   "SpherePacking.ForMathlib.MDifferentiableFunProp": [
+    "F_holo",
+    "E\u2084_MDifferentiable"
+   ],
+   "SpherePacking.ModularForms.Derivative": [
+    "L\u2081\u2080_pos",
+    "antiSerreDerPos"
+   ],
+   "SpherePacking.ModularForms.EisensteinAsymptotics": [
+    "FmodG_numerator_tendsto",
+    "E\u2084_tendsto_one_atImInfty"
+   ],
+   "SpherePacking.ModularForms.Delta": [
+    "MLDE_F_imag_axis_pos",
+    "\u0394_imag_axis_pos"
+   ],
+   "SpherePacking.ModularForms.JacobiTheta.MDifferentiable": [
+    "MLDE_G",
+    "H\u2082_MDifferentiable"
+   ],
+   "SpherePacking.Tactic.TendstoCont": [
+    "G_vanishing_order",
+    "tendsto_continuousAt_comp"
+   ],
+   "SpherePacking.ModularForms.JacobiTheta.JacobiIdentity": [
+    "MLDE_G",
+    "\u0394_eq_H\u2082_H\u2083_H\u2084"
+   ],
+   "SpherePacking.ModularForms.JacobiTheta.Derivative": [
+    "MLDE_G",
+    "D_H\u2082"
+   ],
+   "SpherePacking.ModularForms.QExpansion": [
+    "_private.SpherePacking.ModularForms.FG.0.qexp_tendsto_of_poly_bound",
+    "QExp.tendsto_nat"
+   ],
+   "SpherePacking.Tactic.NormNumI": [
+    "F_imag_axis_pos",
+    "Mathlib.Meta.NormNumI.split_num"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.b.Psi": {
+  "found": [],
+  "demoted": [
+   "SpherePacking.ModularForms.Delta"
+  ],
+  "removed": [
+   "SpherePacking.ModularForms.Derivative"
+  ],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.IntegralParametrisations",
+    "SpherePacking.ModularForms.Delta",
+    "SpherePacking.ModularForms.FG"
+   ],
+   "priv": [
+    "SpherePacking.ForMathlib.SlashActions",
+    "SpherePacking.ModularForms.Derivative",
+    "SpherePacking.ModularForms.JacobiTheta.Basic",
+    "SpherePacking.ModularForms.JacobiTheta.JacobiIdentity"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.IntegralParametrisations",
+   "SpherePacking.ModularForms.FG"
+  ],
+  "priv": [
+   "SpherePacking.ForMathlib.SlashActions",
+   "SpherePacking.ModularForms.Delta",
+   "SpherePacking.ModularForms.JacobiTheta.Basic",
+   "SpherePacking.ModularForms.JacobiTheta.JacobiIdentity"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.IntegralParametrisations",
+   "public import SpherePacking.ModularForms.FG"
+  ],
+  "compiles": 12,
+  "compile_secs": 35.4,
+  "wall": 17.5,
+  "why": {
+   "SpherePacking.MagicFunction.IntegralParametrisations": [
+    "\u03c8S_slash_S_explicit\u2085",
+    "MagicFunction.Parametrisations.z\u2085'"
+   ],
+   "SpherePacking.ModularForms.FG": [
+    "\u03c8S_eq_neg_one_half_smul_G_div_disc",
+    "G"
+   ],
+   "SpherePacking.ForMathlib.SlashActions": [
+    "\u03c8S_slash_S",
+    "ModularForm.slash_neg'"
+   ],
+   "SpherePacking.ModularForms.Delta": null,
+   "SpherePacking.ModularForms.JacobiTheta.Basic": [
+    "\u03c8T_eq",
+    "H\u2083_T_action"
+   ],
+   "SpherePacking.ModularForms.JacobiTheta.JacobiIdentity": [
+    "\u03c8S_eq_neg_one_half_smul_G_div_disc",
+    "\u0394_eq_H\u2082_H\u2083_H\u2084"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.a.Phi": {
+  "found": [],
+  "demoted": [
+   "SpherePacking.ModularForms.E2",
+   "SpherePacking.ModularForms.Delta"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.ModularForms.E2",
+    "SpherePacking.ModularForms.Delta",
+    "SpherePacking.ModularForms.FG"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.ModularForms.FG"
+  ],
+  "priv": [
+   "SpherePacking.ModularForms.E2",
+   "SpherePacking.ModularForms.Delta"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.ModularForms.FG"
+  ],
+  "compiles": 9,
+  "compile_secs": 19.2,
+  "wall": 13.4,
+  "why": {
+   "SpherePacking.ModularForms.FG": [
+    "\u03c6\u2080_eq_F_div_disc",
+    "F"
+   ],
+   "SpherePacking.ModularForms.E2": null,
+   "SpherePacking.ModularForms.Delta": null
+  }
+ },
+ "SpherePacking.ModularForms.PhiTransform": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.a.Phi"
+   ],
+   "priv": [
+    "SpherePacking.ModularForms.E2",
+    "SpherePacking.ModularForms.Delta"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.a.Phi"
+  ],
+  "priv": [
+   "SpherePacking.ModularForms.E2",
+   "SpherePacking.ModularForms.Delta"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.a.Phi"
+  ],
+  "compiles": 4,
+  "compile_secs": 9.4,
+  "wall": 5.6,
+  "why": {
+   "SpherePacking.MagicFunction.a.Phi": [
+    "\u03c6\u2080_periodic",
+    "\u03c6\u2080"
+   ],
+   "SpherePacking.ModularForms.E2": [
+    "\u03c6\u2080_periodic",
+    "E\u2082_periodic"
+   ],
+   "SpherePacking.ModularForms.Delta": [
+    "\u03c6\u2080_periodic",
+    "\u0394_periodic"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.b.Basic": {
+  "found": [],
+  "demoted": [],
+  "removed": [
+   "SpherePacking.Tactic.NormNumI"
+  ],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.b.Psi"
+   ],
+   "priv": [
+    "SpherePacking.Tactic.NormNumI"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.b.Psi"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.b.Psi"
+  ],
+  "compiles": 4,
+  "compile_secs": 9.7,
+  "wall": 8.0,
+  "why": {
+   "SpherePacking.MagicFunction.b.Psi": [
+    "MagicFunction.b.ComplexIntegrands.\u03a8\u2086'",
+    "\u03c8S'"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.PolyFourierCoeffBound": {
+  "found": [],
+  "demoted": [
+   "SpherePacking.ModularForms.Delta"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.ModularForms.Delta",
+    "SpherePacking.MagicFunction.a.Phi"
+   ],
+   "priv": [
+    "Mathlib.Topology.Algebra.InfiniteSum.Field",
+    "SpherePacking.ModularForms.E2",
+    "SpherePacking.ForMathlib.SpecificLimits",
+    "SpherePacking.ForMathlib.tprod"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.a.Phi"
+  ],
+  "priv": [
+   "Mathlib.Topology.Algebra.InfiniteSum.Field",
+   "SpherePacking.ModularForms.E2",
+   "SpherePacking.ForMathlib.SpecificLimits",
+   "SpherePacking.ForMathlib.tprod",
+   "SpherePacking.ModularForms.Delta"
+  ],
+  "fixed": [],
+  "old": [
+   "public import Mathlib.Topology.Algebra.InfiniteSum.Field",
+   "public import SpherePacking.ForMathlib.SpecificLimits",
+   "public import SpherePacking.ForMathlib.tprod",
+   "public import SpherePacking.MagicFunction.a.Phi"
+  ],
+  "compiles": 9,
+  "compile_secs": 50.7,
+  "wall": 26.0,
+  "why": {
+   "SpherePacking.MagicFunction.a.Phi": [
+    "MagicFunction.PolyFourierCoeffBound.norm_\u03c6\u2080_le",
+    "\u03c6\u2080"
+   ],
+   "Mathlib.Topology.Algebra.InfiniteSum.Field": [
+    "MagicFunction.PolyFourierCoeffBound.aux_5",
+    "Multipliable.norm_tprod"
+   ],
+   "SpherePacking.ModularForms.E2": null,
+   "SpherePacking.ForMathlib.SpecificLimits": [
+    "_private.SpherePacking.MagicFunction.PolyFourierCoeffBound.0.MagicFunction.PolyFourierCoeffBound.step_11",
+    "summable_real_norm_mul_geometric_of_norm_lt_one"
+   ],
+   "SpherePacking.ForMathlib.tprod": [
+    "_private.SpherePacking.MagicFunction.PolyFourierCoeffBound.0.MagicFunction.PolyFourierCoeffBound.step_10",
+    "tprod_le_of_nonneg_of_multipliable"
+   ],
+   "SpherePacking.ModularForms.Delta": [
+    "MagicFunction.PolyFourierCoeffBound.aux_5",
+    "MultipliableEtaProductExpansion_pnat"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.a.Basic": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.IntegralParametrisations",
+    "SpherePacking.MagicFunction.a.Phi"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.IntegralParametrisations",
+   "SpherePacking.MagicFunction.a.Phi"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.IntegralParametrisations",
+   "public import SpherePacking.MagicFunction.a.Phi"
+  ],
+  "compiles": 3,
+  "compile_secs": 7.9,
+  "wall": 6.2,
+  "why": {
+   "SpherePacking.MagicFunction.IntegralParametrisations": [
+    "MagicFunction.a.RealIntegrands.\u03a6\u2086",
+    "MagicFunction.Parametrisations.z\u2086'"
+   ],
+   "SpherePacking.MagicFunction.a.Phi": [
+    "MagicFunction.a.ComplexIntegrands.\u03a6\u2086'",
+    "\u03c6\u2080''"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.a.IntegralEstimates.I2": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.a.Basic"
+   ],
+   "priv": [
+    "SpherePacking.MagicFunction.PolyFourierCoeffBound"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.a.Basic"
+  ],
+  "priv": [
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.PolyFourierCoeffBound",
+   "public import SpherePacking.MagicFunction.a.Basic"
+  ],
+  "compiles": 3,
+  "compile_secs": 8.1,
+  "wall": 5.9,
+  "why": {
+   "SpherePacking.MagicFunction.a.Basic": [
+    "MagicFunction.a.IntegralEstimates.I\u2082.decay'",
+    "MagicFunction.a.RealIntegrals.I\u2082'"
+   ],
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound": [
+    "MagicFunction.a.IntegralEstimates.I\u2082.I\u2082'_bounding_aux_2",
+    "MagicFunction.PolyFourierCoeffBound.norm_\u03c6\u2080_le"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.a.IntegralEstimates.I3": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.a.Basic"
+   ],
+   "priv": [
+    "SpherePacking.MagicFunction.PolyFourierCoeffBound"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.a.Basic"
+  ],
+  "priv": [
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.PolyFourierCoeffBound",
+   "public import SpherePacking.MagicFunction.a.Basic"
+  ],
+  "compiles": 3,
+  "compile_secs": 8.8,
+  "wall": 6.4,
+  "why": {
+   "SpherePacking.MagicFunction.a.Basic": [
+    "MagicFunction.a.IntegralEstimates.I\u2083.I\u2083'_bounding",
+    "MagicFunction.a.RealIntegrals.I\u2083'"
+   ],
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound": [
+    "MagicFunction.a.IntegralEstimates.I\u2083.I\u2083'_bounding_aux_2",
+    "MagicFunction.PolyFourierCoeffBound.norm_\u03c6\u2080_le"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.a.IntegralEstimates.I4": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.a.Basic"
+   ],
+   "priv": [
+    "SpherePacking.MagicFunction.PolyFourierCoeffBound"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.a.Basic"
+  ],
+  "priv": [
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.PolyFourierCoeffBound",
+   "public import SpherePacking.MagicFunction.a.Basic"
+  ],
+  "compiles": 3,
+  "compile_secs": 8.0,
+  "wall": 5.8,
+  "why": {
+   "SpherePacking.MagicFunction.a.Basic": [
+    "MagicFunction.a.IntegralEstimates.I\u2084.decay'",
+    "MagicFunction.a.RealIntegrals.I\u2084'"
+   ],
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound": [
+    "MagicFunction.a.IntegralEstimates.I\u2084.I\u2084'_bounding_aux_2",
+    "MagicFunction.PolyFourierCoeffBound.norm_\u03c6\u2080_le"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.a.IntegralEstimates.I5": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.a.Basic"
+   ],
+   "priv": [
+    "SpherePacking.MagicFunction.PolyFourierCoeffBound"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.a.Basic"
+  ],
+  "priv": [
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.PolyFourierCoeffBound",
+   "public import SpherePacking.MagicFunction.a.Basic"
+  ],
+  "compiles": 3,
+  "compile_secs": 8.5,
+  "wall": 6.1,
+  "why": {
+   "SpherePacking.MagicFunction.a.Basic": [
+    "MagicFunction.a.IntegralEstimates.I\u2085.I\u2085'_bounding",
+    "MagicFunction.a.RealIntegrals.I\u2085'"
+   ],
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound": [
+    "MagicFunction.a.IntegralEstimates.I\u2085.I\u2085'_bounding_aux_2",
+    "MagicFunction.PolyFourierCoeffBound.norm_\u03c6\u2080_le"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.a.IntegralEstimates.I6": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.a.Basic"
+   ],
+   "priv": [
+    "SpherePacking.MagicFunction.PolyFourierCoeffBound"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.a.Basic"
+  ],
+  "priv": [
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.PolyFourierCoeffBound",
+   "public import SpherePacking.MagicFunction.a.Basic"
+  ],
+  "compiles": 3,
+  "compile_secs": 7.9,
+  "wall": 5.7,
+  "why": {
+   "SpherePacking.MagicFunction.a.Basic": [
+    "MagicFunction.a.IntegralEstimates.I\u2086.decay'",
+    "MagicFunction.a.RealIntegrals.I\u2086'"
+   ],
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound": [
+    "MagicFunction.a.IntegralEstimates.I\u2086.I\u2086'_bounding_aux_2",
+    "MagicFunction.PolyFourierCoeffBound.norm_\u03c6\u2080_le"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.a.Schwartz": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.ForMathlib.RadialSchwartz.Multidimensional",
+    "SpherePacking.MagicFunction.a.Basic"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.ForMathlib.RadialSchwartz.Multidimensional",
+   "SpherePacking.MagicFunction.a.Basic"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.ForMathlib.RadialSchwartz.Multidimensional",
+   "public import SpherePacking.MagicFunction.a.Basic"
+  ],
+  "compiles": 3,
+  "compile_secs": 9.3,
+  "wall": 6.9,
+  "why": {
+   "SpherePacking.ForMathlib.RadialSchwartz.Multidimensional": [
+    "MagicFunction.a.SchwartzIntegrals.I\u2086",
+    "schwartzMap_multidimensional_of_schwartzMap_real"
+   ],
+   "SpherePacking.MagicFunction.a.Basic": [
+    "MagicFunction.a.SchwartzIntegrals.I\u2084'",
+    "MagicFunction.a.RealIntegrals.I\u2084'"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.b.Schwartz": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.ForMathlib.RadialSchwartz.Multidimensional",
+    "SpherePacking.MagicFunction.b.Basic"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.ForMathlib.RadialSchwartz.Multidimensional",
+   "SpherePacking.MagicFunction.b.Basic"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.ForMathlib.RadialSchwartz.Multidimensional",
+   "public import SpherePacking.MagicFunction.b.Basic"
+  ],
+  "compiles": 3,
+  "compile_secs": 7.4,
+  "wall": 5.5,
+  "why": {
+   "SpherePacking.ForMathlib.RadialSchwartz.Multidimensional": [
+    "MagicFunction.b.SchwartzIntegrals.J\u2082",
+    "schwartzMap_multidimensional_of_schwartzMap_real"
+   ],
+   "SpherePacking.MagicFunction.b.Basic": [
+    "MagicFunction.b.SchwartzIntegrals.J\u2084'",
+    "MagicFunction.b.RealIntegrals.J\u2084'"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.a.IntegralEstimates.I1": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.a.Basic"
+   ],
+   "priv": [
+    "SpherePacking.MagicFunction.PolyFourierCoeffBound"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.a.Basic"
+  ],
+  "priv": [
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.PolyFourierCoeffBound",
+   "public import SpherePacking.MagicFunction.a.Basic"
+  ],
+  "compiles": 3,
+  "compile_secs": 8.4,
+  "wall": 6.2,
+  "why": {
+   "SpherePacking.MagicFunction.a.Basic": [
+    "MagicFunction.a.IntegralEstimates.I\u2081.I\u2081'_bounding",
+    "MagicFunction.a.RealIntegrals.I\u2081'"
+   ],
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound": [
+    "MagicFunction.a.IntegralEstimates.I\u2081.I\u2081'_bounding_aux_2",
+    "MagicFunction.PolyFourierCoeffBound.norm_\u03c6\u2080_le"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.a.Eigenfunction": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.a.Schwartz"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.a.Schwartz"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.a.Schwartz"
+  ],
+  "compiles": 2,
+  "compile_secs": 6.0,
+  "wall": 6.5,
+  "why": {
+   "SpherePacking.MagicFunction.a.Schwartz": [
+    "MagicFunction.a.Fourier.eig_a",
+    "MagicFunction.FourierEigenfunctions.a"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.a.SpecialValues": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.a.Schwartz"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.a.Schwartz"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.a.Schwartz"
+  ],
+  "compiles": 2,
+  "compile_secs": 4.1,
+  "wall": 4.6,
+  "why": {
+   "SpherePacking.MagicFunction.a.Schwartz": [
+    "MagicFunction.a.SpecialValues.a_zero",
+    "MagicFunction.FourierEigenfunctions.a"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.b.Eigenfunction": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.b.Schwartz"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.b.Schwartz"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.b.Schwartz"
+  ],
+  "compiles": 2,
+  "compile_secs": 5.8,
+  "wall": 6.3,
+  "why": {
+   "SpherePacking.MagicFunction.b.Schwartz": [
+    "MagicFunction.b.Fourier.eig_b",
+    "MagicFunction.FourierEigenfunctions.b"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.b.SpecialValues": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.b.Schwartz"
+   ],
+   "priv": []
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.b.Schwartz"
+  ],
+  "priv": [],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.b.Schwartz"
+  ],
+  "compiles": 2,
+  "compile_secs": 3.9,
+  "wall": 4.3,
+  "why": {
+   "SpherePacking.MagicFunction.b.Schwartz": [
+    "MagicFunction.b.SpecialValues.b_zero",
+    "MagicFunction.FourierEigenfunctions.b"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.a.Integrability.ComplexIntegrands": {
+  "found": [
+   [
+    "pub",
+    "SpherePacking.MagicFunction.a.IntegralEstimates.I1",
+    "31:2: unknown namespace `MagicFunction.PolyFourierCoeffBound`"
+   ],
+   [
+    "pub",
+    "SpherePacking.MagicFunction.PolyFourierCoeffBound",
+    "31:2: unknown namespace `MagicFunction.PolyFourierCoeffBound`"
+   ],
+   [
+    "pub",
+    "SpherePacking.MagicFunction.a.Basic",
+    "49:51: Unknown constant `UpperHalfPlane.upperHalfPlaneSet` Note: A public declaration `upperHalfPlaneSet` exists but is imported privately; consider adding `public import Mathlib.Analysis.Complex.UpperHalfPlane.Basic`."
+   ]
+  ],
+  "demoted": [
+   "SpherePacking.ModularForms.Delta",
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound",
+   "SpherePacking.MagicFunction.a.IntegralEstimates.I1"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.a.Basic"
+   ],
+   "priv": [
+    "SpherePacking.ModularForms.Delta"
+   ]
+  },
+  "guess_ok": false,
+  "guess_err": "31:2: unknown namespace `MagicFunction.PolyFourierCoeffBound`",
+  "pub": [
+   "SpherePacking.MagicFunction.a.Basic"
+  ],
+  "priv": [
+   "SpherePacking.ModularForms.Delta",
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound",
+   "SpherePacking.MagicFunction.a.IntegralEstimates.I1"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.a.IntegralEstimates.I1"
+  ],
+  "compiles": 56,
+  "compile_secs": 162.5,
+  "wall": 68.0,
+  "why": {
+   "SpherePacking.MagicFunction.a.Basic": [
+    "MagicFunction.a.ComplexIntegrands.\u03a6\u2085'_holo",
+    "MagicFunction.a.ComplexIntegrands.\u03a6\u2085'"
+   ],
+   "SpherePacking.ModularForms.Delta": null,
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound": null,
+   "SpherePacking.MagicFunction.a.IntegralEstimates.I1": null
+  }
+ },
+ "SpherePacking.MagicFunction.a.Integrability.CuspPath": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.a.Phi"
+   ],
+   "priv": [
+    "SpherePacking.MagicFunction.a.Integrability.ComplexIntegrands"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.a.Phi"
+  ],
+  "priv": [
+   "SpherePacking.MagicFunction.a.Integrability.ComplexIntegrands"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.a.Integrability.ComplexIntegrands"
+  ],
+  "compiles": 3,
+  "compile_secs": 6.1,
+  "wall": 4.6,
+  "why": {
+   "SpherePacking.MagicFunction.a.Phi": [
+    "continuousOn_\u03c6\u2080''_cusp_path",
+    "\u03c6\u2080''"
+   ],
+   "SpherePacking.MagicFunction.a.Integrability.ComplexIntegrands": [
+    "continuousOn_\u03c6\u2080''_cusp_path",
+    "MagicFunction.a.ComplexIntegrands.\u03c6\u2080''_holo"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.g.Basic": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.a.Schwartz",
+    "SpherePacking.MagicFunction.b.Schwartz"
+   ],
+   "priv": [
+    "SpherePacking.MagicFunction.a.Eigenfunction",
+    "SpherePacking.MagicFunction.a.SpecialValues",
+    "SpherePacking.MagicFunction.b.Eigenfunction",
+    "SpherePacking.MagicFunction.b.SpecialValues"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.a.Schwartz",
+   "SpherePacking.MagicFunction.b.Schwartz"
+  ],
+  "priv": [
+   "SpherePacking.MagicFunction.a.Eigenfunction",
+   "SpherePacking.MagicFunction.a.SpecialValues",
+   "SpherePacking.MagicFunction.b.Eigenfunction",
+   "SpherePacking.MagicFunction.b.SpecialValues"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.a.Eigenfunction",
+   "public import SpherePacking.MagicFunction.a.SpecialValues",
+   "public import SpherePacking.MagicFunction.b.Eigenfunction",
+   "public import SpherePacking.MagicFunction.b.SpecialValues"
+  ],
+  "compiles": 7,
+  "compile_secs": 18.2,
+  "wall": 8.1,
+  "why": {
+   "SpherePacking.MagicFunction.a.Schwartz": [
+    "g",
+    "MagicFunction.FourierEigenfunctions.a"
+   ],
+   "SpherePacking.MagicFunction.b.Schwartz": [
+    "g",
+    "MagicFunction.FourierEigenfunctions.b"
+   ],
+   "SpherePacking.MagicFunction.a.Eigenfunction": [
+    "fourier_g_zero",
+    "MagicFunction.a.Fourier.eig_a"
+   ],
+   "SpherePacking.MagicFunction.a.SpecialValues": [
+    "g_zero",
+    "MagicFunction.a.SpecialValues.a_zero"
+   ],
+   "SpherePacking.MagicFunction.b.Eigenfunction": [
+    "fourier_g_zero",
+    "MagicFunction.b.Fourier.eig_b"
+   ],
+   "SpherePacking.MagicFunction.b.SpecialValues": [
+    "g_zero",
+    "MagicFunction.b.SpecialValues.b_zero"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.a.Integrability.RealIntegrands": {
+  "found": [],
+  "demoted": [],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.a.Basic"
+   ],
+   "priv": [
+    "SpherePacking.MagicFunction.a.Integrability.ComplexIntegrands"
+   ]
+  },
+  "guess_ok": true,
+  "pub": [
+   "SpherePacking.MagicFunction.a.Basic"
+  ],
+  "priv": [
+   "SpherePacking.MagicFunction.a.Integrability.ComplexIntegrands"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.a.Integrability.ComplexIntegrands"
+  ],
+  "compiles": 3,
+  "compile_secs": 6.9,
+  "wall": 5.0,
+  "why": {
+   "SpherePacking.MagicFunction.a.Basic": [
+    "MagicFunction.a.RealIntegrands.\u03a6\u2082_contDiffOn",
+    "MagicFunction.a.RealIntegrands.\u03a6\u2082"
+   ],
+   "SpherePacking.MagicFunction.a.Integrability.ComplexIntegrands": [
+    "MagicFunction.a.RealIntegrands.\u03a6\u2082_contDiffOn",
+    "MagicFunction.a.ComplexIntegrands.\u03a6\u2082'_contDiffOn"
+   ]
+  }
+ },
+ "SpherePacking.MagicFunction.a.Integrability.Integrability": {
+  "found": [
+   [
+    "pub",
+    "SpherePacking.MagicFunction.PolyFourierCoeffBound",
+    "19:2: unknown namespace `MagicFunction.PolyFourierCoeffBound`"
+   ],
+   [
+    "pub",
+    "SpherePacking.MagicFunction.a.Basic",
+    "26:29: Unknown constant `Real` Note: A public declaration `Real` exists but is imported privately; consider adding `public import Mathlib.Basic.Real.Basic`."
+   ]
+  ],
+  "demoted": [
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound",
+   "SpherePacking.MagicFunction.a.Integrability.RealIntegrands"
+  ],
+  "removed": [],
+  "guess": {
+   "pub": [
+    "SpherePacking.MagicFunction.a.Basic"
+   ],
+   "priv": [
+    "SpherePacking.MagicFunction.a.Integrability.RealIntegrands"
+   ]
+  },
+  "guess_ok": false,
+  "guess_err": "20:2: unknown namespace `MagicFunction.PolyFourierCoeffBound`",
+  "pub": [
+   "SpherePacking.MagicFunction.a.Basic"
+  ],
+  "priv": [
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound",
+   "SpherePacking.MagicFunction.a.Integrability.RealIntegrands"
+  ],
+  "fixed": [],
+  "old": [
+   "public import SpherePacking.MagicFunction.a.Integrability.RealIntegrands"
+  ],
+  "compiles": 40,
+  "compile_secs": 86.4,
+  "wall": 35.3,
+  "why": {
+   "SpherePacking.MagicFunction.a.Basic": [
+    "MagicFunction.a.Integrability.\u03a6\u2083_integrableOn",
+    "MagicFunction.a.RealIntegrands.\u03a6\u2083"
+   ],
+   "SpherePacking.MagicFunction.PolyFourierCoeffBound": null,
+   "SpherePacking.MagicFunction.a.Integrability.RealIntegrands": [
+    "MagicFunction.a.Integrability.\u03a6\u2083_integrableOn",
+    "MagicFunction.a.RealIntegrands.\u03a6\u2083_contDiffOn"
+   ]
+  }
+ }
+}

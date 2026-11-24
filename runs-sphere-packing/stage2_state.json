@@ -1,0 +1,143 @@
+{
+ "done": [
+  "SpherePacking.ForMathlib.RadialSchwartz.Basic",
+  "SpherePacking.MagicFunction.a.Integrability.RealDecay",
+  "SpherePacking.ForMathlib.ENNReal",
+  "SpherePacking.ForMathlib.ZLattice",
+  "SpherePacking.ForMathlib.ENat",
+  "SpherePacking.ForMathlib.VolumeOfBalls",
+  "SpherePacking.ForMathlib.RadialSchwartz.SchwartzMap",
+  "SpherePacking.ForMathlib.Fourier",
+  "SpherePacking.ForMathlib.SpecificLimits",
+  "SpherePacking.ForMathlib.tprod",
+  "SpherePacking.MagicFunction.IntegralParametrisations",
+  "SpherePacking.ForMathlib.SlashActions",
+  "SpherePacking.Tactic.TendstoContAttr",
+  "SpherePacking.ForMathlib.AtImInfty",
+  "SpherePacking.ForMathlib.Cusps",
+  "SpherePacking.ModularForms.exp_lems",
+  "SpherePacking.Tactic.NormNumI",
+  "SpherePacking.ForMathlib.QSeriesBounds",
+  "SpherePacking.ModularForms.SlashActionAuxil",
+  "SpherePacking.Tactic.Test.NormNumI",
+  "SpherePacking.Basic.SpherePacking",
+  "SpherePacking.ForMathlib.Encard",
+  "SpherePacking.ForMathlib.RadialSchwartz.Multidimensional",
+  "SpherePacking.Tactic.TendstoCont",
+  "SpherePacking.ModularForms.IsCuspForm",
+  "SpherePacking.ModularForms.tsumderivWithin",
+  "SpherePacking.ModularForms.E2",
+  "SpherePacking.ForMathlib.QExpansionBounds",
+  "SpherePacking.Tactic.Test.TendstoCont",
+  "SpherePacking.Basic.PeriodicPacking",
+  "SpherePacking.ModularForms.ResToImagAxis",
+  "SpherePacking.Basic.E8",
+  "SpherePacking.ForMathlib.InvPowSummability",
+  "SpherePacking.ModularForms.Delta",
+  "SpherePacking.MainTheorem",
+  "SpherePacking.CohnElkies.Prereqs",
+  "SpherePacking.ModularForms.Eisenstein",
+  "SpherePacking.CohnElkies.LPBound",
+  "SpherePacking.ModularForms.DimensionFormulas",
+  "SpherePacking.ForMathlib.MDifferentiableFunProp",
+  "SpherePacking.ModularForms.Derivative",
+  "SpherePacking.ModularForms.JacobiTheta.Defs",
+  "SpherePacking.ModularForms.EisensteinAsymptotics",
+  "SpherePacking.ModularForms.JacobiTheta.Basic",
+  "SpherePacking.ModularForms.QExpansion",
+  "SpherePacking.ModularForms.JacobiTheta.MDifferentiable",
+  "SpherePacking.ModularForms.JacobiTheta.JacobiIdentity",
+  "SpherePacking.ModularForms.JacobiTheta.Derivative",
+  "SpherePacking.ModularForms.FG",
+  "SpherePacking.MagicFunction.b.Psi",
+  "SpherePacking.MagicFunction.a.Phi",
+  "SpherePacking.ModularForms.PhiTransform",
+  "SpherePacking.MagicFunction.b.Basic",
+  "SpherePacking.MagicFunction.PolyFourierCoeffBound",
+  "SpherePacking.MagicFunction.a.Basic",
+  "SpherePacking.MagicFunction.a.IntegralEstimates.I2",
+  "SpherePacking.MagicFunction.a.IntegralEstimates.I3",
+  "SpherePacking.MagicFunction.a.IntegralEstimates.I4",
+  "SpherePacking.MagicFunction.a.IntegralEstimates.I5",
+  "SpherePacking.MagicFunction.a.IntegralEstimates.I6",
+  "SpherePacking.MagicFunction.a.Schwartz",
+  "SpherePacking.MagicFunction.b.Schwartz",
+  "SpherePacking.MagicFunction.a.IntegralEstimates.I1",
+  "SpherePacking.MagicFunction.a.Eigenfunction",
+  "SpherePacking.MagicFunction.a.SpecialValues",
+  "SpherePacking.MagicFunction.b.Eigenfunction",
+  "SpherePacking.MagicFunction.b.SpecialValues",
+  "SpherePacking.MagicFunction.a.Integrability.ComplexIntegrands",
+  "SpherePacking.MagicFunction.a.Integrability.CuspPath",
+  "SpherePacking.MagicFunction.g.Basic",
+  "SpherePacking.MagicFunction.a.Integrability.RealIntegrands",
+  "SpherePacking.MagicFunction.a.Integrability.Integrability"
+ ],
+ "removed": {
+  "SpherePacking.ForMathlib.Fourier": [
+   "Mathlib.RingTheory.Binomial"
+  ],
+  "SpherePacking.ForMathlib.AtImInfty": [
+   "Mathlib.Analysis.Normed.Group.Tannery"
+  ],
+  "SpherePacking.ForMathlib.QSeriesBounds": [
+   "Mathlib.Tactic.Positivity"
+  ],
+  "SpherePacking.ModularForms.SlashActionAuxil": [
+   "Mathlib.Algebra.Field.ZMod",
+   "Mathlib.Analysis.CStarAlgebra.Classes"
+  ],
+  "SpherePacking.Basic.SpherePacking": [
+   "Mathlib.Algebra.Order.Star.Real",
+   "Mathlib.Topology.EMetricSpace.Paracompact"
+  ],
+  "SpherePacking.ForMathlib.RadialSchwartz.Multidimensional": [
+   "Mathlib.Analysis.Distribution.SchwartzSpace.Deriv",
+   "Mathlib.Analysis.InnerProductSpace.Calculus",
+   "Mathlib.Algebra.Order.Star.Real",
+   "Mathlib.Analysis.Calculus.ContDiff.Bounds"
+  ],
+  "SpherePacking.Tactic.TendstoCont": [
+   "Mathlib.Tactic.NormNum"
+  ],
+  "SpherePacking.ModularForms.IsCuspForm": [
+   "Mathlib.Analysis.CStarAlgebra.Module.Defs"
+  ],
+  "SpherePacking.ModularForms.E2": [
+   "SpherePacking.ModularForms.SlashActionAuxil"
+  ],
+  "SpherePacking.Basic.PeriodicPacking": [
+   "Mathlib.Dynamics.Ergodic.Action.Regular"
+  ],
+  "SpherePacking.ForMathlib.InvPowSummability": [
+   "Mathlib.Topology.Separation.CompletelyRegular"
+  ],
+  "SpherePacking.ModularForms.Delta": [
+   "SpherePacking.ForMathlib.Cusps",
+   "SpherePacking.ModularForms.exp_lems"
+  ],
+  "SpherePacking.CohnElkies.Prereqs": [
+   "Mathlib.Analysis.CStarAlgebra.Classes"
+  ],
+  "SpherePacking.ModularForms.DimensionFormulas": [
+   "Mathlib.Algebra.Order.Star.Rat",
+   "SpherePacking.ModularForms.Eisenstein"
+  ],
+  "SpherePacking.ModularForms.EisensteinAsymptotics": [
+   "SpherePacking.ModularForms.DimensionFormulas",
+   "Mathlib.Analysis.Real.Pi.Bounds"
+  ],
+  "SpherePacking.MagicFunction.PolyFourierCoeffBound": [
+   "SpherePacking.ForMathlib.Fourier"
+  ],
+  "SpherePacking.MagicFunction.a.Integrability.Integrability": [
+   "SpherePacking.MagicFunction.a.IntegralEstimates.I2",
+   "SpherePacking.MagicFunction.a.IntegralEstimates.I3",
+   "SpherePacking.MagicFunction.a.IntegralEstimates.I4",
+   "SpherePacking.MagicFunction.a.IntegralEstimates.I5",
+   "SpherePacking.MagicFunction.a.IntegralEstimates.I6"
+  ]
+ },
+ "compiles": 349,
+ "compile_secs": 1396.199999999999
+}

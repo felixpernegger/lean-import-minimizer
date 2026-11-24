@@ -1,0 +1,242 @@
+11:45:24 SpherePacking.ForMathlib.RadialSchwartz.Basic: 1 imports, 0 dependents; removable for the file itself: 0  [2s]
+11:45:24 [1/72] SpherePacking.ForMathlib.RadialSchwartz.Basic: removed 0 (total removed 0, compiles 1, compile time 0s, wall 2s)
+11:45:25 SpherePacking.MagicFunction.a.Integrability.RealDecay: 1 imports, 0 dependents; removable for the file itself: 0  [0s]
+11:45:25 [2/72] SpherePacking.MagicFunction.a.Integrability.RealDecay: removed 0 (total removed 0, compiles 2, compile time 1s, wall 2s)
+11:45:27 SpherePacking.ForMathlib.ENNReal: 1 imports, 6 dependents; removable for the file itself: 0  [0s]
+11:45:27 [3/72] SpherePacking.ForMathlib.ENNReal: removed 0 (total removed 0, compiles 3, compile time 1s, wall 4s)
+11:45:27 SpherePacking.ForMathlib.ZLattice: 1 imports, 6 dependents; removable for the file itself: 0  [0s]
+11:45:27 [4/72] SpherePacking.ForMathlib.ZLattice: removed 0 (total removed 0, compiles 4, compile time 1s, wall 5s)
+11:45:29 SpherePacking.ForMathlib.ENat: 3 imports, 7 dependents; removable for the file itself: 0  [2s]
+11:45:29 [5/72] SpherePacking.ForMathlib.ENat: removed 0 (total removed 0, compiles 7, compile time 6s, wall 7s)
+11:45:29 SpherePacking.ForMathlib.VolumeOfBalls: 1 imports, 7 dependents; removable for the file itself: 0  [0s]
+11:45:29 [6/72] SpherePacking.ForMathlib.VolumeOfBalls: removed 0 (total removed 0, compiles 8, compile time 7s, wall 7s)
+11:45:30 SpherePacking.ForMathlib.RadialSchwartz.SchwartzMap: 1 imports, 8 dependents; removable for the file itself: 0  [0s]
+11:45:30 [7/72] SpherePacking.ForMathlib.RadialSchwartz.SchwartzMap: removed 0 (total removed 0, compiles 9, compile time 7s, wall 8s)
+11:45:32 SpherePacking.ForMathlib.Fourier: 2 imports, 11 dependents; removable for the file itself: 1  [2s]
+11:45:45     all 1 together: ACCEPTED (11 dependents compiled)
+11:45:45 [8/72] SpherePacking.ForMathlib.Fourier: removed 1 (total removed 1, compiles 22, compile time 54s, wall 23s)
+11:45:52 SpherePacking.ForMathlib.SpecificLimits: 2 imports, 11 dependents; removable for the file itself: 0  [5s]
+11:45:52 [9/72] SpherePacking.ForMathlib.SpecificLimits: removed 0 (total removed 1, compiles 24, compile time 60s, wall 30s)
+11:45:54 SpherePacking.ForMathlib.tprod: 2 imports, 11 dependents; removable for the file itself: 0  [2s]
+11:45:54 [10/72] SpherePacking.ForMathlib.tprod: removed 0 (total removed 1, compiles 26, compile time 63s, wall 31s)
+11:46:12 SpherePacking.MagicFunction.IntegralParametrisations: 2 imports, 20 dependents; removable for the file itself: 0  [18s]
+11:46:12 [11/72] SpherePacking.MagicFunction.IntegralParametrisations: removed 0 (total removed 1, compiles 28, compile time 84s, wall 49s)
+11:46:12 SpherePacking.ForMathlib.SlashActions: 1 imports, 30 dependents; removable for the file itself: 0  [0s]
+11:46:12 [12/72] SpherePacking.ForMathlib.SlashActions: removed 0 (total removed 1, compiles 29, compile time 84s, wall 50s)
+11:46:13 SpherePacking.Tactic.TendstoContAttr: 2 imports, 32 dependents; removable for the file itself: 0  [1s]
+11:46:13 [13/72] SpherePacking.Tactic.TendstoContAttr: removed 0 (total removed 1, compiles 31, compile time 85s, wall 51s)
+11:46:15 SpherePacking.ForMathlib.AtImInfty: 2 imports, 37 dependents; removable for the file itself: 1  [2s]
+11:46:20     all 1 together: ACCEPTED (1 dependents compiled)
+11:46:21 [14/72] SpherePacking.ForMathlib.AtImInfty: removed 1 (total removed 2, compiles 34, compile time 91s, wall 59s)
+11:46:23 SpherePacking.ForMathlib.Cusps: 1 imports, 37 dependents; removable for the file itself: 0  [0s]
+11:46:23 [15/72] SpherePacking.ForMathlib.Cusps: removed 0 (total removed 2, compiles 35, compile time 91s, wall 61s)
+11:46:25 SpherePacking.ModularForms.exp_lems: 2 imports, 37 dependents; removable for the file itself: 0  [2s]
+11:46:25 [16/72] SpherePacking.ModularForms.exp_lems: removed 0 (total removed 2, compiles 37, compile time 95s, wall 63s)
+11:46:25 SpherePacking.Tactic.NormNumI: 1 imports, 37 dependents; removable for the file itself: 0  [0s]
+11:46:25 [17/72] SpherePacking.Tactic.NormNumI: removed 0 (total removed 2, compiles 38, compile time 95s, wall 63s)
+11:46:27 SpherePacking.ForMathlib.QSeriesBounds: 2 imports, 38 dependents; removable for the file itself: 1  [2s]
+11:46:30     all 1 together: ACCEPTED (0 dependents compiled)
+11:46:30 [18/72] SpherePacking.ForMathlib.QSeriesBounds: removed 1 (total removed 3, compiles 40, compile time 98s, wall 68s)
+11:46:38 SpherePacking.ModularForms.SlashActionAuxil: 5 imports, 38 dependents; removable for the file itself: 2  [6s]
+11:46:48     all 2 together: ACCEPTED (1 dependents compiled)
+11:46:49 [19/72] SpherePacking.ModularForms.SlashActionAuxil: removed 2 (total removed 5, compiles 47, compile time 128s, wall 87s)
+11:46:52 SpherePacking.Tactic.Test.NormNumI: 2 imports, 0 dependents; removable for the file itself: 0  [2s]
+11:46:52 [20/72] SpherePacking.Tactic.Test.NormNumI: removed 0 (total removed 5, compiles 49, compile time 131s, wall 89s)
+11:47:00 SpherePacking.Basic.SpherePacking: 5 imports, 6 dependents; removable for the file itself: 3  [7s]
+11:47:21     all 3 together: rejected (dependent SpherePacking.CohnElkies.LPBound)
+11:47:36     Mathlib.Algebra.Order.Star.Real: ACCEPTED (6 dependents compiled)
+11:47:56     Mathlib.Order.CompletePartialOrder: rejected (dependent SpherePacking.CohnElkies.LPBound)
+11:48:16     Mathlib.Topology.EMetricSpace.Paracompact: ACCEPTED (6 dependents compiled)
+11:48:17 [21/72] SpherePacking.Basic.SpherePacking: removed 2 (total removed 7, compiles 80, compile time 347s, wall 174s)
+11:48:21 SpherePacking.ForMathlib.Encard: 4 imports, 6 dependents; removable for the file itself: 0  [2s]
+11:48:21 [22/72] SpherePacking.ForMathlib.Encard: removed 0 (total removed 7, compiles 84, compile time 355s, wall 178s)
+11:48:28 SpherePacking.ForMathlib.RadialSchwartz.Multidimensional: 6 imports, 7 dependents; removable for the file itself: 4  [7s]
+11:48:41     all 4 together: ACCEPTED (7 dependents compiled)
+11:48:41 [23/72] SpherePacking.ForMathlib.RadialSchwartz.Multidimensional: removed 4 (total removed 11, compiles 98, compile time 409s, wall 199s)
+11:48:46 SpherePacking.Tactic.TendstoCont: 4 imports, 31 dependents; removable for the file itself: 1  [3s]
+11:48:49     all 1 together: ACCEPTED (0 dependents compiled)
+11:48:49 [24/72] SpherePacking.Tactic.TendstoCont: removed 1 (total removed 12, compiles 102, compile time 421s, wall 207s)
+11:48:54 SpherePacking.ModularForms.IsCuspForm: 3 imports, 32 dependents; removable for the file itself: 1  [3s]
+11:49:25     all 1 together: ACCEPTED (32 dependents compiled)
+11:49:25 [25/72] SpherePacking.ModularForms.IsCuspForm: removed 1 (total removed 13, compiles 137, compile time 564s, wall 243s)
+11:49:31 SpherePacking.ModularForms.tsumderivWithin: 4 imports, 35 dependents; removable for the file itself: 0  [3s]
+11:49:31 [26/72] SpherePacking.ModularForms.tsumderivWithin: removed 0 (total removed 13, compiles 141, compile time 575s, wall 249s)
+11:49:34 SpherePacking.ModularForms.E2: 2 imports, 36 dependents; removable for the file itself: 1  [3s]
+11:49:36     all 1 together: ACCEPTED (0 dependents compiled)
+11:49:37 [27/72] SpherePacking.ModularForms.E2: removed 1 (total removed 14, compiles 143, compile time 580s, wall 254s)
+11:49:41 SpherePacking.ForMathlib.QExpansionBounds: 2 imports, 37 dependents; removable for the file itself: 0  [3s]
+11:49:41 [28/72] SpherePacking.ForMathlib.QExpansionBounds: removed 0 (total removed 14, compiles 145, compile time 584s, wall 259s)
+11:49:43 SpherePacking.Tactic.Test.TendstoCont: 2 imports, 0 dependents; removable for the file itself: 0  [2s]
+11:49:43 [29/72] SpherePacking.Tactic.Test.TendstoCont: removed 0 (total removed 14, compiles 147, compile time 588s, wall 261s)
+11:50:04 SpherePacking.Basic.PeriodicPacking: 6 imports, 5 dependents; removable for the file itself: 1  [20s]
+11:50:16     all 1 together: ACCEPTED (5 dependents compiled)
+11:50:16 [30/72] SpherePacking.Basic.PeriodicPacking: removed 1 (total removed 15, compiles 158, compile time 708s, wall 294s)
+11:50:22 SpherePacking.ModularForms.ResToImagAxis: 3 imports, 36 dependents; removable for the file itself: 0  [4s]
+11:50:22 [31/72] SpherePacking.ModularForms.ResToImagAxis: removed 0 (total removed 15, compiles 161, compile time 719s, wall 300s)
+11:50:23 SpherePacking.Basic.E8: 1 imports, 1 dependents; removable for the file itself: 0  [0s]
+11:50:23 [32/72] SpherePacking.Basic.E8: removed 0 (total removed 15, compiles 162, compile time 720s, wall 301s)
+11:50:26 SpherePacking.ForMathlib.InvPowSummability: 3 imports, 2 dependents; removable for the file itself: 1  [4s]
+11:50:37     all 1 together: ACCEPTED (2 dependents compiled)
+11:50:37 [33/72] SpherePacking.ForMathlib.InvPowSummability: removed 1 (total removed 16, compiles 167, compile time 742s, wall 315s)
+11:50:46 SpherePacking.ModularForms.Delta: 6 imports, 35 dependents; removable for the file itself: 4  [6s]
+11:50:55     all 4 together: rejected (dependent SpherePacking.ModularForms.Eisenstein)
+11:51:02     SpherePacking.ForMathlib.Cusps: ACCEPTED (3 dependents compiled)
+11:51:12     SpherePacking.ModularForms.E2: rejected (dependent SpherePacking.ModularForms.Eisenstein)
+11:51:17     SpherePacking.ModularForms.exp_lems: ACCEPTED (0 dependents compiled)
+11:51:40     SpherePacking.Tactic.NormNumI: rejected (dependent SpherePacking.ModularForms.FG)
+11:51:40 [34/72] SpherePacking.ModularForms.Delta: removed 2 (total removed 18, compiles 198, compile time 869s, wall 377s)
+11:51:41 SpherePacking.MainTheorem: 1 imports, 0 dependents; removable for the file itself: 0  [0s]
+11:51:41 [35/72] SpherePacking.MainTheorem: removed 0 (total removed 18, compiles 199, compile time 870s, wall 379s)
+11:51:47 SpherePacking.CohnElkies.Prereqs: 5 imports, 1 dependents; removable for the file itself: 1  [5s]
+11:51:57     all 1 together: ACCEPTED (1 dependents compiled)
+11:51:58 [36/72] SpherePacking.CohnElkies.Prereqs: removed 1 (total removed 19, compiles 205, compile time 901s, wall 395s)
+11:52:04 SpherePacking.ModularForms.Eisenstein: 2 imports, 34 dependents; removable for the file itself: 0  [4s]
+11:52:04 [37/72] SpherePacking.ModularForms.Eisenstein: removed 0 (total removed 19, compiles 207, compile time 907s, wall 401s)
+11:52:04 SpherePacking.CohnElkies.LPBound: 1 imports, 0 dependents; removable for the file itself: 0  [0s]
+11:52:04 [38/72] SpherePacking.CohnElkies.LPBound: removed 0 (total removed 19, compiles 208, compile time 907s, wall 402s)
+11:52:07 SpherePacking.ModularForms.DimensionFormulas: 4 imports, 31 dependents; removable for the file itself: 2  [3s]
+11:52:41     all 2 together: ACCEPTED (31 dependents compiled)
+11:52:41 [39/72] SpherePacking.ModularForms.DimensionFormulas: removed 2 (total removed 21, compiles 244, compile time 1060s, wall 439s)
+11:52:44 SpherePacking.ForMathlib.MDifferentiableFunProp: 1 imports, 32 dependents; removable for the file itself: 0  [0s]
+11:52:44 [40/72] SpherePacking.ForMathlib.MDifferentiableFunProp: removed 0 (total removed 21, compiles 245, compile time 1061s, wall 441s)
+11:52:44 SpherePacking.ModularForms.Derivative: 1 imports, 26 dependents; removable for the file itself: 0  [0s]
+11:52:44 [41/72] SpherePacking.ModularForms.Derivative: removed 0 (total removed 21, compiles 246, compile time 1061s, wall 442s)
+11:52:48 SpherePacking.ModularForms.JacobiTheta.Defs: 4 imports, 29 dependents; removable for the file itself: 4  [3s]
+11:52:48     all 4 together: rejected (SpherePacking.ModularForms.JacobiTheta.Defs itself: 1:0: invalid -D parameter, unknown configuration option 'linter.flexible' If the option is defined in a library, use '-Dweak.linter.flexible' to set it conditionally)
+11:52:55     SpherePacking.ForMathlib.MDifferentiableFunProp: rejected (dependent SpherePacking.ModularForms.JacobiTheta.Basic)
+11:53:03     SpherePacking.ForMathlib.SlashActions: rejected (dependent SpherePacking.ModularForms.JacobiTheta.Basic)
+11:53:09     SpherePacking.ModularForms.DimensionFormulas: rejected (dependent SpherePacking.ModularForms.JacobiTheta.MDifferentiable)
+11:53:15     SpherePacking.Tactic.TendstoCont: rejected (dependent SpherePacking.ModularForms.JacobiTheta.Derivative)
+11:53:15 [42/72] SpherePacking.ModularForms.JacobiTheta.Defs: removed 0 (total removed 21, compiles 255, compile time 1090s, wall 473s)
+11:53:20 SpherePacking.ModularForms.EisensteinAsymptotics: 3 imports, 25 dependents; removable for the file itself: 2  [3s]
+11:53:48     all 2 together: ACCEPTED (25 dependents compiled)
+11:53:49 [43/72] SpherePacking.ModularForms.EisensteinAsymptotics: removed 2 (total removed 23, compiles 284, compile time 1213s, wall 507s)
+11:53:51 SpherePacking.ModularForms.JacobiTheta.Basic: 1 imports, 28 dependents; removable for the file itself: 0  [0s]
+11:53:51 [44/72] SpherePacking.ModularForms.JacobiTheta.Basic: removed 0 (total removed 23, compiles 285, compile time 1213s, wall 509s)
+11:53:51 SpherePacking.ModularForms.QExpansion: 1 imports, 24 dependents; removable for the file itself: 0  [0s]
+11:53:51 [45/72] SpherePacking.ModularForms.QExpansion: removed 0 (total removed 23, compiles 286, compile time 1213s, wall 509s)
+11:53:52 SpherePacking.ModularForms.JacobiTheta.MDifferentiable: 1 imports, 26 dependents; removable for the file itself: 0  [0s]
+11:53:52 [46/72] SpherePacking.ModularForms.JacobiTheta.MDifferentiable: removed 0 (total removed 23, compiles 287, compile time 1214s, wall 510s)
+11:53:52 SpherePacking.ModularForms.JacobiTheta.JacobiIdentity: 1 imports, 25 dependents; removable for the file itself: 0  [0s]
+11:53:52 [47/72] SpherePacking.ModularForms.JacobiTheta.JacobiIdentity: removed 0 (total removed 23, compiles 288, compile time 1214s, wall 510s)
+11:53:56 SpherePacking.ModularForms.JacobiTheta.Derivative: 2 imports, 24 dependents; removable for the file itself: 0  [3s]
+11:53:56 [48/72] SpherePacking.ModularForms.JacobiTheta.Derivative: removed 0 (total removed 23, compiles 290, compile time 1220s, wall 513s)
+11:54:03 SpherePacking.ModularForms.FG: 3 imports, 23 dependents; removable for the file itself: 0  [7s]
+11:54:03 [49/72] SpherePacking.ModularForms.FG: removed 0 (total removed 23, compiles 293, compile time 1236s, wall 520s)
+11:54:06 SpherePacking.MagicFunction.b.Psi: 2 imports, 5 dependents; removable for the file itself: 0  [3s]
+11:54:06 [50/72] SpherePacking.MagicFunction.b.Psi: removed 0 (total removed 23, compiles 295, compile time 1241s, wall 523s)
+11:54:06 SpherePacking.MagicFunction.a.Phi: 1 imports, 17 dependents; removable for the file itself: 0  [0s]
+11:54:06 [51/72] SpherePacking.MagicFunction.a.Phi: removed 0 (total removed 23, compiles 296, compile time 1242s, wall 524s)
+11:54:06 SpherePacking.ModularForms.PhiTransform: 1 imports, 0 dependents; removable for the file itself: 0  [0s]
+11:54:06 [52/72] SpherePacking.ModularForms.PhiTransform: removed 0 (total removed 23, compiles 297, compile time 1242s, wall 524s)
+11:54:07 SpherePacking.MagicFunction.b.Basic: 1 imports, 4 dependents; removable for the file itself: 0  [0s]
+11:54:07 [53/72] SpherePacking.MagicFunction.b.Basic: removed 0 (total removed 23, compiles 298, compile time 1242s, wall 524s)
+11:54:15 SpherePacking.MagicFunction.PolyFourierCoeffBound: 5 imports, 10 dependents; removable for the file itself: 1  [8s]
+11:54:25     all 1 together: ACCEPTED (10 dependents compiled)
+11:54:26 [54/72] SpherePacking.MagicFunction.PolyFourierCoeffBound: removed 1 (total removed 24, compiles 313, compile time 1311s, wall 543s)
+11:54:30 SpherePacking.MagicFunction.a.Basic: 2 imports, 14 dependents; removable for the file itself: 0  [2s]
+11:54:30 [55/72] SpherePacking.MagicFunction.a.Basic: removed 0 (total removed 24, compiles 315, compile time 1315s, wall 548s)
+11:54:33 SpherePacking.MagicFunction.a.IntegralEstimates.I2: 2 imports, 1 dependents; removable for the file itself: 0  [3s]
+11:54:33 [56/72] SpherePacking.MagicFunction.a.IntegralEstimates.I2: removed 0 (total removed 24, compiles 317, compile time 1321s, wall 551s)
+11:54:37 SpherePacking.MagicFunction.a.IntegralEstimates.I3: 2 imports, 1 dependents; removable for the file itself: 0  [3s]
+11:54:37 [57/72] SpherePacking.MagicFunction.a.IntegralEstimates.I3: removed 0 (total removed 24, compiles 319, compile time 1328s, wall 554s)
+11:54:40 SpherePacking.MagicFunction.a.IntegralEstimates.I4: 2 imports, 1 dependents; removable for the file itself: 0  [3s]
+11:54:40 [58/72] SpherePacking.MagicFunction.a.IntegralEstimates.I4: removed 0 (total removed 24, compiles 321, compile time 1334s, wall 557s)
+11:54:43 SpherePacking.MagicFunction.a.IntegralEstimates.I5: 2 imports, 1 dependents; removable for the file itself: 0  [3s]
+11:54:43 [59/72] SpherePacking.MagicFunction.a.IntegralEstimates.I5: removed 0 (total removed 24, compiles 323, compile time 1340s, wall 561s)
+11:54:46 SpherePacking.MagicFunction.a.IntegralEstimates.I6: 2 imports, 1 dependents; removable for the file itself: 0  [3s]
+11:54:46 [60/72] SpherePacking.MagicFunction.a.IntegralEstimates.I6: removed 0 (total removed 24, compiles 325, compile time 1346s, wall 564s)
+11:54:49 SpherePacking.MagicFunction.a.Schwartz: 2 imports, 3 dependents; removable for the file itself: 0  [3s]
+11:54:49 [61/72] SpherePacking.MagicFunction.a.Schwartz: removed 0 (total removed 24, compiles 327, compile time 1351s, wall 567s)
+11:54:52 SpherePacking.MagicFunction.b.Schwartz: 2 imports, 3 dependents; removable for the file itself: 0  [3s]
+11:54:52 [62/72] SpherePacking.MagicFunction.b.Schwartz: removed 0 (total removed 24, compiles 329, compile time 1356s, wall 570s)
+11:54:55 SpherePacking.MagicFunction.a.IntegralEstimates.I1: 2 imports, 4 dependents; removable for the file itself: 0  [3s]
+11:54:55 [63/72] SpherePacking.MagicFunction.a.IntegralEstimates.I1: removed 0 (total removed 24, compiles 331, compile time 1362s, wall 573s)
+11:54:55 SpherePacking.MagicFunction.a.Eigenfunction: 1 imports, 1 dependents; removable for the file itself: 0  [0s]
+11:54:55 [64/72] SpherePacking.MagicFunction.a.Eigenfunction: removed 0 (total removed 24, compiles 332, compile time 1363s, wall 573s)
+11:54:56 SpherePacking.MagicFunction.a.SpecialValues: 1 imports, 1 dependents; removable for the file itself: 0  [0s]
+11:54:56 [65/72] SpherePacking.MagicFunction.a.SpecialValues: removed 0 (total removed 24, compiles 333, compile time 1363s, wall 573s)
+11:54:56 SpherePacking.MagicFunction.b.Eigenfunction: 1 imports, 1 dependents; removable for the file itself: 0  [0s]
+11:54:56 [66/72] SpherePacking.MagicFunction.b.Eigenfunction: removed 0 (total removed 24, compiles 334, compile time 1363s, wall 574s)
+11:54:56 SpherePacking.MagicFunction.b.SpecialValues: 1 imports, 1 dependents; removable for the file itself: 0  [0s]
+11:54:56 [67/72] SpherePacking.MagicFunction.b.SpecialValues: removed 0 (total removed 24, compiles 335, compile time 1364s, wall 574s)
+11:54:57 SpherePacking.MagicFunction.a.Integrability.ComplexIntegrands: 1 imports, 3 dependents; removable for the file itself: 0  [0s]
+11:54:57 [68/72] SpherePacking.MagicFunction.a.Integrability.ComplexIntegrands: removed 0 (total removed 24, compiles 336, compile time 1364s, wall 574s)
+11:54:57 SpherePacking.MagicFunction.a.Integrability.CuspPath: 1 imports, 0 dependents; removable for the file itself: 0  [0s]
+11:54:57 [69/72] SpherePacking.MagicFunction.a.Integrability.CuspPath: removed 0 (total removed 24, compiles 337, compile time 1364s, wall 575s)
+11:55:00 SpherePacking.MagicFunction.g.Basic: 4 imports, 0 dependents; removable for the file itself: 0  [3s]
+11:55:00 [70/72] SpherePacking.MagicFunction.g.Basic: removed 0 (total removed 24, compiles 341, compile time 1377s, wall 578s)
+11:55:01 SpherePacking.MagicFunction.a.Integrability.RealIntegrands: 1 imports, 1 dependents; removable for the file itself: 0  [0s]
+11:55:01 [71/72] SpherePacking.MagicFunction.a.Integrability.RealIntegrands: removed 0 (total removed 24, compiles 342, compile time 1377s, wall 578s)
+11:55:06 SpherePacking.MagicFunction.a.Integrability.Integrability: 6 imports, 0 dependents; removable for the file itself: 5  [5s]
+11:55:09     all 5 together: ACCEPTED (0 dependents compiled)
+11:55:09 [72/72] SpherePacking.MagicFunction.a.Integrability.Integrability: removed 5 (total removed 29, compiles 349, compile time 1396s, wall 587s)
+11:55:09 STAGE2 DONE {
+ "removed": {
+  "SpherePacking.ForMathlib.Fourier": [
+   "Mathlib.RingTheory.Binomial"
+  ],
+  "SpherePacking.ForMathlib.AtImInfty": [
+   "Mathlib.Analysis.Normed.Group.Tannery"
+  ],
+  "SpherePacking.ForMathlib.QSeriesBounds": [
+   "Mathlib.Tactic.Positivity"
+  ],
+  "SpherePacking.ModularForms.SlashActionAuxil": [
+   "Mathlib.Algebra.Field.ZMod",
+   "Mathlib.Analysis.CStarAlgebra.Classes"
+  ],
+  "SpherePacking.Basic.SpherePacking": [
+   "Mathlib.Algebra.Order.Star.Real",
+   "Mathlib.Topology.EMetricSpace.Paracompact"
+  ],
+  "SpherePacking.ForMathlib.RadialSchwartz.Multidimensional": [
+   "Mathlib.Analysis.Distribution.SchwartzSpace.Deriv",
+   "Mathlib.Analysis.InnerProductSpace.Calculus",
+   "Mathlib.Algebra.Order.Star.Real",
+   "Mathlib.Analysis.Calculus.ContDiff.Bounds"
+  ],
+  "SpherePacking.Tactic.TendstoCont": [
+   "Mathlib.Tactic.NormNum"
+  ],
+  "SpherePacking.ModularForms.IsCuspForm": [
+   "Mathlib.Analysis.CStarAlgebra.Module.Defs"
+  ],
+  "SpherePacking.ModularForms.E2": [
+   "SpherePacking.ModularForms.SlashActionAuxil"
+  ],
+  "SpherePacking.Basic.PeriodicPacking": [
+   "Mathlib.Dynamics.Ergodic.Action.Regular"
+  ],
+  "SpherePacking.ForMathlib.InvPowSummability": [
+   "Mathlib.Topology.Separation.CompletelyRegular"
+  ],
+  "SpherePacking.ModularForms.Delta": [
+   "SpherePacking.ForMathlib.Cusps",
+   "SpherePacking.ModularForms.exp_lems"
+  ],
+  "SpherePacking.CohnElkies.Prereqs": [
+   "Mathlib.Analysis.CStarAlgebra.Classes"
+  ],
+  "SpherePacking.ModularForms.DimensionFormulas": [
+   "Mathlib.Algebra.Order.Star.Rat",
+   "SpherePacking.ModularForms.Eisenstein"
+  ],
+  "SpherePacking.ModularForms.EisensteinAsymptotics": [
+   "SpherePacking.ModularForms.DimensionFormulas",
+   "Mathlib.Analysis.Real.Pi.Bounds"
+  ],
+  "SpherePacking.MagicFunction.PolyFourierCoeffBound": [
+   "SpherePacking.ForMathlib.Fourier"
+  ],
+  "SpherePacking.MagicFunction.a.Integrability.Integrability": [
+   "SpherePacking.MagicFunction.a.IntegralEstimates.I2",
+   "SpherePacking.MagicFunction.a.IntegralEstimates.I3",
+   "SpherePacking.MagicFunction.a.IntegralEstimates.I4",
+   "SpherePacking.MagicFunction.a.IntegralEstimates.I5",
+   "SpherePacking.MagicFunction.a.IntegralEstimates.I6"
+  ]
+ },
+ "compiles": 349,
+ "compile_secs": 1396.199999999999
+}
