@@ -11,7 +11,9 @@ works.
 `README.md` is the full documentation: the three stages, their exact definitions, how
 rebuilds are avoided (direct `lean` calls, shadow olean tree), how to run it, the
 hardcoded settings and the known limits. Read it before changing the pipeline, and keep
-it up to date when behaviour changes.
+it up to date when behaviour changes. It is written for users of the scripts: keep it
+concise, and leave out history (earlier versions, past runs, reviews, timings of old
+versions) and internal code names that a user does not need.
 
 ## Do not use `lake shake`
 
@@ -34,8 +36,8 @@ This project must not use `lake shake`, in any form:
 - Never edit non-import lines of a target project's sources.
 - `meta` imports and the root aggregator file are left untouched (see README).
 - The project path, the root module and the `-D` options are hardcoded for
-  Sphere-Packing-Lean (settings block at the top of `impgraph.py`); see "Hardcoded
-  settings" in the README before running on anything else.
+  Sphere-Packing-Lean (settings block at the top of `impgraph.py`); see "Settings" in
+  the README before running on anything else.
 - `impmin.py` is the single entry point. Stages 2 and 3 share one class (`Refine`);
   keep stage differences as settings there rather than splitting the code again.
 - `run` never edits the target's sources; only `apply` does.
