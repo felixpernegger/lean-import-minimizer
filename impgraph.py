@@ -1,22 +1,60 @@
-"""Settings, import-header parsing and the import graph.
+"""Project settings, import-header parsing and the import graph.
 
 Only reads files, except for `write_atomic`; the callers decide what to write.
 """
 import glob
 import hashlib
 import os
+import re
 import stat
 import subprocess
 import threading
 
 # --------------------------------------------------------------------- settings
-# Hardcoded for Sphere-Packing-Lean; see "Hardcoded settings" in the README.
-ROOT = os.environ.get("IMPMIN_ROOT", "/home/batixx/Documents/GitHub/Sphere-Packing-Lean")
-ROOT_MODULE = "SpherePacking"  # aggregator file: never touched
-# The -D options Lake passes; must mirror `leanOptions` in the lakefile (checked against
-# Lake's .setup.json files at the start of a run).
-OPTS = ["-Dpp.unicode.fun=true", "-DautoImplicit=false", "-DrelaxedAutoImplicit=false",
-        "-Dweak.linter.mathlibStandardSet=true", "-Dlinter.flexible=false"]
+# The project: `--project` / IMPMIN_ROOT, default the current directory. The root module
+# (the file that imports all others; never touched): `--root-module` / IMPMIN_MODULE,
+# default inferred by `_root_module`. The -D options are read per file from Lake's
+# .setup.json files (see impmin.py), so the lakefile needs no copy here.
+ROOT = os.path.abspath(os.environ.get("IMPMIN_ROOT") or os.getcwd())
+if not os.path.isfile(os.path.join(ROOT, "lean-toolchain")):
+    raise SystemExit(f"{ROOT} is not a Lean project (no lean-toolchain file); "
+                     "run from the project directory or pass --project PATH")
+
+
+def _tracked_lean_files():
+    out = subprocess.run(["git", "ls-files", "*.lean"], cwd=ROOT, capture_output=True,
+                         text=True)
+    if out.returncode != 0:
+        raise SystemExit(f"{ROOT} is not a git repository: {out.stderr.strip()}")
+    return [f for f in out.stdout.split("\n") if f.endswith(".lean")]
+
+
+def _root_module():
+    """IMPMIN_MODULE, else the top-level `X.lean` with a directory `X/` of tracked files;
+    if there are several, the one the lakefile names as default target."""
+    if os.environ.get("IMPMIN_MODULE"):
+        return os.environ["IMPMIN_MODULE"]
+    files = _tracked_lean_files()
+    cands = sorted(f[:-5] for f in files if "/" not in f and
+                   any(g.startswith(f[:-5] + "/") for g in files))
+    if len(cands) == 1:
+        return cands[0]
+    defaults = set()
+    for name, pat in (("lakefile.toml", r"defaultTargets\s*=\s*\[([^\]]*)\]"),
+                      ("lakefile.lean", r"@\[default_target\]\s*lean_lib\s+«?([\w.]+)»?")):
+        p = os.path.join(ROOT, name)
+        if os.path.isfile(p):
+            with open(p, encoding="utf-8") as f:
+                for m in re.findall(pat, f.read()):
+                    defaults |= set(re.findall(r"[\w.]+", m))
+    pick = [c for c in cands if c in defaults]
+    if len(pick) == 1:
+        return pick[0]
+    raise SystemExit(f"cannot tell the root module of {ROOT} (candidates: {cands}); "
+                     "pass --root-module NAME")
+
+
+ROOT_MODULE = _root_module()
 
 
 def _toolchain_dir():
@@ -147,7 +185,27 @@ def read_header(path):
     lines = s.split("\n")
     for e in imps:
         e["text"] = lines[e["line"] - 1].strip()
+        e["keep"] = KEEP in e["text"]
     return lines, is_mod, imps
+
+
+# lake shake's annotations (only the comments are read; lake shake itself is never used):
+#   import X -- shake: keep             this import line is never changed
+#   module -- shake: keep-all           no import of this file is changed or removed
+#   module -- shake: keep-downstream    every file that reaches this module keeps reaching it
+KEEP = "shake: keep"
+
+
+def file_flags(path):
+    """keep_all / keep_down from the comment on the `module` line, and imports_only:
+    nothing but comments after the import block (a file that only re-exports)."""
+    with open(path, encoding="utf-8") as f:
+        s = f.read()
+    _, _, rest = scan_header(s)
+    first = next(_lex(s, {}), None)
+    line = s.split("\n")[first[1] - 1] if first and first[0] == "module" else ""
+    return dict(keep_all="shake: keep-all" in line,
+                keep_down="shake: keep-downstream" in line, imports_only=rest is None)
 
 
 def parse_header(path):
@@ -164,6 +222,7 @@ def parse_line(text):
     e = imps[0]
     e["line"] = e["end"] = 0
     e["text"] = text.strip()
+    e["keep"] = KEEP in e["text"]
     return e
 
 
@@ -193,18 +252,21 @@ def project_header(mod):
     return lines, imps
 
 
+_MODULE_LINE = re.compile(r"^module\s*(--.*)?$")
+
+
 def body_sha(lines, imps):
-    """Hash of everything except the import lines and blank lines."""
+    """Hash of everything except the import lines, blank lines and a comment on the
+    `module` line (where the shake annotations go)."""
     drop = {e["line"] - 1 for e in imps}
-    body = "\n".join(l for i, l in enumerate(lines) if i not in drop and l.strip())
+    body = "\n".join("module" if _MODULE_LINE.match(l) else l
+                     for i, l in enumerate(lines) if i not in drop and l.strip())
     return hashlib.sha256(body.encode()).hexdigest()
 
 
 def project_modules():
     """Tracked .lean files of the project that belong to ROOT_MODULE's namespace."""
-    out = subprocess.run(["git", "ls-files", "*.lean"], cwd=ROOT, capture_output=True,
-                         text=True, check=True).stdout.split("\n")
-    mods = (f[:-5].replace("/", ".") for f in out if f.endswith(".lean"))
+    mods = (f[:-5].replace("/", ".") for f in _tracked_lean_files())
     return sorted(m for m in mods if m == ROOT_MODULE or m.startswith(ROOT_MODULE + "."))
 
 
@@ -382,11 +444,12 @@ class Graph:
         return pos
 
     def redundant(self, mod):
-        """Imports of `mod` implied by another import of `mod` (stage 1a rule)."""
+        """Imports of `mod` implied by another import of `mod` (stage 1a rule); lines
+        marked `shake: keep` are never dropped."""
         _, imps = self.G[mod]
         out = []
         for e in imps:
-            if e["meta"] or e["all"]:
+            if e["meta"] or e["all"] or e["keep"]:
                 continue
             for y in imps:
                 if y is e or y["meta"] or y["all"] or y["mod"] == e["mod"]:

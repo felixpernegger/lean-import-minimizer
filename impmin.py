@@ -10,16 +10,19 @@ Stages:
   direct    2   every import must itself provide something the file uses
   private   3   every import gets the weakest modifier that compiles
 
-Usage:
-  impmin.py run STAGE [--limit N] [--fresh] [--no-guess]
-  impmin.py apply STAGE [--apply [--build]]  dry run without --apply; --build: lake build
+Usage (global options go before the command):
+  impmin.py [--project PATH] [--root-module NAME] COMMAND ...
+  impmin.py run STAGE [--limit N] [--fresh] [--redo MODULE ...] [--no-guess]
+                      [--allow-new-warnings]
+  impmin.py apply STAGE [--apply [--build] [--check CMD]]   dry run without --apply
   impmin.py format [--apply]               Mathlib-style import blocks, same imports
   impmin.py verify-diff [--table]          working tree == HEAD minus import lines?
-  impmin.py baseline                       compile every file once (timeouts)
+  impmin.py baseline                       compile every file once (timeouts, warnings)
   impmin.py shadow                         recreate the shadow olean tree
   impmin.py selftest                       check that the shadow tree works
 """
 import argparse
+import collections
 import concurrent.futures as cf
 import fcntl
 import hashlib
@@ -36,10 +39,6 @@ import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from impgraph import (OPTS, LEAN, ROOT, ROOT_MODULE, Graph, HeaderError,  # noqa: E402
-                      body_sha, mod_path, new_source, parse_line, project_header,
-                      project_modules, rewrite, scan_header, short, work_modules,
-                      write_atomic)
 
 STAGES = ("implied", "remove", "direct", "private")
 WORKERS = int(os.environ.get("IMPMIN_WORKERS", "4"))  # lean processes at once, globally
@@ -47,15 +46,29 @@ WORKERS = int(os.environ.get("IMPMIN_WORKERS", "4"))  # lean processes at once, 
 # visible modules did not change (its olean inputs did). Costs one batch per file. The
 # root file is compiled at that point either way.
 FULL_DEPENDENT_CHECK = True
-WORK = HERE + "/work"
-TIMES = WORK + "/base_times.json"
-BUILD_LIB = ROOT + "/.lake/build/lib/lean"
-IMPMIN = ROOT + "/.lake/import-min"
-SHADOW = IMPMIN + "/lean"
-SHADOW_OWNER = IMPMIN + "/owner"
-LOCK = IMPMIN + "/lock"
-TMP = IMPMIN + "/tmp"  # trial sources, outputs, backups; same filesystem as the shadow
 ART_EXTS = (".olean", ".olean.server", ".olean.private", ".ir", ".ir.sig", ".ilean")
+_IMPGRAPH = ("LEAN", "ROOT", "ROOT_MODULE", "Graph", "HeaderError", "body_sha", "file_flags",
+             "mod_path", "new_source", "parse_line", "project_header", "project_modules",
+             "read_header", "rewrite", "scan_header", "short", "work_modules", "write_atomic")
+
+
+def load_project(project=None, root_module=None):
+    """Select the target project (impgraph reads it when imported) and set the paths that
+    depend on it. Everything a run writes lives in the project's .lake/import-min."""
+    if project:
+        os.environ["IMPMIN_ROOT"] = project
+    if root_module:
+        os.environ["IMPMIN_MODULE"] = root_module
+    import impgraph
+    g = globals()
+    for n in _IMPGRAPH:
+        g[n] = getattr(impgraph, n)
+    root = impgraph.ROOT
+    g.update(BUILD_LIB=root + "/.lake/build/lib/lean", IMPMIN=root + "/.lake/import-min")
+    g.update(SHADOW=IMPMIN + "/lean", SHADOW_OWNER=IMPMIN + "/owner", LOCK=IMPMIN + "/lock",
+             TMP=IMPMIN + "/tmp",  # trial sources, outputs, backups; same fs as the shadow
+             WORK=IMPMIN + "/work")  # results, logs and progress of every stage
+    g["TIMES"] = WORK + "/base_times.json"
 
 _print_lock = threading.Lock()
 _progress = [None]  # file that `say` copies its lines to
@@ -138,7 +151,7 @@ def refuse_if_unfinished(what, allow=None):
     busy = unfinished_run()
     if busy and busy != allow:
         sys.exit(f"not running {what}: the unfinished `{busy}` run uses the shadow tree. "
-                 f"Finish it (`impmin.py run {busy}`) or discard it (`rm -rf {IMPMIN}`).")
+                 f"Finish it (`impmin.py run {busy}`) or discard it (`rm -rf {SHADOW}`).")
 
 
 # ----------------------------------------------------------------- environment
@@ -165,20 +178,32 @@ def build_is_current():
                           ).returncode == 0
 
 
-def check_opts(work):
-    """OPTS must be the options Lake compiles with (recorded in its .setup.json files)."""
-    for m in work:
-        p = f"{ROOT}/.lake/build/ir/{rel(m)}.setup.json"
-        if os.path.exists(p):
-            break
-    else:
-        say("note: no Lake .setup.json found; cannot check OPTS against the lakefile")
-        return
+_opts = {}
+
+
+def load_opts(mods):
+    """The -D options Lake compiles each module with (`leanOptions` of its package and
+    library), read from Lake's .setup.json files."""
     fmt = lambda v: ("true" if v else "false") if isinstance(v, bool) else str(v)  # noqa
-    want = sorted(f"-D{k}={fmt(v)}" for k, v in load_json(p).get("options", {}).items())
-    if want != sorted(OPTS):
-        sys.exit(f"OPTS in impgraph.py do not match the options Lake uses ({p}):\n"
-                 f"  OPTS: {sorted(OPTS)}\n  Lake: {want}")
+    missing = []
+    for m in mods:
+        if m in _opts:
+            continue
+        d = load_json(f"{ROOT}/.lake/build/ir/{rel(m)}.setup.json")
+        if d is None:
+            missing.append(m)
+            continue
+        _opts[m] = [f"-D{k}={fmt(v)}" for k, v in sorted(d.get("options", {}).items())]
+    if missing:
+        sys.exit(f"no Lake .setup.json for {missing[:3]}{' ...' if len(missing) > 3 else ''} "
+                 f"in {ROOT}/.lake/build/ir: run `lake build` first (the options Lean "
+                 "is called with are read from there)")
+
+
+def lean_opts(mod):
+    if mod not in _opts:
+        load_opts([mod])
+    return _opts[mod]
 
 
 # --------------------------------------------------------------------- running
@@ -272,16 +297,24 @@ class Batch:
         return results
 
 
-def run_lean(args, env, timeout, batch=None):
+def warning_text(msg):
+    """A warning as compared against the baseline: its text without the position."""
+    return " ".join(str(msg.get("data", "")).split())
+
+
+def run_lean(args, env, timeout, batch=None, allowed=None):
     """Run `lean`, killing it at the first error message.
 
-    status: "ok"; "error" (Lean reported an error: the only real "does not compile");
-    "timeout" / "crash" (no Lean error: killed by a signal, non-zero exit, raw output);
-    "cancelled" (killed by us: failfast abort or Ctrl-C)."""
+    allowed: if given, a Counter of warning texts (the file's baseline); any other
+    warning counts as an error ("new warning: ...").
+    status: "ok"; "error" (Lean reported an error, or a new warning: the only real "does
+    not compile"); "timeout" / "crash" (no Lean error: killed by a signal, non-zero exit,
+    raw output); "cancelled" (killed by us: failfast abort or Ctrl-C)."""
+    allowed = collections.Counter(allowed) if allowed is not None else None
     with _slots:
         if _shutdown.is_set() or (batch and batch.cancel.is_set()):
             return dict(ok=False, status="cancelled", cancelled=True, secs=0, rss_mb=0,
-                        err=None, warnings=0)
+                        err=None, warnings=[])
         t0 = time.time()
         p = subprocess.Popen(LINEBUF + [LEAN] + args, cwd=ROOT, env=env,
                              stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
@@ -302,7 +335,7 @@ def run_lean(args, env, timeout, batch=None):
         timer.daemon = True
         timer.start()
         err = raw = None
-        nwarn = 0
+        warns = []
         try:
             for line in p.stdout:
                 if line.startswith("{"):
@@ -312,14 +345,22 @@ def run_lean(args, env, timeout, batch=None):
                         raw = raw or line.strip()[:500]
                         continue
                     sev = msg.get("severity")
+                    pos = msg.get("pos") or {}
+                    where = f'{pos.get("line")}:{pos.get("column")}: '
                     if sev == "error":
-                        pos = msg.get("pos") or {}
-                        err = f'{pos.get("line")}:{pos.get("column")}: ' + \
-                            " ".join(str(msg.get("data", "")).split())[:1000]
+                        err = where + warning_text(msg)[:1000]
                         kill(p)
                         break
                     if sev == "warning":
-                        nwarn += 1
+                        w = warning_text(msg)
+                        warns.append(w)
+                        if allowed is not None:
+                            if allowed[w] > 0:
+                                allowed[w] -= 1
+                            else:
+                                err = "new warning: " + where + w[:1000]
+                                kill(p)
+                                break
                 elif line.strip():
                     raw = raw or line.strip()[:500]
         except BaseException:
@@ -355,7 +396,7 @@ def run_lean(args, env, timeout, batch=None):
         st = "ok"
     return dict(ok=st == "ok", status=st, cancelled=st == "cancelled",
                 secs=round(time.time() - t0, 1), rss_mb=rss, err=err,
-                warnings=nwarn)
+                warnings=warns)
 
 
 _tags = itertools.count(1)
@@ -366,13 +407,14 @@ def new_tag():
 
 
 def compile_mod(mod, imports=None, out=False, shadow=True, timeout=1800, batch=None,
-                extra="", reformat=False):
+                extra="", reformat=False, allowed=None):
     """Compile `mod`.
 
     imports:  if given, a temporary copy of the source with these import lines is
               compiled, the block rewritten exactly as `apply` would (`reformat`).
     out:      if True, write the olean family into a fresh directory, returned as "outdir".
     extra:    text appended to the source (used only by the self-test).
+    allowed:  warnings that do not count as failure (see run_lean); None: all.
     """
     tag = new_tag()
     srcroot = outdir = r = None
@@ -396,8 +438,8 @@ def compile_mod(mod, imports=None, out=False, shadow=True, timeout=1800, batch=N
             base = f"{outdir}/{rel(mod)}"
             os.makedirs(os.path.dirname(base), exist_ok=True)
             args += ["-o", base + ".olean", "-i", base + ".ilean"]
-        args += ["--json"] + OPTS
-        r = run_lean(args, lake_env(shadow), timeout, batch)
+        args += ["--json"] + lean_opts(mod)
+        r = run_lean(args, lake_env(shadow), timeout, batch, allowed)
     finally:
         if srcroot:
             shutil.rmtree(srcroot, ignore_errors=True)
@@ -477,20 +519,34 @@ def sha(path):
 
 
 # -------------------------------------------------------------------- baseline
-def cmd_baseline():
-    work = work_modules()
+def file_body_sha(mod):
+    lines, _, imps = read_header(mod_path(mod))
+    return body_sha(lines, imps)
+
+
+def cmd_baseline(mods=None):
+    """Compile files as they are (against Lake's build) and record time, memory and
+    warnings; by default every project file including the root file. The warnings are
+    the reference for "no new warnings" in every later stage."""
+    mods = project_modules() if mods is None else mods
     os.makedirs(WORK, exist_ok=True)
-    jobs = [(m, lambda b, m=m: compile_mod(m, shadow=False, batch=b)) for m in work]
+    load_opts(mods)
+    jobs = [(m, lambda b, m=m: compile_mod(m, shadow=False, batch=b)) for m in mods]
     t0 = time.time()
     res = Batch().run(jobs)
     wall = time.time() - t0
     bad = {m: r["err"] for m, r in res.items() if not r["ok"]}
-    dump(dict(root=ROOT, files={m: dict(secs=r["secs"], rss_mb=r["rss_mb"],
-                                        warnings=r["warnings"], ok=r["ok"])
-                                for m, r in res.items()}), TIMES)
+    t = load_json(TIMES) or {}
+    files = t.get("files", {}) if t.get("root") == ROOT else {}
+    for m, r in res.items():
+        files[m] = dict(secs=r["secs"], rss_mb=r["rss_mb"], warn=r["warnings"], ok=r["ok"],
+                        body=file_body_sha(m))
+    dump(dict(root=ROOT, files=files), TIMES)
     cpu = sum(r["secs"] for r in res.values())
+    nw = sum(len(r["warnings"]) for r in res.values())
     say(f"baseline: {len(res)} files, wall {wall:.0f}s with {WORKERS} workers, "
-        f"sum of per-file times {cpu:.0f}s, max RSS {max(r['rss_mb'] for r in res.values())} MB")
+        f"sum of per-file times {cpu:.0f}s, max RSS {max(r['rss_mb'] for r in res.values())} MB"
+        f", {nw} warnings")
     for m, r in sorted(res.items(), key=lambda kv: -kv[1]["secs"])[:10]:
         say(f"   {r['secs']:7.1f}s {r['rss_mb']:5d}MB  {m}")
     if bad:
@@ -499,12 +555,15 @@ def cmd_baseline():
 
 
 def load_times():
-    """Per-file baseline times; (re)runs `baseline` if any file is missing or failed."""
+    """Per-file baseline; compiles the files that have none yet, failed, or whose
+    non-import lines changed since."""
     t = load_json(TIMES) or {}
     files = t.get("files", {}) if t.get("root") == ROOT else {}
-    if any(m not in files or not files[m]["ok"] for m in work_modules()):
-        say("no successful baseline for every file yet: running `baseline`")
-        cmd_baseline()
+    stale = [m for m in project_modules() if m not in files or not files[m]["ok"] or
+             "warn" not in files[m] or files[m].get("body") != file_body_sha(m)]
+    if stale:
+        say(f"no up-to-date baseline for {len(stale)} files: compiling them once as they are")
+        cmd_baseline(stale)
         files = load_json(TIMES)["files"]
     return files
 
@@ -578,20 +637,100 @@ class Stage:
         for m in g.work:  # the original state, whatever has been applied since
             if sorted(texts_of(g.imports(m))) != sorted(self.meta["orig"][m]):
                 g.set_imports(m, [parse_line(t) for t in self.meta["orig"][m]])
+        if getattr(opts, "redo", None):
+            self.redo(opts.redo)
         self.orig = {m: project_header(m)[1] for m in g.work}  # current lines (with numbers)
+        flags = self.meta["flags"]
+        # files whose import lines are all kept: `shake: keep-all`, or nothing but imports
+        self.keep_all = {m for m in g.work if flags[m]["keep_all"] or flags[m]["imports_only"]}
+        self.keep_down = {m for m in g.work if flags[m]["keep_down"]}
+        self.needs, self.ns, self.quotes = ({}, {}, {})
+        if self.compiles and os.path.exists(self.dir + "/needs.tsv"):
+            self.needs, self.ns, self.quotes = load_needs(self.dir + "/needs.tsv")
+        self.pins = self.compute_pins()
         self.order = g.topo_order()
         self.ncomp = 0
         self.csecs = 0.0
         self.stats = {}  # file -> [compiles, compile seconds]
         self._lock = threading.Lock()
         if self.compiles:
+            load_opts(project_modules())
             self.verify_sources()
+
+    def compute_pins(self):
+        """file -> {module: "pub" / "priv"}: modules the file must keep reaching at least
+        at that level (re-exported / visible), because they are marked
+        `shake: keep-downstream`, or because a syntax quotation of the file names one of
+        their constants (a macro's expansion is resolved where the macro is written, so
+        without the import every file using the macro breaks, while the file itself still
+        compiles). Taken from the graph at the start of the stage."""
+        g = self.g
+        init = g.reach("Init") | {"Init"}
+        pins = {}
+        for D in g.work:
+            vis, re_ = g.visible(D, "strict"), g.reach(D, "strict")
+            p = {}
+            for K in (self.keep_down | self.quotes.get(D, set())) - init - {D}:
+                if K in re_:
+                    p[K] = "pub"
+                elif K in vis:
+                    p[K] = "priv"
+            pins[D] = p
+        return pins
+
+    def pin_violation(self, mods):
+        """(file, module) of a pin that the current graph breaks, or None."""
+        for m in mods:
+            for K, lvl in self.pins.get(m, {}).items():
+                if K not in (self.g.reach(m, "strict") if lvl == "pub"
+                             else self.g.visible(m, "strict")):
+                    return m, K
+        return None
+
+    def redo(self, mods):
+        """Forget the results of `mods` and of every file that depends on them, so the
+        next files processed are these. Their import lines may have changed since the
+        start, but only in comments (e.g. an added `-- shake: keep`), and so may the
+        comment on their `module` line."""
+        g = self.g
+        bad = [m for m in mods if m not in g.work]
+        if bad:
+            sys.exit(f"--redo: not a file this stage processes: {bad}")
+        key = lambda ts: sorted((e["pub"], e["meta"], e["all"], e["mod"])  # noqa: E731
+                                for e in map(parse_line, ts))
+        for m in mods:
+            lines, imps = project_header(m)
+            if body_sha(lines, imps) != self.meta["body"][m]:
+                sys.exit(f"--redo: the non-import lines of {m} changed since the run "
+                         "started; start over with --fresh")
+            cur = texts_of(imps)
+            if key(cur) != key(self.meta["orig"][m]):
+                if m in self.result and key(cur) == key(self.result[m]["new"]):
+                    sys.exit(f"--redo: {m} already has this stage's result applied; "
+                             "restore its import lines first (git checkout)")
+                sys.exit(f"--redo: the imports of {m} changed since the run started "
+                         "(only comments may change); start over with --fresh")
+            self.meta["orig"][m] = cur
+            self.meta["flags"][m] = file_flags(mod_path(m))
+            g.set_imports(m, [parse_line(t) for t in cur])
+        drop = {C for C in self.result
+                if C in mods or any(m in g.visible(C, "loose") for m in mods)}
+        for C in drop:
+            del self.result[C]
+        dump(self.meta, self.run_path)
+        dump(self.result, self.result_path)
+        if os.path.exists(self.dir + "/final.json"):
+            os.remove(self.dir + "/final.json")
+        say(f"--redo: forgot the results of {len(drop)} files: " +
+            " ".join(sorted(short(C) for C in drop)))
 
     # -- set-up ------------------------------------------------------------------
     def prepare(self):
         """Fresh start or resume; see README "Running it". Returns the baseline times."""
         resume = self.compiles and os.path.exists(self.result_path) and \
             os.path.exists(self.run_path) and not self.opts.fresh
+        if getattr(self.opts, "redo", None) and not resume:
+            sys.exit(f"--redo needs a `{self.name}` run to resume (and no --fresh)")
         if resume:
             if shadow_owner() != self.name:
                 sys.exit(f"cannot resume: the shadow tree is not the one of the interrupted "
@@ -605,13 +744,14 @@ class Stage:
                 if not build_is_current():
                     sys.exit("`lake build --no-build` fails: run `lake build` first")
             meta = self.snapshot()
+            meta["new_warnings_fail"] = not getattr(self.opts, "allow_new_warnings", False)
             if os.path.isdir(self.dir):
                 shutil.rmtree(self.dir)
             os.makedirs(self.dir)
             if self.compiles:
-                check_opts(work_modules())
+                load_opts(project_modules())
                 load_times()
-                self.fresh_start()
+                self.compute_needs()
                 make_shadow(self.name)
             dump(meta, self.run_path)
             if self.compiles:
@@ -622,8 +762,9 @@ class Stage:
         return {}
 
     def snapshot(self):
-        """run.json contents: original import lines and body hashes of every file."""
-        orig, body, bad = {}, {}, []
+        """run.json contents: original import lines, body hashes and shake annotations of
+        every file."""
+        orig, body, flags, bad = {}, {}, {}, []
         for m in work_modules():
             try:
                 lines, imps = project_header(m)
@@ -634,12 +775,13 @@ class Stage:
                 continue
             orig[m] = texts_of(imps)
             body[m] = body_sha(lines, imps)
+            flags[m] = file_flags(mod_path(m))
         if bad:
             sys.exit("unsupported import blocks (fix these by hand first):\n  " +
                      "\n  ".join(bad))
         head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True,
                               text=True).stdout.strip()
-        return dict(root=ROOT, head=head, orig=orig, body=body)
+        return dict(root=ROOT, head=head, orig=orig, body=body, flags=flags)
 
     def verify_sources(self):
         """The sources must still be the ones the run started from (finished files may
@@ -663,8 +805,15 @@ class Stage:
             sys.exit("the sources changed since the run started; restore them or start over "
                      "with --fresh:\n  " + "\n  ".join(bad))
 
-    def fresh_start(self):
-        pass
+    def compute_needs(self):
+        """Run needs.lean on the built project: the first guess of stages 2 and 3, and
+        for every stage the constants named in syntax quotations (see compute_pins)."""
+        say(f"reading the build: lake env lean --run needs.lean {ROOT_MODULE}")
+        path = self.dir + "/needs.tsv"
+        with open(path + ".tmp", "w") as f:
+            subprocess.run(["lake", "env", "lean", "--run", HERE + "/needs.lean", ROOT_MODULE],
+                           cwd=ROOT, stdout=f, check=True)
+        os.replace(path + ".tmp", path)
 
     # -- helpers -----------------------------------------------------------------
     def log(self, **kw):
@@ -674,19 +823,22 @@ class Stage:
                 f.write(json.dumps(kw) + "\n")
 
     def timeout(self, mod):
-        # the root file has no baseline entry; it only loads oleans
-        secs = self.base[mod]["secs"] if mod in self.base else \
-            max(v["secs"] for v in self.base.values())
-        return 3 * secs + 90
+        return 3 * self.base[mod]["secs"] + 90
 
     def compile(self, mod, imports=None, out=False, batch=None, owner=None):
-        """compile_mod with this stage's settings. A compile that ends without a Lean
-        error (timeout, crash, signal) is retried once with twice the time; if that
-        fails too, the run stops instead of treating it as "does not compile"."""
+        """compile_mod with this stage's settings. A warning the file did not have in the
+        baseline counts as failure (unless the run allows new warnings). An unchanged
+        import set is compiled as the file is (no reformatting, like `apply`). A compile
+        that ends without a Lean error (timeout, crash, signal) is retried once with
+        twice the time; if that fails too, the run stops instead of treating it as "does
+        not compile"."""
         timeout = self.timeout(mod)
+        reformat = self.reformat and imports is not None and \
+            sorted(imports) != sorted(texts_of(self.orig[mod]))
+        allowed = self.base[mod]["warn"] if self.meta.get("new_warnings_fail", True) else None
         for attempt in (1, 2):
             r = compile_mod(mod, imports, out=out, timeout=timeout, batch=batch,
-                            reformat=self.reformat)
+                            reformat=reformat, allowed=allowed)
             if r["status"] in ("ok", "error", "cancelled"):
                 break
             self.log(ev="crash", mod=mod, attempt=attempt, err=r["err"], secs=r["secs"],
@@ -787,7 +939,7 @@ class Implied(Stage):
     def run(self):
         g = self.g
         before = {m: g.signature(m) for m in g.work}
-        plan = {m: g.redundant(m) for m in g.work}
+        plan = {m: [] if m in self.keep_all else g.redundant(m) for m in g.work}
         for m, red in plan.items():  # simulate in memory: nothing visible may change
             g.set_imports(m, [e for e in g.imports(m) if not any(e is x for x in red)])
         bad = [m for m in g.work if g.signature(m) != before[m]]
@@ -814,21 +966,32 @@ class Implied(Stage):
 # ---------------------------------------------------------- stage 1b: remove
 def used_modules(mod):
     """Modules whose constants are referenced by name in `mod` (from its .ilean).
-    Only used to decide which dependents to test first."""
+    Only used to decide which dependents to test first, so an unknown format just
+    means no prediction."""
     try:
         with open(f"{BUILD_LIB}/{rel(mod)}.ilean") as f:
             data = json.load(f)
     except (OSError, ValueError):
         return frozenset()
     used = set()
-    for key in data.get("references", {}):
-        try:
-            k = json.loads(key)
-        except ValueError:
-            continue
-        c = k.get("c") if isinstance(k, dict) else None
-        if isinstance(c, dict) and "m" in c:
-            used.add(c["m"])
+    refs = data.get("references") if isinstance(data, dict) else None
+    if isinstance(refs, list):
+        # version >= 6: [key, value, key, value, ...], key = [kind, module, name],
+        # kind 0 = constant
+        for key in refs[0::2]:
+            if isinstance(key, list) and len(key) >= 2 and key[0] == 0 and \
+                    isinstance(key[1], str):
+                used.add(key[1])
+    elif isinstance(refs, dict):
+        # older versions: {json-encoded key: value}, key = {"c": {"m": module, "n": name}}
+        for key in refs:
+            try:
+                k = json.loads(key)
+            except ValueError:
+                continue
+            c = k.get("c") if isinstance(k, dict) else None
+            if isinstance(c, dict) and "m" in c:
+                used.add(c["m"])
     return frozenset(used)
 
 
@@ -845,6 +1008,9 @@ class Remove(Stage):
     def __init__(self, opts):
         super().__init__(opts)
         self.used = {m: used_modules(m) for m in self.g.work}
+        if not any(self.used.values()):
+            say("note: no references read from the .ilean files (unknown format?); "
+                "dependents are compiled without predicting which ones fail")
         self.idx = {m: i for i, m in enumerate(self.order)}
         self.dep_cache = {}  # (C, visible-tuple) -> result
         # files whose olean in the shadow is not the real build's any more
@@ -912,6 +1078,9 @@ class Remove(Stage):
         lines = frozenset(e["line"] for e in T)
         if lines in self.local_fail:
             return False, f"{B} itself: {self.local_fail[lines]}", set()
+        lost = self.loses_pin(B, kept, deps_before)
+        if lost:
+            return False, f"{lost[0]} would no longer reach {lost[1]} (pinned)", set()
         outdir = art.pop(lines, None)
         if outdir is None:
             r = self.compile(B, texts_of(kept), out=True)
@@ -932,16 +1101,34 @@ class Remove(Stage):
         self.g.set_imports(B, prev_imps)
         return False, f"dependent {failing}", set()
 
+    def loses_pin(self, B, kept, deps):
+        """(file, module) if B with only the imports `kept` breaks a pin of B or of one
+        of its dependents `deps` (see compute_pins); None otherwise. Graph only."""
+        if not any(self.pins.get(m) for m in [B] + list(deps)):
+            return None
+        prev = self.g.imports(B)
+        self.g.set_imports(B, kept)
+        try:
+            return self.pin_violation([B] + list(deps))
+        finally:
+            self.g.set_imports(B, prev)
+
     def process(self, B):
         g = self.g
         reset_shadow_module(B)
         self.local_fail = {}  # removed line set -> error, for B itself
         orig = self.orig[B]
-        cands = [e for e in orig if not e["all"] and not e["meta"]]
+        cands = [] if B in self.keep_all else \
+            [e for e in orig if not e["all"] and not e["meta"] and not e["keep"]]
         # The root file loads every file at once, so it also catches clashes between B and
         # files that no work file loads together with B (e.g. auto-named instances).
         deps_before = sorted(g.dependents(B), key=lambda m: self.idx[m]) + [ROOT_MODULE]
         vis_before = {C: self.vis(C) for C in deps_before}
+        pinned = [e for e in cands
+                  if self.loses_pin(B, [x for x in orig if x is not e], deps_before)]
+        if pinned:
+            say(f"{short(B)}: kept (pinned): " + " ".join(e["mod"] for e in pinned))
+            cands = [e for e in cands if not any(e is x for x in pinned)]
         refresh = bool(self.changed & g.visible(B, "loose"))
         # 1. every import on its own, in parallel; keep the oleans of the successes.
         #    If something B loads changed, B with its own imports is compiled alongside.
@@ -954,7 +1141,8 @@ class Remove(Stage):
         if refresh:
             if not res["own"]["ok"]:
                 raise RuntimeError(f"{B} no longer compiles with its own imports against the "
-                                   f"processed files: {res['own']['err']}")
+                                   f"processed files: {res['own']['err']}" +
+                                   upstream_hint(res["own"]["err"]))
             own = res["own"]["outdir"]
         art = {}
         R = []
@@ -1013,12 +1201,13 @@ class Remove(Stage):
 
 # ------------------------------------------------- stages 2 and 3: direct, private
 def load_needs(path):
-    """From needs.lean output: (needs, namespaces).
+    """From needs.lean output: (needs, namespaces, quotes).
     needs: mod -> {used module: dict(weak, pub, wit, pubwit, attr)}. weak: only an
     attribute hint (I line); pub: used in a public signature or exposed body;
     wit/pubwit: shortest (using decl, used decl) pair; attr: attribute witness.
-    namespaces: namespace -> modules that register it (N lines)."""
-    needs, ns, cur = {}, {}, None
+    namespaces: namespace -> modules that register it (N lines).
+    quotes: mod -> modules of constants named in its syntax quotations (Q lines)."""
+    needs, ns, quotes, cur, curmod = {}, {}, {}, None, None
     shorter = lambda w, v: v is None or len(w[0]) + len(w[1]) < len(v[0]) + len(v[1])  # noqa
     with open(path, encoding="utf-8") as f:
         for line in f:
@@ -1027,7 +1216,11 @@ def load_needs(path):
                 ns.setdefault(p[1], set()).add(p[2])
                 continue
             if p[0] == "M":
+                curmod = p[1]
                 cur = needs.setdefault(p[1], {})
+                continue
+            if p[0] == "Q":
+                quotes.setdefault(curmod, set()).add(p[1])
                 continue
             d = cur.setdefault(p[1], dict(weak=True, pub=False, wit=None, pubwit=None,
                                           attr=None))
@@ -1045,11 +1238,34 @@ def load_needs(path):
                 d["pub"] |= p[2] == "1"
             elif p[0] == "I" and d["attr"] is None:
                 d["attr"] = ("", "attribute on " + p[2])
-    return needs, ns
+    return needs, ns, quotes
 
 
 HINT = re.compile(r"import\s+(?:all\s+)?([^\s`'\"]+)")  # "consider adding `import X`"
 UNKNOWN_NS = re.compile(r"unknown namespace `([^`]+)`")
+
+
+def upstream_hint(err):
+    """For an error no import of the file itself can fix: the likely cause upstream."""
+    err = err or ""
+    if "✝" in err:
+        return ("\n  The ✝ marks a name produced by a macro or notation of another file: "
+                "most likely that file lost an import its macro needs (its own compile "
+                "does not notice). Mark that import `-- shake: keep` and rerun the "
+                "stage with --redo THAT_FILE (README: What is kept).")
+    if err.startswith("new warning"):
+        return ("\n  If the warning comes from a change in a file this one imports (import "
+                "order can change elaboration), mark that file `module -- shake: keep-all` "
+                "and rerun the stage with --redo FILE, or rerun with --allow-new-warnings.")
+    return ""
+
+
+class NothingLeft(Exception):
+    """settle: the file does not compile even with every module it could see before."""
+
+    def __init__(self, D, err):
+        super().__init__(f"{D}: does not compile, nothing left to add: {err}")
+        self.err = err
 
 
 class Refine(Stage):
@@ -1078,9 +1294,8 @@ class Refine(Stage):
         super().__init__(opts)
         g = self.g  # still the original graph: finished files are replayed in run()
         self.avail = frozenset(g.reach("Init") | {"Init"})
-        needs_path = self.dir + "/needs.tsv"
-        self.needs, self.ns = load_needs(needs_path) if os.path.exists(needs_path) and \
-            not opts.no_guess else ({}, {})
+        if opts.no_guess:
+            self.needs, self.ns = {}, {}  # the quotations (pins) are still used
         self.pos = g.global_pos()
         self.vold = {m: g.visible(m, "strict") - self.avail for m in g.work}
         work = set(g.work)
@@ -1090,16 +1305,6 @@ class Refine(Stage):
         for m in g.work:
             for x in self.deps0[m]:
                 self.ndown[x] += 1
-
-    def fresh_start(self):
-        if self.opts.no_guess:
-            return
-        say(f"computing the first guess: lake env lean --run needs.lean {ROOT_MODULE}")
-        path = self.dir + "/needs.tsv"
-        with open(path + ".tmp", "w") as f:
-            subprocess.run(["lake", "env", "lean", "--run", HERE + "/needs.lean", ROOT_MODULE],
-                           cwd=ROOT, stdout=f, check=True)
-        os.replace(path + ".tmp", path)
 
     # -- scheduling: independent files in parallel --------------------------------
     def run_files(self, todo):
@@ -1158,12 +1363,16 @@ class Refine(Stage):
         return sorted(mods, key=lambda x: self.pos[x])
 
     def fixed(self, D):
+        """Lines the stage keeps verbatim: meta, `import all`, `shake: keep`, every line of
+        a keep-all file, and in `direct` the private imports."""
         return [e for e in self.orig[D]
-                if e["meta"] or e["all"] or (not self.private and not e["pub"])]
+                if e["meta"] or e["all"] or e["keep"] or D in self.keep_all or
+                (not self.private and not e["pub"])]
 
-    def bases(self, D):
-        """(base_pub, base_all): modules visible anyway through Init and the fixed lines,
-        publicly (fixed public lines) and at all (also fixed private lines)."""
+    def bases(self, D, pins=True):
+        """(base_pub, base_all): modules visible anyway through Init, the fixed lines and
+        (pins=True) the pinned modules, publicly (fixed public lines, public pins) and
+        at all (also fixed private lines, private pins)."""
         base_pub, base_all = set(self.avail), set(self.avail)
         for e in self.fixed(D):
             if not e["meta"]:
@@ -1171,12 +1380,43 @@ class Refine(Stage):
                 base_all |= c
                 if e["pub"]:
                     base_pub |= c
+        if pins:
+            for K, lvl in self.pins[D].items():
+                c = {K} | self.g.reach(K)
+                base_all |= c
+                if lvl == "pub":
+                    base_pub |= c
         return base_pub, base_all
+
+    def pin_lines(self, D, pub, priv):
+        """(public, private) pinned modules that pub, priv and the fixed lines do not
+        already provide at their level (see compute_pins)."""
+        cp, ca = self.bases(D, pins=False)
+        cp |= self.closure(pub)
+        ca |= cp | self.closure(priv)
+        fixed = {e["mod"] for e in self.fixed(D)}  # never import a module twice
+        add_pub, add_priv = [], []
+        for K, lvl in sorted(self.pins[D].items(), key=lambda kv: kv[1] == "priv"):
+            c = {K} | self.g.reach(K)
+            if K in fixed:
+                continue
+            if lvl == "pub" and K not in cp:
+                add_pub.append(K)
+                cp |= c
+                ca |= c
+            elif lvl == "priv" and K not in ca:
+                add_priv.append(K)
+                ca |= c
+        return add_pub, add_priv
 
     # -- compiling ---------------------------------------------------------------
     def texts(self, D, pub, priv):
-        return [f"public import {m}" for m in pub] + [f"import {m}" for m in priv] + \
-            texts_of(self.fixed(D))
+        """The import lines of D: pub, priv, the pinned modules they do not provide, and
+        the fixed lines."""
+        add_pub, add_priv = self.pin_lines(D, pub, priv)
+        priv = [m for m in priv if m not in add_pub]
+        return [f"public import {m}" for m in pub + add_pub] + \
+            [f"import {m}" for m in priv + add_priv] + texts_of(self.fixed(D))
 
     @staticmethod
     def lift(pub, extra, priv):
@@ -1237,7 +1477,7 @@ class Refine(Stage):
             else:
                 r, failed = failed, None
             if not R:
-                raise RuntimeError(f"{D}: does not compile, nothing left to add: {r['err']}")
+                raise NothingLeft(D, r["err"])
 
             def make(k, R):
                 return self.lift(pub, R[:k], priv) if level == "pub" else (pub, priv + R[:k])
@@ -1286,12 +1526,33 @@ class Refine(Stage):
     # -- one file ----------------------------------------------------------------
     def process(self, D):
         st = dict(found=[], removed=[], demoted=[])
+        try:
+            return self.decide(D, st)
+        except NothingLeft as ex:
+            # e.g. a new warning caused upstream: the file's original lines may still work
+            orig = list(self.meta["orig"][D])
+            r = self.compile(D, orig, out=True)
+            self.log(ev="original", D=D, ok=r["ok"], secs=r["secs"], err=r["err"])
+            if not r["ok"]:
+                raise RuntimeError(f"{ex}\n  with its original imports: {r['err']}" +
+                                   upstream_hint(ex.err)) from None
+            say(f"      no import set of this stage compiles; {short(D)} keeps its original "
+                f"imports ({ex.err[:100]})")
+            shutil.rmtree(install(D, r["outdir"]), ignore_errors=True)
+            st.update(new=orig, pub=[], priv=[], fixed=orig, why={}, pinned=[],
+                      kept_original=ex.err)
+            st.setdefault("guess_ok", False)
+            return st
+
+    def decide(self, D, st):
         bases = base_pub, base_all = self.bases(D)
         vold = self.vold[D]
         nd = self.needs.get(D, {})
         strong = {x for x, d in nd.items() if not d["weak"] and x in vold}
         weak = {x for x, d in nd.items() if d["weak"] and x in vold}
-        if self.private:
+        if D in self.keep_all:  # add-only: start from the kept lines alone
+            pub, priv = [], []
+        elif self.private:
             pub = self.antichain(x for x in strong - base_pub if nd[x]["pub"])
             priv = self.anti_priv(strong - base_all, pub)
         else:  # public unless only used in proofs and visible privately anyway
@@ -1370,16 +1631,22 @@ class Refine(Stage):
             return (d.get("pubwit") if self.private and m in pub else None) or \
                 d.get("wit") or d.get("attr")
 
+        add_pub, add_priv = self.pin_lines(D, pub, priv)
         st.update(new=self.texts(D, pub, priv), pub=pub, priv=priv,
-                  fixed=texts_of(self.fixed(D)), why={m: why(m) for m in pub + priv})
+                  fixed=texts_of(self.fixed(D)), why={m: why(m) for m in pub + priv},
+                  pinned=add_pub + add_priv)
         return st
 
     def summary(self, st):
+        if st.get("kept_original"):
+            return "original imports kept"
         s = f"{len(st['pub'])} public"
         if self.private:
             s += f" + {len(st['priv'])} private"
         if st["fixed"]:
             s += f" + {len(st['fixed'])} kept"
+        if st.get("pinned"):
+            s += f" + {len(st['pinned'])} pinned"
         s += f" | guess ok: {st['guess_ok']} | found {len(st['found'])}, " \
              f"removed {len(st['removed'])}"
         if self.private:
@@ -1398,8 +1665,18 @@ def lake_build():
     return ok
 
 
-def cmd_apply(stage, do_apply, build):
+def run_check(cmd):
+    """The project's own extra check (e.g. `lake test`), run by the shell in the project."""
+    say(f"check: {cmd}")
+    ok = subprocess.run(cmd, shell=True, cwd=ROOT).returncode == 0
+    say(f"check {'passed' if ok else 'FAILED'}: {cmd}")
+    return ok
+
+
+def cmd_apply(stage, do_apply, build, check=None):
     """Check every file first; write nothing unless all checks pass."""
+    if check and not build:
+        sys.exit("--check needs --apply --build")
     path = stage_dir(stage) + "/result.json"
     res = load_json(path)
     meta = load_json(stage_dir(stage) + "/run.json")
@@ -1459,7 +1736,7 @@ def cmd_apply(stage, do_apply, build):
     print(f"{len(plan)} files {'changed' if do_apply else 'would change'}; "
           f"import lines {old_total} -> {new_total}" + ("" if do_apply else "   (dry run)"))
     if build:
-        sys.exit(0 if lake_build() else 1)
+        sys.exit(0 if lake_build() and (not check or run_check(check)) else 1)
     if do_apply and plan:
         if unfinished_run():
             print(f"note: do not run `lake build` until the `{unfinished_run()}` run is "
@@ -1561,34 +1838,48 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0],
                                  formatter_class=argparse.RawDescriptionHelpFormatter,
                                  epilog="\n".join(__doc__.split("\n")[2:]))
+    ap.add_argument("--project", metavar="PATH",
+                    help="the Lean project (default: $IMPMIN_ROOT, else the current directory)")
+    ap.add_argument("--root-module", metavar="NAME",
+                    help="the file that imports all others, e.g. Mathlib (default: "
+                         "$IMPMIN_MODULE, else inferred from the files and the lakefile)")
     sub = ap.add_subparsers(dest="cmd", required=True)
-    p = sub.add_parser("run", help="run a stage (writes work/STAGE/result.json)")
+    p = sub.add_parser("run", help="run a stage (writes .lake/import-min/work/STAGE)")
     p.add_argument("stage", choices=STAGES)
     p.add_argument("--limit", type=int, help="process at most N more files")
     p.add_argument("--fresh", action="store_true",
                    help="discard an unfinished run of this stage instead of resuming it")
+    p.add_argument("--redo", nargs="+", metavar="MODULE",
+                   help="forget the results of these files and of all files depending on "
+                        "them, then resume")
     p.add_argument("--no-guess", action="store_true",
                    help="direct/private: start from an empty import list instead of "
                         "needs.lean's guess")
+    p.add_argument("--allow-new-warnings", action="store_true",
+                   help="with --fresh or a new run: only errors count as failure")
     p = sub.add_parser("apply", help="write a stage's result into the sources")
     p.add_argument("stage", choices=STAGES)
     p.add_argument("--apply", action="store_true", help="really write (default: dry run)")
     p.add_argument("--build", action="store_true",
                    help="with --apply: run `lake build` afterwards to verify the result")
+    p.add_argument("--check", metavar="CMD",
+                   help="with --build: then run this shell command in the project, e.g. "
+                        "'lake test' (checks other libraries, linters, ...)")
     p = sub.add_parser("format", help="Mathlib-style import blocks")
     p.add_argument("--apply", action="store_true", help="really write (default: dry run)")
     p = sub.add_parser("verify-diff", help="working tree == HEAD minus import lines?")
     p.add_argument("--table", action="store_true")
-    sub.add_parser("baseline", help="compile every file once; writes work/base_times.json")
+    sub.add_parser("baseline", help="compile every file once (times and warnings)")
     sub.add_parser("shadow", help="recreate the shadow olean tree")
     sub.add_parser("selftest", help="check that oleans installed in the shadow are used")
     a = ap.parse_args()
+    load_project(a.project, a.root_module)
     try:
         if a.cmd == "run":
             cls = {"implied": Implied, "remove": Remove, "direct": Refine, "private": Refine}
             cls[a.stage](a).run()
         elif a.cmd == "apply":
-            cmd_apply(a.stage, a.apply, a.build)
+            cmd_apply(a.stage, a.apply, a.build, a.check)
         elif a.cmd == "format":
             cmd_format(a.apply)
         elif a.cmd == "verify-diff":
@@ -1603,6 +1894,13 @@ def main():
         interrupt_all()
         say("interrupted; nothing half-done was recorded (`run` resumes where it stopped)")
         sys.exit(130)
+    except (RuntimeError, CompileCrash) as e:  # reported problems, not bugs: no traceback
+        interrupt_all()
+        say(f"stopped: {e}")
+        if a.cmd == "run":
+            say("finished files are kept; fix the cause, then run the same command again "
+                "(with --redo FILE for files whose result must change)")
+        sys.exit(1)
 
 
 if __name__ == "__main__":

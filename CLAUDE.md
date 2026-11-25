@@ -9,8 +9,8 @@ after a compile of the affected file (and its dependents, where relevant) shows 
 works.
 
 `README.md` is the full documentation: the three stages, their exact definitions, how
-rebuilds are avoided (direct `lean` calls, shadow olean tree), how to run it, the
-hardcoded settings and the known limits. Read it before changing the pipeline, and keep
+rebuilds are avoided (direct `lean` calls, shadow olean tree), how to run it, what is
+kept and why, and the known limits. Read it before changing the pipeline, and keep
 it up to date when behaviour changes. It is written for users of the scripts: keep it
 concise, and leave out history (earlier versions, past runs, reviews, timings of old
 versions) and internal code names that a user does not need.
@@ -25,19 +25,24 @@ This project must not use `lake shake`, in any form:
   nothing derived from oleans decides a change: `needs.lean` reads the same raw data
   `lake shake` reads (constants in compiled terms plus `Lean/ExtraModUses.lean`), and its
   output is only a first guess that the compile-based search corrects. Never treat it as
-  the final answer without a compile.
+  the final answer without a compile. Reading `shake:` annotation comments is fine too.
 
 ## Working rules
 
-- The compiler is the only judge. A change counts as valid only if a compile shows it.
+- The compiler is the only judge. A change counts as valid only if a compile shows it,
+  with no new errors and no warnings beyond the file's baseline. Olean-derived data
+  (`needs.lean`) may only make the scripts keep more (pins for syntax quotations), never
+  accept a change.
 - Avoid `lake build` during runs: it rebuilds every dependent of a changed file. Use
   `lake build` only for the baseline and the final verification, and never while a run
   is using the shadow tree (`.lake/import-min/lean`).
 - Never edit non-import lines of a target project's sources.
-- `meta` imports and the root aggregator file are left untouched (see README).
-- The project path, the root module and the `-D` options are hardcoded for
-  Sphere-Packing-Lean (settings block at the top of `impgraph.py`); see "Settings" in
-  the README before running on anything else.
+- `meta` imports, the root aggregator file and lines kept by `shake:` annotations are left
+  untouched (see README, "What is kept").
+- Nothing may be specific to one target project. The project, the root module and the
+  `-D` options come from the command line, the environment and Lake's `.setup.json`
+  files; run state lives in the target's `.lake/import-min`. Sphere-Packing appears only
+  as an example run in the README and in `runs-sphere-packing/`.
 - `impmin.py` is the single entry point. Stages 2 and 3 share one class (`Refine`);
   keep stage differences as settings there rather than splitting the code again.
 - `run` never edits the target's sources; only `apply` does.
